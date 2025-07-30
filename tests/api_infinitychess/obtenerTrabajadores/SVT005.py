@@ -12,3 +12,6 @@ def test_obtenerTrabajadorExistentePorIdValido(getUrl):
     lista_url = getUrl + endpoint
     response = requests.get(lista_url)
     assert response.status_code == 200
+    trabajador = response.json()
+    for trab in trabajador:
+        assert len(trab.get("CONTRASEÑA")) > 30
