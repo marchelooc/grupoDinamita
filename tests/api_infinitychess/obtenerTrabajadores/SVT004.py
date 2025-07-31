@@ -3,7 +3,7 @@ import pytest
 import random
 from src.obtenerTrabajadores import obtenerTrabajadores
 
-@pytest.mark.smoke
+@pytest.mark.exploratory
 def test_verificarQueLaURLIncorrectaRetorne404(getUrl):
     listaTrabajdores = obtenerTrabajadores(getUrl)
     CODTRABAJADOR = random.choice(listaTrabajdores)["CODTRABAJADOR"]

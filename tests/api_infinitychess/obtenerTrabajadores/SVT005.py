@@ -4,7 +4,7 @@ import random
 from src.obtenerTrabajadores import obtenerTrabajadores
 
 @pytest.mark.smoke
-def test_obtenerTrabajadorExistentePorIdValido(getUrl):
+def test_validarQueLaContraseñaSeMuestreCifrada(getUrl):
     listaTrabajdores = obtenerTrabajadores(getUrl)
     CODTRABAJADOR = random.choice(listaTrabajdores)["CODTRABAJADOR"]
     print(f"Trabajador escogido es: {CODTRABAJADOR}")

@@ -1,7 +1,7 @@
 import requests
 import pytest
 
-@pytest.mark.smoke
+@pytest.mark.exploratory
 def test_obtenerTrabajadorSinEnviarId(getUrl):
     endpoint = "obtenerTrabajadores/"
     lista_url = getUrl + endpoint

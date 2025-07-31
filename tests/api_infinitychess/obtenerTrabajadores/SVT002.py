@@ -3,7 +3,7 @@ import pytest
 import random
 from src.generadorCodigo import generarCodigo
 
-@pytest.mark.smoke
+@pytest.mark.negative
 def test_obtenerTrabajadorConIdInexistente(getUrl):
     CODTRABAJADOR = generarCodigo()
     print(f"Trabajador escogido es: {CODTRABAJADOR}")

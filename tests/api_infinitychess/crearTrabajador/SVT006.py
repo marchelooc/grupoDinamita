@@ -2,8 +2,9 @@ import requests
 import pytest
 import random
 from src.generadorCodigo import generarNombre, generarCodigoTrab, generarFechaNac, generarContraseña
+from src.assertions.addtr import assert_crearTrabajadorSchema
 @pytest.mark.smoke
-def test_cambioDeEstadoDeTutorActivo (getUrl):
+def test_crearUnTrabajadorConTodosLosDatosValidos (getUrl):
     nombre = generarNombre()
     codigo = generarCodigoTrab(nombre)
     fecha = generarFechaNac()
@@ -20,3 +21,5 @@ def test_cambioDeEstadoDeTutorActivo (getUrl):
     urlFinal = getUrl + endpoint
     response = requests.post(urlFinal, json=payload)
     assert response.status_code == 201
+    
+    assert_crearTrabajadorSchema(response)
