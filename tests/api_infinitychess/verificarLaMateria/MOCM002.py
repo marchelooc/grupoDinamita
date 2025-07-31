@@ -1,11 +1,11 @@
 import requests
 import pytest
 import random
-from src.obtenerMateria import obtenerMateria
+from src.obtenerCurso import obtenerCursos
 
 @pytest.mark.smoke
 def test_ValidarQueSeRecuperenLaMateriaConNombreDeCurso(getUrl):
-    listaMaterias = obtenerMateria(getUrl)
+    listaMaterias = obtenerCursos(getUrl)
     CURSO = random.choice(listaMaterias)["CURSO"]
     print(f"Materia escogida es: {CURSO}")
     endpoint = "verificarCurso/" + CURSO

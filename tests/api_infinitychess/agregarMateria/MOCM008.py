@@ -16,11 +16,11 @@ import requests
 import pytest
 
 
-from src.generadorCodigo import generarNomMateria, generarCodigo
+from src.generadorCodigo import generarNomMateria, generarCod
 @pytest.mark.smoke
-def test_cambioDeEstadoDeTutorActivo (getUrl):
+def test_AgregarUnaMateriaConDatosVálidos(getUrl):
     nombreMateria = generarNomMateria()
-    codigoMateria = generarCodigo()
+    codigoMateria = generarCod(nombreMateria)
     endpoint = "agregarCurso"
     payload = {
                 "CODCURSO": codigoMateria,
@@ -29,6 +29,7 @@ def test_cambioDeEstadoDeTutorActivo (getUrl):
                 }
     urlFinal = getUrl + endpoint
     response = requests.post(urlFinal, json=payload)
+    print(f"Materia creada es: {nombreMateria}")
     assert response.status_code == 201
 
 
