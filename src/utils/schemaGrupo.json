@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+    "CODCURSO": {
+        "type": "string"
+    },
+    "CODSEDE": {
+        "type": "string"
+    },
+    "NOMBREGRUPO": {
+        "type": "string"
+    },
+    "CODGRUPO": {
+        "type": "string"
+    },
+    "LIMITE": {
+        "type": "integer"
+    },
+    "PRECIO": {
+        "type": "integer"
+    },
+    "ESTADO": {
+        "type": "string"
+    }
+    },
+    "required": [
+    "CODCURSO",
+    "CODSEDE",
+    "NOMBREGRUPO",
+    "CODGRUPO",
+    "LIMITE",
+    "PRECIO",
+    "ESTADO"
+    ]
+}
