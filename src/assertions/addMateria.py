@@ -4,15 +4,15 @@ import jsonschema
 import pytest
 
 # Ruta absoluta al archivo JSON
-schema_path = os.path.join(os.path.dirname(__file__), "../utils/shemaMateria.json")
+schema_path = os.path.join(os.path.dirname(__file__), "../utils/schemaMateria.json")
 
 # Cargar el schema
 with open(schema_path, "r", encoding="utf-8") as f:
-    shemaMateria = json.load(f)
+    schemaMateria = json.load(f)
 
 def assert_crearMateriaSchema(response):
     try:
-        jsonschema.validate(instance=response.json(), schema=shemaMateria)
+        jsonschema.validate(instance=response.json(), schema=schemaMateria)
         return True
     except jsonschema.exceptions.ValidationError as err:
         pytest.fail(f"JSON schema doesn't match: {err.message}")
