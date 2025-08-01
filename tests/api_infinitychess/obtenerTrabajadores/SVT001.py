@@ -12,5 +12,4 @@ def test_obtenerTrabajadorExistentePorIdValido(getUrl):
     lista_url = getUrl + endpoint
     response = requests.get(lista_url)
     assert response.status_code == 200
-    print (response.json[0].get("NOMBRETRABAJADOR")) 
     
