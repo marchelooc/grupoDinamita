@@ -44,13 +44,24 @@ def generarCod (cod):
     año = datetime.now().year
     return f"{año}{cod}"
 
-def generar_cod_inscripcion(nombre, apellido):
+def generar_cod_inscripcion(nombre_completo):
+    partes = nombre_completo.strip().split()
+    
+    # Asegurar que haya al menos 2 partes (nombre y apellido)
+    if len(partes) < 2:
+        raise ValueError("Se requiere al menos un nombre y un apellido.")
+    
+    nombre = partes[0]
+    apellido = partes[1]
+
     sub_nombre = nombre[:3]
     sub_apellido = apellido[:3]
+
     ahora = datetime.now()
     año = ahora.year
     mes = ahora.month
     dia = ahora.day
+
     codigo = f"{año}{mes:02}{dia:02}{sub_nombre}{sub_apellido}"
     return codigo.upper()
 
