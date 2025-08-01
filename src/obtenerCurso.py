@@ -8,3 +8,11 @@ def obtenerCursos(getUrl):
     return listaCursos
 
 
+def obtenerCodMateria(getUrl):
+    cursos=obtenerCursos(getUrl)
+    CODMATERIA = random.choice(cursos)["CODCURSO"]
+    return CODMATERIA
+
+def listaGrupos():
+    
+    return
