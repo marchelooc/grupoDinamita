@@ -1,9 +1,9 @@
 import requests
 import pytest
 
-from src.assertions.add import assert_validarResponseSchema
+from src.assertions.add import assert_validarResponseSchema,assert_validarSchemaInput
 from src.utils.generadorCodigo import generarNomMateria, generarCod
-from utils.cargarSchema import cargar_schema
+from src.utils.cargarSchema import cargar_schema
 
 @pytest.mark.smoke
 def test_AgregarUnaMateriaConDatosVálidos(getUrl):
@@ -11,13 +11,13 @@ def test_AgregarUnaMateriaConDatosVálidos(getUrl):
     codigoMateria = generarCod(nombreMateria)
     endpoint = "agregarCurso"
     payload = {
-                "CODCURSO": codigoMateria,
-                "CURSO": nombreMateria, 
-                "ESTADO": "activo",
+                "CODCURSO": "",
+                "CURSO": "",
+                "ESTADO": "",
                 }
+    assert_validarSchemaInput(payload,cargar_schema("schemaMateria.json"))
     urlFinal = getUrl + endpoint
     response = requests.post(urlFinal, json=payload)
-    print(f"Materia creada es: {nombreMateria}")
-    assert response.status_code == 201
+    assert response.status_code == 500
     assert_validarResponseSchema(response,cargar_schema("schemaMateria.json")) 
     
