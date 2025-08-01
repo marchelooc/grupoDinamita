@@ -1,7 +1,7 @@
 import requests
 import pytest
 import random
-from src.obtenerTutores import obtenerTutoresInactivos
+from src.api_infinityChess.obtenerTutores import obtenerTutoresInactivos
 
 @pytest.mark.smoke
 def test_cambioDeEstadoDeTutorActivo (getUrl):

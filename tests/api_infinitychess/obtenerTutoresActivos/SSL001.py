@@ -10,4 +10,3 @@ def test_obtenerListaDeTutoresActivosCorrectamente(getUrl):
     listaTutores = response.json()
     for tutor in listaTutores:
         assert tutor.get("ESTADO") == "Activo", f"Tutor inactivo encontrado: {tutor}"
-    return listaTutores

@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+    "CODCURSO": {
+        "type": "string"
+    },
+    "CURSO": {
+        "type": "string"
+    },
+    "ESTADO": {
+        "type": "string"
+    }
+    },
+    "required": [
+    "CODCURSO",
+    "CURSO",
+    "ESTADO"
+    ]
+}
