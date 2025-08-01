@@ -2,7 +2,7 @@ import requests
 import pytest
 import random
 from src.obtenerTutores import obtenerTutoresActivos
-from src.generadorCodigo import generarCodigo
+from utils.generadorCodigo import generarCodigo
 
 @pytest.mark.smoke
 def test_verificarActualizacionTutorInexistente (getUrl):
