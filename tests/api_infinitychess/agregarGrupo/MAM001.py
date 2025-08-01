@@ -3,7 +3,7 @@ import pytest
 import random
 
 from src.assertions.add import assert_crearGrupoSchema
-from src.obtenerCurso import obtenerCursos
+from src.api_infinityChess.obtenerCurso import obtenerCursos
 from utils.generadorCodigo import obtenerNombreGrupo, generarCod, obtenerDias, obtenerHoras, obtenerLimite, obtenerPrecio
 
 @pytest.mark.smoke
