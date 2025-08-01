@@ -2,10 +2,10 @@ import requests
 import pytest
 import random
 
-from src.assertions.add import assert_crearGrupoSchema
-from src.obtenerCurso import obtenerCursos
-from src.generadorCodigo import obtenerNombreGrupo, generarCod, obtenerDias, obtenerHoras, obtenerLimite, obtenerPrecio
-
+from src.assertions.add import assert_validarResponseSchema
+from src.api_infinityChess.obtenerCurso import obtenerCursos
+from utils.generadorCodigo import obtenerNombreGrupo, generarCod, obtenerDias, obtenerHoras, obtenerLimite, obtenerPrecio
+from utils.cargarSchema import cargar_schema
 @pytest.mark.smoke
 def test_AgregarUnNuevoGrupoConElIdDeUnaMateriaValida(getUrl):
     listaCursos = obtenerCursos(getUrl)
@@ -32,4 +32,4 @@ def test_AgregarUnNuevoGrupoConElIdDeUnaMateriaValida(getUrl):
     urlFinal = getUrl + endpoint
     response = requests.post(urlFinal, json=payload)
     assert response.status_code == 201
-    assert_crearGrupoSchema(response)
+    assert_validarResponseSchema(response,cargar_schema("schemaGrupo.json"))

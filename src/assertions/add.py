@@ -1,7 +1,7 @@
 import jsonschema
 import pytest
 
-def validar_response_schema(response, schema):
+def assert_validarResponseSchema(response, schema):
     try:
         jsonschema.validate(instance=response.json(), schema=schema)
         return True
