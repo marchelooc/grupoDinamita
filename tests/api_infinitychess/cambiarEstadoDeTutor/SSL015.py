@@ -1,7 +1,7 @@
 import requests
 import pytest
 import random
-from src.obtenerTutores import obtenerTutoresActivos
+from src.api_infinityChess.obtenerTutores import obtenerTutoresActivos
 
 @pytest.mark.smoke
 def test_solicitudConHeaders_Content_Type_application_x_www_form_urlencoded (getUrl):

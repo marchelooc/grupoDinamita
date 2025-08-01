@@ -1,17 +1,16 @@
 import requests
 import json
 import random
-import pytest
-from src.obtenerCurso import obtenerCodMateria
+from src import obtenerCurso
 
-@pytest.mark.smoke
-def test_ObtenerGruposDeUnaMateriaConIdValidoSedeModulo4(getUrl):
-    CODMATERIA=obtenerCodMateria(getUrl)
-    
-    endpoint = "obtenerGrupo/"+CODMATERIA+"/Modulo 4"
+def ObtenerGruposDeUnaMateriaConIdValidoSedeModulo4(getUrl):
+    endpoint = "obtenerGrupp/"+CODMATERIA+"/Modulo 4"
     lista_url = getUrl + endpoint
     
+    cursos=obtenerCurso(getUrl)
+    CODMATERIA = random.choice(cursos)["CODCURSO"]
     
+
     headers = {
     'Content-Type': 'application/json'
     }

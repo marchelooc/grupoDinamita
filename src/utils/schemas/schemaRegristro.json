@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+    "CODINSCRIPCION": {
+        "type": "string"
+    },
+    "CODTRABAJADOR": {
+        "type": "string"
+    },
+    "FECHAINSCRIPCION": {
+        "type": "string"
+    },
+    "COSTOINSCRIPCION": {
+        "type": "integer"
+    },
+    "CODSEDE": {
+        "type": "string"
+    },
+    "HABILITADO": {
+        "type": "string"
+    }
+    },
+    "required": [
+    "CODINSCRIPCION",
+    "CODTRABAJADOR",
+    "FECHAINSCRIPCION",
+    "COSTOINSCRIPCION",
+    "CODSEDE",
+    "HABILITADO"
+    ]
+}
