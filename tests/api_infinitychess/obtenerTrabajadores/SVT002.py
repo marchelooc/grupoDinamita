@@ -1,7 +1,7 @@
 import requests
 import pytest
 import random
-from src.generadorCodigo import generarCodigo
+from src.api_infinityChess.generadorCodigo import generarCodigo
 
 @pytest.mark.negative
 def test_obtenerTrabajadorConIdInexistente(getUrl):

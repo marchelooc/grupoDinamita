@@ -1,7 +1,7 @@
 import requests
 import pytest
 import random
-from src.obtenerTutores import obtenerTutoresActivos
+from src.api_infinityChess.obtenerTutores import obtenerTutoresActivos
 from utils.generadorCodigo import generarCodigo
 
 @pytest.mark.smoke

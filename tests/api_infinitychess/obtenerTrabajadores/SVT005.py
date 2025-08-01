@@ -1,7 +1,7 @@
 import requests
 import pytest
 import random
-from src.obtenerTrabajadores import obtenerTrabajadores
+from src.api_infinityChess.obtenerTrabajadores import obtenerTrabajadores
 
 @pytest.mark.smoke
 def test_validarQueLaContraseñaSeMuestreCifrada(getUrl):

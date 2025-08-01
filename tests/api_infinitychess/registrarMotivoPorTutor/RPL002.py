@@ -2,7 +2,7 @@ import requests
 import pytest
 import jsonschema
 import random
-from src.obtenerTutores import obtenerTutoresActivos
+from src.api_infinityChess.obtenerTutores import obtenerTutoresActivos
 
 @pytest.mark.smoke
 def test_RPL002_registroMotivoExitoso (getUrl):

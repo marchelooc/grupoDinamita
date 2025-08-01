@@ -1,13 +1,13 @@
 import requests
 import json
 import random
-from src import obtenerCurso
+from src.api_infinityChess.obtenerCurso import obtenerCursos
 
 def ObtenerGruposDeUnaMateriaConIdValidoSedeModulo4(getUrl):
     endpoint = "obtenerGrupp/"+CODMATERIA+"/Modulo 4"
     lista_url = getUrl + endpoint
     
-    cursos=obtenerCurso(getUrl)
+    cursos=obtenerCursos(getUrl)
     CODMATERIA = random.choice(cursos)["CODCURSO"]
     
 

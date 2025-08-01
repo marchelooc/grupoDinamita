@@ -1,8 +1,8 @@
 import requests
 import pytest
 import random
-from src.generadorCodigo import generarNombre, generarCodigoTrab, generarFechaNac, generarContraseña
-from src.obtenerTrabajadores import obtenerTrabajadorPorId
+from src.utils.generadorCodigo import generarNombre, generarCodigoTrab, generarFechaNac, generarContraseña
+from src.api_infinityChess.obtenerTrabajadores import obtenerTrabajadorPorId
 @pytest.mark.funcional
 def test_VerificarQueElTrabajadorCreadoExistaEnElSistema (getUrl):
     nombre = generarNombre()
