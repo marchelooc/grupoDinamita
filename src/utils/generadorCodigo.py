@@ -8,6 +8,7 @@ def generarCodigo():
     return numero + letras
 
 
+
 def obtenerNombreGrupo():
     grupos = ["Grupo1", "Grupo2", "Grupo3", "Grupo4", "Grupo5","Grupo6", "Grupo7", "Grupo8", "Grupo9", "Grupo10",
             "Grupo11", "Grupo12", "Grupo13", "Grupo14", "Grupo15","Grupo16", "Grupo17", "Grupo18", "Grupo19", "Grupo20"]
@@ -102,3 +103,8 @@ def generarContraseña(longitud=10, usar_mayusculas=True, usar_numeros=True, usa
 
     contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
     return contraseña
+
+def generarNomMateria():
+    materias = ["Ingles", "Ruso", "Esñaol", "Quechua", "Mandarín","Polaco", "Árabe", "Birmano",
+            "Chino", "Yoruba", "Japones", "Indonesio", "Portugues","Frances", "Italiano"]
+    return random.choice(materias)

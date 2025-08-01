@@ -4,7 +4,7 @@ import jsonschema
 import pytest
 
 # Ruta absoluta al archivo JSON
-schema_path = os.path.join(os.path.dirname(__file__), "../utils/schemaMateria.json")
+schema_path = os.path.join(os.path.dirname(__file__), "../utils/schemas/schemaMateria.json")
 
 # Cargar el schema
 with open(schema_path, "r", encoding="utf-8") as f:

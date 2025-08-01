@@ -4,7 +4,7 @@ import jsonschema
 
 
 from src.assertions.addMateria import assert_crearMateriaSchema 
-from src.generadorCodigo import generarNomMateria, generarCod
+from src.utils.generadorCodigo import generarNomMateria, generarCod
 @pytest.mark.smoke
 def test_AgregarUnaMateriaConDatosVálidos(getUrl):
     nombreMateria = generarNomMateria()
