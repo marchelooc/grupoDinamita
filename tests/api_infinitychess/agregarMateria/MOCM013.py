@@ -5,15 +5,15 @@ from src.assertions.add import assert_validarResponseSchema,assert_validarSchema
 from src.utils.generadorCodigo import generarNomMateria, generarCod
 from src.utils.cargarSchema import cargar_schema
 
-@pytest.mark.funcional
-def test_ValidarComportamientoAlAgregarUnCursoConTodosLosCamposVacíos(getUrl):
+@pytest.mark.smoke
+def test_ValidarElLímiteMáximoDeCaracteresDelCampoCODCURSO(getUrl):
     nombreMateria = generarNomMateria()
     codigoMateria = generarCod(nombreMateria)
     endpoint = "agregarCurso"
     payload = {
-                "CODCURSO": "",
-                "CURSO": "",
-                "ESTADO": "",
+                "CODCURSO": codigoMateria + "123456789",
+                "CURSO": nombreMateria, 
+                "ESTADO": "activo",
                 }
     assert_validarSchemaInput(payload,cargar_schema("schemaMateria.json"))
     urlFinal = getUrl + endpoint

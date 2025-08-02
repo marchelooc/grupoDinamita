@@ -2,18 +2,17 @@ import requests
 import pytest
 
 from src.assertions.add import assert_validarResponseSchema,assert_validarSchemaInput
-from src.utils.generadorCodigo import generarNomMateria, generarCod
+from src.utils.generadorCodigo import generarNomMateria
 from src.utils.cargarSchema import cargar_schema
 
-@pytest.mark.funcional
-def test_ValidarComportamientoAlAgregarUnCursoConTodosLosCamposVacíos(getUrl):
+@pytest.mark.smoke
+def test_ValidarComportamientoAlAgregarCursoSinCODCURSO(getUrl):
     nombreMateria = generarNomMateria()
-    codigoMateria = generarCod(nombreMateria)
     endpoint = "agregarCurso"
     payload = {
                 "CODCURSO": "",
-                "CURSO": "",
-                "ESTADO": "",
+                "CURSO": nombreMateria, 
+                "ESTADO": "activo",
                 }
     assert_validarSchemaInput(payload,cargar_schema("schemaMateria.json"))
     urlFinal = getUrl + endpoint
