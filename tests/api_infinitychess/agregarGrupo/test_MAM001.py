@@ -4,8 +4,8 @@ import random
 
 from src.assertions.add import assert_validarResponseSchema
 from src.api_infinityChess.obtenerCurso import obtenerCursos
-from utils.generadorCodigo import obtenerNombreGrupo, generarCod, obtenerDias, obtenerHoras, obtenerLimite, obtenerPrecio
-from utils.cargarSchema import cargar_schema
+from src.utils.generadorCodigo import obtenerNombreGrupo, generarCod, obtenerDias, obtenerHoras, obtenerLimite, obtenerPrecio
+from src.utils.cargarSchema import cargar_schema
 @pytest.mark.smoke
 def test_AgregarUnNuevoGrupoConElIdDeUnaMateriaValida(getUrl):
     listaCursos = obtenerCursos(getUrl)

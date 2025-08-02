@@ -3,7 +3,7 @@ import pytest
 import random
 from src.utils.generadorCodigo import generarNombre, generarCodigoTrab, generarFechaNac, generarContraseña
 from src.assertions.add import assert_validarResponseSchema
-from utils.cargarSchema import cargar_schema
+from src.utils.cargarSchema import cargar_schema
 
 @pytest.mark.smoke
 def test_crearUnTrabajadorConTodosLosDatosValidos (getUrl):
