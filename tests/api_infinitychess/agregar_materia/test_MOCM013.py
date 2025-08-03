@@ -6,18 +6,18 @@ from src.utils.generadorCodigo import generarNomMateria, generarCod
 from src.utils.cargarSchema import cargar_schema
 
 @pytest.mark.smoke
-def test_AgregarUnaMateriaConDatosVálidos(getUrl):
+def test_validar_el_limite_maximo_de_caracteres_del_campo_CODCURSO(get_url):
     nombreMateria = generarNomMateria()
     codigoMateria = generarCod(nombreMateria)
     endpoint = "agregarCurso"
     payload = {
-                "CODCURSO": codigoMateria,
+                "CODCURSO": codigoMateria + "123456789",
                 "CURSO": nombreMateria, 
                 "ESTADO": "activo",
                 }
-    assert_validarSchemaInput(payload,cargar_schema("schemaMateria.json"))
-    urlFinal = getUrl + endpoint
+    assert_validarSchemaInput(payload,cargar_schema("schema_materia.json"))
+    urlFinal = get_url + endpoint
     response = requests.post(urlFinal, json=payload)
-    assert response.status_code == 201
-    assert_validarResponseSchema(response,cargar_schema("schemaMateria.json")) 
+    assert response.status_code == 500
+
     

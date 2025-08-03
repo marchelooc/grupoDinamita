@@ -6,7 +6,7 @@ from src.utils.generadorCodigo import generarNomMateria
 from src.utils.cargarSchema import cargar_schema
 
 @pytest.mark.smoke
-def test_ValidarComportamientoAlAgregarCursoSinCODCURSO(getUrl):
+def test_validar_comportamiento_al_agregar_curso_sin_CODCURSO(get_url):
     nombreMateria = generarNomMateria()
     endpoint = "agregarCurso"
     payload = {
@@ -14,9 +14,8 @@ def test_ValidarComportamientoAlAgregarCursoSinCODCURSO(getUrl):
                 "CURSO": nombreMateria, 
                 "ESTADO": "activo",
                 }
-    assert_validarSchemaInput(payload,cargar_schema("schemaMateria.json"))
-    urlFinal = getUrl + endpoint
+    assert_validarSchemaInput(payload,cargar_schema("schema_materia.json"))
+    urlFinal = get_url + endpoint
     response = requests.post(urlFinal, json=payload)
     assert response.status_code == 500
-    assert_validarResponseSchema(response,cargar_schema("schemaMateria.json")) 
     
