@@ -79,6 +79,17 @@ def generar_fecha_nac(edad_min=18, edad_max=75):
     fecha_nacimiento = hoy - timedelta(days=dias_random)
     return fecha_nacimiento.strftime("%Y-%m-%d")
 
+def generar_fecha_menor():      # Generar una fecha de nacimiento menor a 18 años
+    hoy = datetime.today()
+    fecha_menor = hoy - timedelta(days=16 * 365)
+    return fecha_menor.strftime('%Y-%m-%d')
+
+def generar_fecha_mayor():      # Generar una fecha de nacimiento mayor a 75 años
+    hoy = datetime.today()
+    fecha_mayor = hoy - timedelta(days=78 * 365)
+    return fecha_mayor.strftime('%Y-%m-%d')
+    
+
 def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True, usar_simbolos=True):
     caracteres = string.ascii_lowercase 
     if usar_mayusculas:
