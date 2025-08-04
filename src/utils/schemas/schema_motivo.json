@@ -1,0 +1,24 @@
+{
+
+    "type": "object",
+    "required": [
+        "CODTUTOR",
+        "ESTADO",
+        "FECHAMOTIVO",
+        "MOTIVO"
+    ],
+    "properties": {
+        "CODTUTOR": {
+        "type": "string"
+        },
+        "MOTIVO": {
+        "type": "string"
+        },
+        "FECHAMOTIVO": {
+        "type": "string"
+        },
+        "ESTADO": {
+        "type": "string"
+        }
+    }
+}
