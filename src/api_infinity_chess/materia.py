@@ -1,17 +1,17 @@
-from src.api_infinityChess.obtenerCurso import obtenerCursos
+from src.api_infinity_chess.obtener_curso import obtener_cursos
 import requests
 
-def existeMateriaRepetida(getUrl) -> bool:
+def existe_materia_repetida(getUrl) -> bool:
     nombre_materia_buscada = "MateriaRepetida"
-    listaMaterias = obtenerCursos(getUrl)
+    listaMaterias = obtener_cursos(getUrl)
     return any(m["CURSO"] == nombre_materia_buscada for m in listaMaterias)
 
-def crear_materia_repetida(getUrl, endpoint):
+def crear_materia_repetida(get_Url, endpoint):
     payload = {
                 "CODCURSO": "123Mrepetida",
                 "CURSO": "MateriaRepetida",
                 "ESTADO": "activo",
                 }
-    urlFinal = getUrl + endpoint
+    urlFinal = get_Url + endpoint
     response_crear = requests.post(urlFinal, json=payload)
     assert response_crear.status_code == 201
