@@ -29,4 +29,3 @@ def test_agregar_una_materia_con_datos_válidos(get_url):
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_materias.json"))
     logger.info("Test MOCM008 realizado.")
-#mostrar que materia fue creada 
