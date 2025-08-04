@@ -11,6 +11,26 @@ def obtener_nombre_grupo():
     grupos = ["Grupo1", "Grupo2", "Grupo3", "Grupo4", "Grupo5","Grupo6", "Grupo7", "Grupo8", "Grupo9", "Grupo10",
             "Grupo11", "Grupo12", "Grupo13", "Grupo14", "Grupo15","Grupo16", "Grupo17", "Grupo18", "Grupo19", "Grupo20"]
     return random.choice(grupos)
+  
+def obtener_nombre_grupo_2_caracteres():
+    grupos = ["AA", "Ba", "CC", "De", "EE","FF", "GG", "HH", "II", "MM",
+            "NN", "12", "34", "GH", "ZZ","LL", "RR", "PP", "QQ", "JJ", "KK", "KL"]
+    return random.choice(grupos)
+
+def obtener_nombre_grupo_3_caracteres():
+    grupos = ["AAa", "Bat", "CCf", "Deh", "EEc","FFh", "GGi", "HoH", "IaI", "MeM",
+            "NN", "1f2", "3r4", "GHi", "ZcZ","LmL", "RvR", "PrP", "QuQ", "JoJ", "KaK", "KiL"]
+    return random.choice(grupos)
+
+def obtener_dias():
+    dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes","Sabado"]
+    
+    cantidad = random.randint(1, 6)
+   
+    lista_de_dias = random.sample(dias, cantidad)
+    
+    return lista_de_dias
+    
 
 def obtener_dias():
     dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes","Sabado"]
@@ -38,6 +58,16 @@ def generar_cod (cod):
 
 def generar_cod_inscripcion(nombre_completo):
     partes = nombre_completo.strip().split()
+
+    if len(partes) < 2:
+        raise ValueError("Se requiere al menos un nombre y un apellido.")
+    
+    nombre = partes[0]
+    apellido = partes[1]
+
+    sub_nombre = nombre[:3]
+    sub_apellido = apellido[:3]
+
     if len(partes) < 2:
         raise ValueError("Se requiere al menos un nombre y un apellido.")
     nombre = partes[0]
@@ -48,6 +78,11 @@ def generar_cod_inscripcion(nombre_completo):
     año = ahora.year
     mes = ahora.month
     dia = ahora.day
+
+    codigo = f"{año}{mes:02}{dia:02}{sub_nombre}{sub_apellido}"
+    return codigo.upper()
+
+def generarCodigoTrab(nombre: str) -> str:
     codigo = f"{año}{mes:02}{dia:02}{sub_nombre}{sub_apellido}"
     return codigo.upper()
 
@@ -64,12 +99,46 @@ def generar_nombre():
 nombres = [
     "Carlos", "María", "Ana", "Luis", "José", "Lucía",
     "Pedro", "Camila", "Andrés", "Valeria", "Diego", "Fernanda"
+    "Carmen", "Isabel", "Laura", "Marta", "Patricia", "Sandra", "Sofía",
+    "Antonio", "Juan", "Miguel", "Francisco", "Javier", "Fernando",
+    "David", "Manuel", "Alejandro", "Rosa", "Elena", "Julia", "Teresa", "Eva", "Beatriz", "Gloria",
+    "Raúl", "Jorge", "Sergio", "Pablo", "Alberto", "Álvaro", "Marcos", "Rubén", "Clara",
+    "Paula", "Valentina", "Andrea", "Gabriela", "Lorena", "Miriam", "Natalia", "Olga",
 ]
 
 apellidos = [
     "Pérez", "Gómez", "Rodríguez", "Martínez", "López",
-    "Sánchez", "Gutiérrez", "Ramírez", "Torres", "Vargas"
+    "Sánchez", "Gutiérrez", "Ramírez", "Torres", "Vargas",
+    "Fernández", "Jiménez", "Ruiz", "Díaz", "Moreno",
+    "Muñoz", "Álvarez", "Romero", "Alonso", "Herrera",
+    "Castro", "Ortiz", "Delgado", "Navarro", "Rojas",
+    "Mendoza", "Castillo", "Flores", "Silva", "Cruz",
+    "Suárez", "Ramos", "Reyes", "Molina", "Ortega",
+    "Aguilar", "Pineda", "Aguirre", "Carrasco", "Cárdenas",
+    "Campos", "Fuentes", "Salazar", "Santana", "Medina",
+    "Guerrero", "Camacho", "Márquez", "Ibarra", "Valencia" 
 ]    
+
+
+from datetime import datetime, timedelta
+
+def generarFechaNac(edad_min=18, edad_max=75):
+    hoy = datetime.today()
+    dias_min = edad_min * 365
+    dias_max = edad_max * 365
+
+    # Genera un número aleatorio de días entre esos rangos
+    dias_random = random.randint(dias_min, dias_max)
+
+    # Resta esos días a la fecha de hoy
+    fecha_nacimiento = hoy - timedelta(days=dias_random)
+    return fecha_nacimiento.strftime("%Y-%m-%d")  # formato YYYY-MM-DD
+
+
+def generarContraseña(longitud=10, usar_mayusculas=True, usar_numeros=True, usar_simbolos=True):
+    caracteres = string.ascii_lowercase  # letras minúsculas
+
+ 
 
 def generar_fecha_nac(edad_min=18, edad_max=75):
     hoy = datetime.today()
@@ -79,7 +148,18 @@ def generar_fecha_nac(edad_min=18, edad_max=75):
     fecha_nacimiento = hoy - timedelta(days=dias_random)
     return fecha_nacimiento.strftime("%Y-%m-%d")
 
-def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True, usar_simbolos=True):
+def generar_fecha_menor():      # Generar una fecha de nacimiento menor a 18 años
+    hoy = datetime.today()
+    fecha_menor = hoy - timedelta(days=16 * 365)
+    return fecha_menor.strftime('%Y-%m-%d')
+
+def generar_fecha_mayor():      # Generar una fecha de nacimiento mayor a 75 años
+    hoy = datetime.today()
+    fecha_mayor = hoy - timedelta(days=78 * 365)
+    return fecha_mayor.strftime('%Y-%m-%d')
+    
+
+def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True):
     caracteres = string.ascii_lowercase 
     if usar_mayusculas:
         caracteres += string.ascii_uppercase
