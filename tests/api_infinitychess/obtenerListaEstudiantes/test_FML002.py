@@ -1,8 +1,8 @@
 import requests
 import pytest
 
-@pytest.mark.smoke
-def test_validarSEDEvacíaRetornaListaVacía(getUrl):
+@pytest.mark.functional
+def test_validarSEDEinexistenteNoRetornaListaEstudiantes(getUrl):
     endpoint = "obtenerEstudiantes/Modulo 4"
     lista_url = getUrl + endpoint
     response = requests.get(lista_url)
