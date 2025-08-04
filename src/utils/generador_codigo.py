@@ -64,11 +64,24 @@ def generar_nombre():
 nombres = [
     "Carlos", "María", "Ana", "Luis", "José", "Lucía",
     "Pedro", "Camila", "Andrés", "Valeria", "Diego", "Fernanda"
+    "Carmen", "Isabel", "Laura", "Marta", "Patricia", "Sandra", "Sofía",
+    "Antonio", "Juan", "Miguel", "Francisco", "Javier", "Fernando",
+    "David", "Manuel", "Alejandro", "Rosa", "Elena", "Julia", "Teresa", "Eva", "Beatriz", "Gloria",
+    "Raúl", "Jorge", "Sergio", "Pablo", "Alberto", "Álvaro", "Marcos", "Rubén", "Clara",
+    "Paula", "Valentina", "Andrea", "Gabriela", "Lorena", "Miriam", "Natalia", "Olga",
 ]
 
 apellidos = [
     "Pérez", "Gómez", "Rodríguez", "Martínez", "López",
-    "Sánchez", "Gutiérrez", "Ramírez", "Torres", "Vargas"
+    "Sánchez", "Gutiérrez", "Ramírez", "Torres", "Vargas",
+    "Fernández", "Jiménez", "Ruiz", "Díaz", "Moreno",
+    "Muñoz", "Álvarez", "Romero", "Alonso", "Herrera",
+    "Castro", "Ortiz", "Delgado", "Navarro", "Rojas",
+    "Mendoza", "Castillo", "Flores", "Silva", "Cruz",
+    "Suárez", "Ramos", "Reyes", "Molina", "Ortega",
+    "Aguilar", "Pineda", "Aguirre", "Carrasco", "Cárdenas",
+    "Campos", "Fuentes", "Salazar", "Santana", "Medina",
+    "Guerrero", "Camacho", "Márquez", "Ibarra", "Valencia"
 ]    
 
 def generar_fecha_nac(edad_min=18, edad_max=75):
@@ -79,14 +92,23 @@ def generar_fecha_nac(edad_min=18, edad_max=75):
     fecha_nacimiento = hoy - timedelta(days=dias_random)
     return fecha_nacimiento.strftime("%Y-%m-%d")
 
-def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True, usar_simbolos=True):
+def generar_fecha_menor():      # Generar una fecha de nacimiento menor a 18 años
+    hoy = datetime.today()
+    fecha_menor = hoy - timedelta(days=16 * 365)
+    return fecha_menor.strftime('%Y-%m-%d')
+
+def generar_fecha_mayor():      # Generar una fecha de nacimiento mayor a 75 años
+    hoy = datetime.today()
+    fecha_mayor = hoy - timedelta(days=78 * 365)
+    return fecha_mayor.strftime('%Y-%m-%d')
+    
+
+def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True):
     caracteres = string.ascii_lowercase 
     if usar_mayusculas:
         caracteres += string.ascii_uppercase
     if usar_numeros:
         caracteres += string.digits
-    if usar_simbolos:
-        caracteres += string.punctuation
     contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
     return contraseña
 
