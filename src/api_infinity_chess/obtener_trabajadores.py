@@ -8,7 +8,7 @@ def obtener_trabajadores(get_url):
     return lista_trabajadores
 
 def obtener_trabajador_por_Id(get_url, codigo):
-    endpoint = "obtenerTrabajadores/" + codigo
+    endpoint = "obtenerTrabajador/" + codigo
     lista_url = get_url + endpoint
     response = requests.get(lista_url)
     lista_trabajadores = response.json()
