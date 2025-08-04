@@ -9,15 +9,15 @@ from datetime import date
 from src.utils.logger_config import logger 
 
 @pytest.mark.smoke
-def test_RPL006_registro_motivo_con_campo_ESTADO_activo (get_url):
-    logger.info("Iniciando Test Case RPL006")
+def test_RPL015_registro_motivo_sin_payload (get_url):
+    logger.info("Iniciando Test Case RPL015")
     logger.info(get_url)
     lista_tutores = obtener_tutores_activos(get_url)
     cod_tutor = random.choice(lista_tutores)["CODTUTOR"]
     endpoint = "agregarMotivo" 
     lista_url = get_url + endpoint
     logger.debug(lista_url)
-    payload = { "CODTUTOR": cod_tutor, "MOTIVO": "Prueba 01/08", "FECHAMOTIVO": date.today().strftime("%d/%m/%Y"), "ESTADO": "Activo" }
+    payload = { }
     headers = {
         'Content-Type': 'application/json',
         'Cookie': 'XSRF-TOKEN=eyJpdiI6Ik16a01INGxERGpHcVAwTVZTcG8vWXc9PSIsInZhbHVlIjoiRHpPSGpTalF3M0dOOTZzL293d2IxR01Dbk9mVC9ZM2pHUXJqenBoejdTNmNtYURMSi9MQVo0dEpaTUx2bldwUGZyT0RJNThUN0xnYXRBd0xyWGl0TmZYNXM1U0RKL0lmbERWVGl0ckJzL2dvLzBISnVtVXRYR1ZjN3UwVEF6ZGYiLCJtYWMiOiI3OTYzYzNiMDk3Y2RkMDliZmJiZGIzODBhOWVhN2I0Mzg5YjIwZjE4OTBlOTcxYWUxMmQwNGFiODE2MTRiN2FhIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6ImxCRjZ3VDAxRmN0bklSYllaVkdRd0E9PSIsInZhbHVlIjoialJsT1Y0cjc2OU90RHVyVmtGSmkwcVdCVUVZZUVwRncyR2J5LzlEalZPTHZCSEt3RzkzajczUjVjZ2oxS3VRM3hXS0ZPRU1IREdESk5VN1pYeEJSSHVzUTZJL25Pa0J5U0NodG9Sc1UrRTh3Vmdwb3dJdzNuUTJGaGR2MDJhNTAiLCJtYWMiOiIzNjc4OGIxMzZmNDgyYWI0NzI5OWQ5ODU3Yjk1MjQyMTI0NWM1OTBhMDE1MGY2YjVjMGUwMjIyMzgxNjcxNjFhIiwidGFnIjoiIn0%3D'
@@ -25,7 +25,7 @@ def test_RPL006_registro_motivo_con_campo_ESTADO_activo (get_url):
     logger.info("validando Schema de payload")
     assert_validar_schema_input (payload, cargar_schema("schema_motivo.json"))
     response = requests.post(lista_url, headers=headers, json=payload)
-    assert response.status_code == 201
+    assert response.status_code == 422
     logger.info(response.status_code)
     logger.info("Validando response")
     assert_validar_response_schema (response, cargar_schema("schema_motivo.json"))
