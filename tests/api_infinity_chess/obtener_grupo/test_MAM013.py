@@ -8,7 +8,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.smoke
-def test_obtener_grupos_de_una_materia_con_cabecera_accept_application_xml(get_url):
+def test_obtener_grupos_de_una_materia_con_cabecera_accept_text_plain(get_url):
     logger.info("Iniciando test MAM011.")
     cursos=obtener_cursos(get_url)
     CODMATERIA = random.choice(cursos)["CODCURSO"]
