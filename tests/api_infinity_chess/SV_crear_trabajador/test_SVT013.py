@@ -5,7 +5,7 @@ from src.assertions.add import assert_validar_response_schema, assert_validar_sc
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.validation
+@pytest.mark.funcional
 def test_crear_trabajador_con_contrasena_menor_8_caracteres(get_url):
     nombre = generar_nombre()
     codigo = generar_codigo_trab(nombre)
@@ -23,7 +23,7 @@ def test_crear_trabajador_con_contrasena_menor_8_caracteres(get_url):
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json")) #schema de entrada
     url_final = get_url + endpoint
-    logger.info(f"Enviando POST a {url_final} con payload: {payload}")
+    logger.info(f"Enviando POST a {url_final}")
     response = requests.post(url_final, json=payload)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 422

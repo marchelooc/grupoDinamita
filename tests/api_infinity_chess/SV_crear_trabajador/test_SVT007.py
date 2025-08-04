@@ -24,7 +24,7 @@ def test_Verificar_que_el_trabajador_creado_exista_en_el_sistema (get_url):
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json")) #schema de entrada
     url_final = get_url + endpoint
-    logger.info(f"Enviando POST a {url_final} con payload: {payload}")
+    logger.info(f"Enviando POST a {url_final}")
     response = requests.post(url_final, json=payload, verify=False)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 201

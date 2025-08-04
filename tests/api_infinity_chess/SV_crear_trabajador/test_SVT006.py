@@ -23,7 +23,7 @@ def test_crear_un_trabajador_con_todos_los_datos_validos (get_url):
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json")) #schema de entrada
     url_final = get_url + endpoint
-    logger.info(f"Enviando POST a {url_final} con payload: {payload}")
+    logger.info(f"Enviando POST a {url_final}")
     response = requests.post(url_final, json=payload)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 201
