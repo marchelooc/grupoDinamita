@@ -16,5 +16,5 @@ if py_path and py_path not in sys.path:
 
 # Tu fixture sigue igual
 @pytest.fixture
-def getUrl():
+def get_url():
     return get_base_url()

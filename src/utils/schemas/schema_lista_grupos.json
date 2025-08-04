@@ -1,0 +1,36 @@
+{
+    "type": "array",
+    "items":{"properties": {
+    "CODCURSO": {
+        "type": "string"
+    },
+    "CODSEDE": {
+        "type": "string"
+    },
+    "NOMBREGRUPO": {
+        "type": "string"
+    },
+    "CODGRUPO": {
+        "type": "string"
+    },
+    "LIMITE": {
+        "type": "integer"
+    },
+    "PRECIO": {
+        "type": ["integer", "string"]
+    },
+    "ESTADO": {
+        "type": "string"
+    }
+    },
+    "required": [
+    "CODCURSO",
+    "CODSEDE",
+    "NOMBREGRUPO",
+    "CODGRUPO",
+    "LIMITE",
+    "PRECIO"
+    ]
+}
+}
+    
