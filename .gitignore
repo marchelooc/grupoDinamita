@@ -56,6 +56,8 @@ cmake-build-*/
 # IntelliJ
 out/
 
+.idea
+
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
@@ -347,3 +349,4 @@ $RECYCLE.BIN/
 
 #carpetas o archivos basura
 *pruebas
+report.html
