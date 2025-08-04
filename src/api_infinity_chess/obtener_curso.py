@@ -13,8 +13,6 @@ def obtener_cod_materia(get_url):
     CODMATERIA = random.choice(cursos)["CODCURSO"]
     return CODMATERIA
 
-
-
 def obtener_nombre_grupo_existente(get_url, CODCURSO):
     endpoint = f"obtenerGrupo/{CODCURSO}/Modulo 4"
     response = requests.get(get_url + endpoint)

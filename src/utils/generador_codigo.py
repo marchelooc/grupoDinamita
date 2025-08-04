@@ -7,14 +7,11 @@ def generar_codigo():
     letras = ''.join(random.choices(string.ascii_uppercase, k=6))
     return numero + letras
 
-
-
 def obtener_nombre_grupo():
     grupos = ["Grupo1", "Grupo2", "Grupo3", "Grupo4", "Grupo5","Grupo6", "Grupo7", "Grupo8", "Grupo9", "Grupo10",
             "Grupo11", "Grupo12", "Grupo13", "Grupo14", "Grupo15","Grupo16", "Grupo17", "Grupo18", "Grupo19", "Grupo20"]
     return random.choice(grupos)
-    
-
+  
 def obtener_nombre_grupo_2_caracteres():
     grupos = ["AA", "Ba", "CC", "De", "EE","FF", "GG", "HH", "II", "MM",
             "NN", "12", "34", "GH", "ZZ","LL", "RR", "PP", "QQ", "JJ", "KK", "KL"]
@@ -28,14 +25,18 @@ def obtener_nombre_grupo_3_caracteres():
 def obtener_dias():
     dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes","Sabado"]
     
-    # Seleccionar aleatoriamente entre 2 y 5 días
     cantidad = random.randint(1, 6)
-    
-    # Seleccionar los días aleatorios
+   
     lista_de_dias = random.sample(dias, cantidad)
     
     return lista_de_dias
     
+
+def obtener_dias():
+    dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes","Sabado"]
+    cantidad = random.randint(1, 6)
+    lista_de_dias = random.sample(dias, cantidad)
+    return lista_de_dias
 
 def obtener_horas():
     horas = ["06:00","07:00", "08:00", "09:00", "10:00", "11:00","12:00","13:00","14:00","15:00","16:00",
@@ -57,8 +58,7 @@ def generar_cod (cod):
 
 def generar_cod_inscripcion(nombre_completo):
     partes = nombre_completo.strip().split()
-    
-    # Asegurar que haya al menos 2 partes (nombre y apellido)
+
     if len(partes) < 2:
         raise ValueError("Se requiere al menos un nombre y un apellido.")
     
@@ -68,6 +68,12 @@ def generar_cod_inscripcion(nombre_completo):
     sub_nombre = nombre[:3]
     sub_apellido = apellido[:3]
 
+    if len(partes) < 2:
+        raise ValueError("Se requiere al menos un nombre y un apellido.")
+    nombre = partes[0]
+    apellido = partes[1]
+    sub_nombre = nombre[:3]
+    sub_apellido = apellido[:3]
     ahora = datetime.now()
     año = ahora.year
     mes = ahora.month
@@ -77,6 +83,10 @@ def generar_cod_inscripcion(nombre_completo):
     return codigo.upper()
 
 def generarCodigoTrab(nombre: str) -> str:
+    codigo = f"{año}{mes:02}{dia:02}{sub_nombre}{sub_apellido}"
+    return codigo.upper()
+
+def generar_codigo_trab(nombre: str) -> str:
     fechaHoy = datetime.now().strftime("%Y%m%d")  
     return f"{fechaHoy}{nombre[:5].upper()}"
 
@@ -85,15 +95,28 @@ def generar_nombre():
     apellido = random.choice(apellidos)
     return f"{nombre} {apellido}"
     
-# Listas base de nombres y apellidos
+    
 nombres = [
     "Carlos", "María", "Ana", "Luis", "José", "Lucía",
     "Pedro", "Camila", "Andrés", "Valeria", "Diego", "Fernanda"
+    "Carmen", "Isabel", "Laura", "Marta", "Patricia", "Sandra", "Sofía",
+    "Antonio", "Juan", "Miguel", "Francisco", "Javier", "Fernando",
+    "David", "Manuel", "Alejandro", "Rosa", "Elena", "Julia", "Teresa", "Eva", "Beatriz", "Gloria",
+    "Raúl", "Jorge", "Sergio", "Pablo", "Alberto", "Álvaro", "Marcos", "Rubén", "Clara",
+    "Paula", "Valentina", "Andrea", "Gabriela", "Lorena", "Miriam", "Natalia", "Olga",
 ]
 
 apellidos = [
     "Pérez", "Gómez", "Rodríguez", "Martínez", "López",
-    "Sánchez", "Gutiérrez", "Ramírez", "Torres", "Vargas"
+    "Sánchez", "Gutiérrez", "Ramírez", "Torres", "Vargas",
+    "Fernández", "Jiménez", "Ruiz", "Díaz", "Moreno",
+    "Muñoz", "Álvarez", "Romero", "Alonso", "Herrera",
+    "Castro", "Ortiz", "Delgado", "Navarro", "Rojas",
+    "Mendoza", "Castillo", "Flores", "Silva", "Cruz",
+    "Suárez", "Ramos", "Reyes", "Molina", "Ortega",
+    "Aguilar", "Pineda", "Aguirre", "Carrasco", "Cárdenas",
+    "Campos", "Fuentes", "Salazar", "Santana", "Medina",
+    "Guerrero", "Camacho", "Márquez", "Ibarra", "Valencia" 
 ]    
 
 
@@ -115,13 +138,35 @@ def generarFechaNac(edad_min=18, edad_max=75):
 def generarContraseña(longitud=10, usar_mayusculas=True, usar_numeros=True, usar_simbolos=True):
     caracteres = string.ascii_lowercase  # letras minúsculas
 
+ 
+
+def generar_fecha_nac(edad_min=18, edad_max=75):
+    hoy = datetime.today()
+    dias_min = edad_min * 365
+    dias_max = edad_max * 365
+    dias_random = random.randint(dias_min, dias_max)
+    fecha_nacimiento = hoy - timedelta(days=dias_random)
+    return fecha_nacimiento.strftime("%Y-%m-%d")
+
+def generar_fecha_menor():      # Generar una fecha de nacimiento menor a 18 años
+    hoy = datetime.today()
+    fecha_menor = hoy - timedelta(days=16 * 365)
+    return fecha_menor.strftime('%Y-%m-%d')
+
+def generar_fecha_mayor():      # Generar una fecha de nacimiento mayor a 75 años
+    hoy = datetime.today()
+    fecha_mayor = hoy - timedelta(days=78 * 365)
+    return fecha_mayor.strftime('%Y-%m-%d')
+    
+
+def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True):
+    caracteres = string.ascii_lowercase 
     if usar_mayusculas:
         caracteres += string.ascii_uppercase
     if usar_numeros:
         caracteres += string.digits
     if usar_simbolos:
         caracteres += string.punctuation
-
     contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
     return contraseña
 
@@ -129,5 +174,3 @@ def generar_nom_materia():
     materias = ["Ingles", "Ruso", "Esñaol", "Quechua", "Mandarín","Polaco", "Árabe", "Birmano",
             "Chino", "Yoruba", "Japones", "Indonesio", "Portugues","Frances", "Italiano"]
     return random.choice(materias)
-
-
