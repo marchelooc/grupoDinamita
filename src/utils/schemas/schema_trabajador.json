@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+    "CODTRABAJADOR": {
+    "type": "string"
+    },
+    "NOMBRETRABAJADOR": {
+    "type": "string"
+    },
+    "FECHANACIMIENTOTRABAJADOR": {
+    "type": ["string", "null"]
+    },
+    "ROLTRABAJADOR": {
+    "type": ["string","null"]
+    },
+    "CONTRASEÑA": {
+    "type": "string"
+    },
+    "ESTADO": {
+    "type": "string"
+    }
+    },
+    "required": [
+    "CODTRABAJADOR",
+    "NOMBRETRABAJADOR",
+    "FECHANACIMIENTOTRABAJADOR",
+    "ROLTRABAJADOR",
+    "CONTRASEÑA"
+    ]
+}

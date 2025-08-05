@@ -7,7 +7,6 @@ def obtener_cursos(get_url):
     listaCursos = response.json()
     return listaCursos
 
-
 def obtener_cod_materia(get_url):
     cursos=obtener_cursos(get_url)
     CODMATERIA = random.choice(cursos)["CODCURSO"]

@@ -1,0 +1,75 @@
+{
+    "type": "object",
+    "properties": {
+        "CODTRABAJADOR": {
+        "type": "string"
+        },
+        "NOMBRETRABAJADOR": {
+        "type": ["string", "null"]
+        },
+        "FECHANACIMIENTOTRABAJADOR": {
+        "type": ["string", "null"]
+        },
+        "ROLTRABAJADOR": {
+        "type": ["string", "null"]
+        },
+        "HUELLATRABAJADOR": {
+        "type": "null"
+        },
+        "CONTRASEÑA": {
+        "type": ["string", "null"]
+        },
+        "ESTADO": {
+        "type": "string"
+        },
+        "sedes": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+            "CODSEDE": {
+                "type": "string"
+            },
+            "UBICACION": {
+                "type": "string"
+            },
+            "NOMBRESEDE": {
+                "type": "string"
+            },
+            "DEPARTAMENTO": {
+                "type": "null"
+            },
+            "pivot": {
+                "type": "object",
+                "properties": {
+                "CODTRABAJADOR": {
+                    "type": "string"
+                },
+                "CODSEDE": {
+                    "type": "string"
+                }
+                },
+                "required": ["CODTRABAJADOR", "CODSEDE"]
+            }
+            },
+            "required": [
+            "CODSEDE",
+            "UBICACION",
+            "NOMBRESEDE",
+            "DEPARTAMENTO",
+            "pivot"
+            ]
+        }
+        }
+    },
+    "required": [
+        "CODTRABAJADOR",
+        "NOMBRETRABAJADOR",
+        "FECHANACIMIENTOTRABAJADOR",
+        "ROLTRABAJADOR",
+        "HUELLATRABAJADOR",
+        "CONTRASEÑA",
+        "ESTADO",
+        "sedes"
+    ]
+}
