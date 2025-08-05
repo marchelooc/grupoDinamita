@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Instrucciones de ejecucion test case: 
 1. Instalacion de entorno vitual:
     python -m venv venv
@@ -167,3 +168,5 @@ Recursos
     Miguel Angel Alcón Yujra
     Marcelo Ortuño Carreño
     PO/PM: Rina Espinoza, quien asume el rol de Product Owner y Project Manager.
+=======
+>>>>>>> 1ec57b965efc8906eb998ab6b999a7aeace59560
