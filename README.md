@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Instrucciones de ejecucion test case: 
 1. Instalacion de entorno vitual:
     python -m venv venv
@@ -8,11 +7,11 @@ Instrucciones de ejecucion test case:
     pip install -r requirements.txt
 4. Crear archivo .env con el contenido:
     PYTHONPATH=.
-5. Ejecucion de test cases general:
+5. Ejecución de test cases general:
     pytest tests/api_infinity_chess
-6. Ejecucion de test cases general con reporte:
+6. Ejecución de test cases general con reporte:
     pytest tests/api_infinity_chess --html=report.html --self-contained-html -v
-7. Ejecucion de test cases por historias de usuario:
+7. Ejecución de test cases por historias de usuario:
     pytest tests/api_infinity_chess/FM_agregar_registro_inscripcion (Falta)
     pytest tests/api_infinity_chess/FM_obtener_lista_estudiantes (Falta)
     pytest tests/api_infinity_chess/MA_agregar_grupo
@@ -25,7 +24,7 @@ Instrucciones de ejecucion test case:
     pytest tests/api_infinity_chess/SS_obtener_tutores_activos
     pytest tests/api_infinity_chess/SV_crear_trabajador
     pytest tests/api_infinity_chess/SV_obtener_trabajadores
-8. Ejecucion de test cases por historias de usuario con reportes:
+8. Ejecución de test cases por historias de usuario con reportes:
     pytest tests/api_infinity_chess/FM_agregar_registro_inscripcion --html=report.html --self-contained-html -v (Falta)
     pytest tests/api_infinity_chess/FM_obtener_lista_estudiantes --html=report.html --self-contained-html -v (Falta)
     pytest tests/api_infinity_chess/MA_agregar_grupo --html=report.html --self-contained-html -v
@@ -38,6 +37,11 @@ Instrucciones de ejecucion test case:
     pytest tests/api_infinity_chess/SS_obtener_tutores_activos --html=report.html --self-contained-html -v
     pytest tests/api_infinity_chess/SV_crear_trabajador --html=report.html --self-contained-html -v
     pytest tests/api_infinity_chess/SV_obtener_trabajadores --html=report.html --self-contained-html -v
+9. Ejecución por tipo de mark:
+    pytest -m smoke
+    pytest -m negative
+    pytest -m functional
+    pytest -m regression
 
 Test Plan Infinity Chess
 
@@ -77,7 +81,7 @@ Tipos de pruebas
 Alcance y Limitaciones
     Durante los dos sprints se abordará el desarrollo de los siguientes módulos como usuario Director, cada uno con sus respectivos responsables:
     Validación de endpoints GET, POST, PUT, DELETE.
-    Verificación de respuestas esperadas (200,400, 404, 500).
+    Verificación de respuestas esperadas (200, 201, 400, 404, 422, 409 , 415).
     Casos de prueba positivos, negativos, campos vacíos y valores límite.
     Automatización de pruebas usando Python.
     Validación de endpoints con Path Params.
@@ -142,31 +146,16 @@ Alcance y Limitaciones
         {{urlBase}}/eliminarTrabajador/{id} (DELETE)
         Encargado: Simón.
 
-Herramientas
-    Como parte del entorno de pruebas y gestión de calidad, se emplearán diversas herramientas que permiten automatizar procesos, documentar resultados y coordinar actividades entre los miembros del equipo. Las herramientas seleccionadas para este proyecto son:
-    Python: Lenguaje de programación utilizado para desarrollar scripts de prueba y automatización de servicios REST.
-    Pytest: Framework de pruebas en Python que facilita la ejecución de casos de prueba, la validación de respuestas y la integración con otras herramientas.
-    VS Code: Editor de código, usado para múltiples lenguajes de programación. Soporta Python y cuenta con extensiones útiles para la automatización.
-    Jira: Plataforma de gestión de proyectos que permite organizar tareas, registrar incidencias y hacer seguimiento del progreso del equipo.
-    Zephyr: Complemento de Jira orientado a la gestión de pruebas, que permite documentar casos, planificar ejecuciones y vincular resultados con los requerimientos del sistema.
-    Google Drive: Servicio de almacenamiento en la nube, para guardar, compartir y colaborar en los documentos del proyecto.
-    Postman: Herramienta para probar APIs REST. Permite hacer peticiones (GET, POST, etc.), ayudando en la automatización de pruebas y endpoints de forma sencilla.
-    Dev Console: Herramienta del navegador web que permite inspeccionar elementos HTML, revisar errores JavaScript, ver tráfico de red (requests), y depurar aplicaciones web.
-    Notepad: Herramienta usada para sacar los schemas
-
-Cronograma
-
 Recursos
-    Para el desarrollo y ejecución del proyecto, se cuenta con un equipo multidisciplinario que desempeña roles clave en cada etapa del proceso:
-    QA Lead: Marcelo Ortuño Carreño, responsable de liderar las actividades de aseguramiento de calidad.
+    QA Lead: Marcelo Ortuño Carreño.
     Scrum Master: Saul Fernando Mollo Murillo
     GIT Lead: Sergio Brayan Soliz Nogales
-    Equipo de desarrollo: 	Ronald Marcelo Panigua Cordova
-    Saul Fernando Mollo Murillo
-    Simón Pedro Valdez Mamani
-    Sergio Brayan Soliz Nogales
-    Miguel Angel Alcón Yujra
-    Marcelo Ortuño Carreño
-    PO/PM: Rina Espinoza, quien asume el rol de Product Owner y Project Manager.
-=======
->>>>>>> 1ec57b965efc8906eb998ab6b999a7aeace59560
+    Equipo de desarrollo: 	
+        Ronald Marcelo Panigua Cordova
+        Saul Fernando Mollo Murillo
+        Simón Pedro Valdez Mamani
+        Sergio Brayan Soliz Nogales
+        Miguel Angel Alcón Yujra
+        Marcelo Ortuño Carreño
+    PO/PM: Rina Espinoza.
+
