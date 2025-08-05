@@ -9,6 +9,7 @@ from datetime import date
 from src.utils.logger_config import logger 
 #date.today().strftime("%d/%m/%Y")
 
+@pytest.mark.funtional
 @pytest.mark.smoke
 def test_RPL001_registro_motivo_exitoso (get_url):
     logger.info("Iniciando Test Case RPL001")

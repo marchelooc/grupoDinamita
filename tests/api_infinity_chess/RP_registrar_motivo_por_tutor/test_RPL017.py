@@ -10,16 +10,16 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG008: El backend no valida tutores inexistentes",run=True)
-def test_RPL004_registro_motivo_con_tutor_inexistente (get_url):
-    logger.info("Iniciando Test Case RPL004")
+#@pytest.mark.xfail(reason="Knwon issue RPBUG0010: El backend no valida el tamaño maximo de caracteres",run=True)
+def test_RPL017_registro_motivo_con_campo_motivo_muy_largo (get_url):
+    logger.info("Iniciando Test Case RPL017")
     logger.info(get_url)
     lista_tutores = obtener_tutores_activos(get_url)
     cod_tutor = random.choice(lista_tutores)["CODTUTOR"]
     endpoint = "agregarMotivo" 
     lista_url = get_url + endpoint
     logger.debug(lista_url)
-    payload = { "CODTUTOR": "AASDKJEKJIWER", "MOTIVO": "Prueba 01/08", "FECHAMOTIVO": date.today().strftime("%d/%m/%Y"), "ESTADO": "Activo" }
+    payload = { "CODTUTOR": cod_tutor , "MOTIVO": "123456789012345678901234567890123456789012345678901", "FECHAMOTIVO": date.today().strftime("%d/%m/%Y"), "ESTADO": "Activo" }
     logger.debug(payload)
     headers = {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ def test_RPL004_registro_motivo_con_tutor_inexistente (get_url):
     logger.info("validando Schema de payload")
     assert_validar_schema_input (payload, cargar_schema("schema_motivo.json"))
     response = requests.post(lista_url, headers=headers, json=payload)
-    assert response.status_code == 404
+    assert response.status_code == 422
     logger.info(response.status_code)
     logger.info("Validando response")
     assert_validar_response_schema (response, cargar_schema("schema_motivo.json"))

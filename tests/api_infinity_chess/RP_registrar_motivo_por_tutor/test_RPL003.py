@@ -8,7 +8,9 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date
 from src.utils.logger_config import logger 
 
-@pytest.mark.smoke
+@pytest.mark.funtional
+@pytest.mark.negative
+#@pytest.mark.xfail(reason="Knwon issue RPBUG002: Crea motivos con fecha formato incorrecto",run=True)
 def test_RPL003_registro_motivo_fecha_formato_incorrecto (get_url):
     logger.info("Iniciando Test Case RPL003")
     logger.info(get_url)
@@ -18,6 +20,7 @@ def test_RPL003_registro_motivo_fecha_formato_incorrecto (get_url):
     lista_url = get_url + endpoint
     logger.debug(lista_url)
     payload = { "CODTUTOR": cod_tutor, "MOTIVO": "Prueba 01/08", "FECHAMOTIVO": "ASDFASDF", "ESTADO": "Activo" }
+    logger.debug(payload)
     headers = {
         'Content-Type': 'application/json',
         'Cookie': 'XSRF-TOKEN=eyJpdiI6Ik16a01INGxERGpHcVAwTVZTcG8vWXc9PSIsInZhbHVlIjoiRHpPSGpTalF3M0dOOTZzL293d2IxR01Dbk9mVC9ZM2pHUXJqenBoejdTNmNtYURMSi9MQVo0dEpaTUx2bldwUGZyT0RJNThUN0xnYXRBd0xyWGl0TmZYNXM1U0RKL0lmbERWVGl0ckJzL2dvLzBISnVtVXRYR1ZjN3UwVEF6ZGYiLCJtYWMiOiI3OTYzYzNiMDk3Y2RkMDliZmJiZGIzODBhOWVhN2I0Mzg5YjIwZjE4OTBlOTcxYWUxMmQwNGFiODE2MTRiN2FhIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6ImxCRjZ3VDAxRmN0bklSYllaVkdRd0E9PSIsInZhbHVlIjoialJsT1Y0cjc2OU90RHVyVmtGSmkwcVdCVUVZZUVwRncyR2J5LzlEalZPTHZCSEt3RzkzajczUjVjZ2oxS3VRM3hXS0ZPRU1IREdESk5VN1pYeEJSSHVzUTZJL25Pa0J5U0NodG9Sc1UrRTh3Vmdwb3dJdzNuUTJGaGR2MDJhNTAiLCJtYWMiOiIzNjc4OGIxMzZmNDgyYWI0NzI5OWQ5ODU3Yjk1MjQyMTI0NWM1OTBhMDE1MGY2YjVjMGUwMjIyMzgxNjcxNjFhIiwidGFnIjoiIn0%3D'

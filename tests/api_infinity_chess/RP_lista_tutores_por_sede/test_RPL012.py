@@ -4,7 +4,8 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger 
 
-@pytest.mark.smoke
+@pytest.mark.funtional
+@pytest.mark.positive
 def test_RPL012_obtener_tutor_por_sede_escrita_en_MAYUSCULAS_minusculas (get_url):
     logger.info("Iniciando Test Case RPL012")
     logger.info(get_url)
