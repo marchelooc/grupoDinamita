@@ -9,7 +9,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG002: Permite agregar un grupo con el limite de 0", run=False)
+@pytest.mark.xfail(reason="Knwon issue MABUG002: Permite agregar un grupo con el limite de 0", run=True)
 def test_agregar_un_nuevo_grupo_con_limite_cero(get_url):
     logger.info("Iniciando test MAM003.")
     lista_cursos = obtener_cursos(get_url)

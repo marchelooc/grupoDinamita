@@ -9,7 +9,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG003: Esta manejando incorrectamente el codigo de error en el response", run=False)
+@pytest.mark.xfail(reason="Knwon issue MABUG003: Esta manejando incorrectamente el codigo de error en el response", run=True)
 def test_agregar_un_nuevo_grupo_con_40_caracteres_en_nombre(get_url):
     logger.info("Iniciando test MAM004.")
     lista_cursos = obtener_cursos(get_url)

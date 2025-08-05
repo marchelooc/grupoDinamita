@@ -9,7 +9,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG004: Se permite agregar un grupo con un horario fuera de rango", run=False)
+@pytest.mark.xfail(reason="Knwon issue MABUG004: Se permite agregar un grupo con un horario fuera de rango", run=True)
 def test_agregar_un_nuevo_grupo_con_horario_invalido(get_url):
     logger.info("Iniciando test MAM005.")
     lista_cursos = obtener_cursos(get_url)

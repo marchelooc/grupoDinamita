@@ -9,7 +9,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue MABUG005: Esta manejando incorrectamente el response enviando error 500 y no 409", run=False)
+@pytest.mark.xfail(reason="Knwon issue MABUG005: Esta manejando incorrectamente el response enviando error 500 y no 409", run=True)
 def test_agregar_grupo_duplicado_desde_existente(get_url):
     logger.info("Iniciando test MAM008.")
     lista_cursos = obtener_cursos(get_url)

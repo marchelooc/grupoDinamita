@@ -9,7 +9,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG001: Permite agregar una materia con 2 caracteres en el nombre", run=False)
+@pytest.mark.xfail(reason="Knwon issue MABUG001: Permite agregar una materia con 2 caracteres en el nombre", run=True)
 def test_agregar_un_nuevo_grupo_con_nombre_dos_caracteres(get_url):
     logger.info("Iniciando test MAM002.")
     lista_cursos = obtener_cursos(get_url)
