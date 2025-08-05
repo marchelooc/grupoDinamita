@@ -21,6 +21,7 @@ def test_agregar_una_materia_con_headers_de_tipo_json(get_url):
           "Accept": "application/json",
           "Content-Type": "application/json"
      }
+    logger.debug(f"este es el payload generado:{payload}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))
     url_final = get_url + endpoint

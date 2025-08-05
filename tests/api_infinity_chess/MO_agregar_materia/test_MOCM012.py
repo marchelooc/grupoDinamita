@@ -6,7 +6,7 @@ from src.api_infinity_chess.materia import existe_materia_repetida, crear_materi
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue MOCBUG01: HTTP incorrecto", run=False)
+@pytest.mark.xfail(reason="Knwon issue MOCBUG01: HTTP incorrecto", run=True)
 def test_validar_comportamiento_al_agregar_curso_con_CODCURSO_duplicado(get_url):
     logger.info("Iniciando test MOCM012.")
     logger.debug("Curso aleatorio creado 123Mrepetida")
@@ -17,7 +17,7 @@ def test_validar_comportamiento_al_agregar_curso_con_CODCURSO_duplicado(get_url)
                 "CURSO": "MateriaRepetida",
                 "ESTADO": "activo",
                 }
-    
+    logger.debug(f"este es el payload generado:{payload}")
     if not existe_materia_repetida(get_url):
         logger.info("Creando materia repetida.")    
         crear_materia_repetida(get_url, endpoint)

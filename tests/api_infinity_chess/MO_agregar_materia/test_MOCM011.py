@@ -6,7 +6,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue MOCBUG02: Materia agregada sin nombre", run=False)
+@pytest.mark.xfail(reason="Knwon issue MOCBUG02: Materia agregada sin nombre", run=True)
 def test_validar_comportamiento_al_agregar_curso_sin_campo_CURSO(get_url):
     logger.info("Iniciando test MOCM011.")
     nombre_materia = generar_nom_materia()
@@ -18,6 +18,7 @@ def test_validar_comportamiento_al_agregar_curso_sin_campo_CURSO(get_url):
                 "CURSO": "", 
                 "ESTADO": "activo",
                 }
+    logger.debug(f"este es el payload generado:{payload}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))
     url_final = get_url + endpoint

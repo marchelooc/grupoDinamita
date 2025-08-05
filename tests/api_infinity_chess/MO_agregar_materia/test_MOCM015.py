@@ -7,7 +7,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue MOCBUG03: Materia agregada con codigo de materia inválida", run=False)
+@pytest.mark.xfail(reason="Knwon issue MOCBUG03: Materia agregada con codigo de materia inválida", run=True)
 def test_validar_comportamiento_CODCURSO_con_caracteres_especiales(get_url):
     logger.info("Iniciando test MOCM015.")
     nombre_materia = generar_nom_materia()
@@ -19,6 +19,7 @@ def test_validar_comportamiento_CODCURSO_con_caracteres_especiales(get_url):
                 "CURSO": nombre_materia, 
                 "ESTADO": "activo",
                 }
+    logger.debug(f"este es el payload generado:{payload}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))
     url_final = get_url + endpoint
@@ -27,5 +28,4 @@ def test_validar_comportamiento_CODCURSO_con_caracteres_especiales(get_url):
     assert response.status_code == 400
     logger.info(f"Código de respuesta: {response.status_code}.")
     logger.info("Test MOCM015 realizado.")
-#    assert_validarResponseSchema(response,cargar_schema("schema_materias.json")) 
     

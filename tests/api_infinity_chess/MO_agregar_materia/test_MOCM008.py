@@ -18,7 +18,7 @@ def test_agregar_una_materia_con_datos_válidos(get_url):
                 "CURSO": nombre_materia, 
                 "ESTADO": "activo",
                 }
-    
+    logger.debug(f"este es el payload generado:{payload}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))
     url_final = get_url + endpoint

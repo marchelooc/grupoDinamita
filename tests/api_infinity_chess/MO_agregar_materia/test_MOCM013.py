@@ -7,7 +7,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue MOCBUG01: HTTP incorrecto", run=False)
+@pytest.mark.xfail(reason="Knwon issue MOCBUG01: HTTP incorrecto", run=True)
 def test_validar_el_limite_maximo_de_caracteres_del_campo_CODCURSO(get_url):
     logger.info("Iniciando test MOCM013.")
     nombre_materia = generar_nom_materia()
@@ -19,6 +19,7 @@ def test_validar_el_limite_maximo_de_caracteres_del_campo_CODCURSO(get_url):
                 "CURSO": nombre_materia, 
                 "ESTADO": "activo",
                 }
+    logger.debug(f"este es el payload generado:{payload}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))
     url_final = get_url + endpoint
