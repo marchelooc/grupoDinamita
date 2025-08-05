@@ -1,3 +1,44 @@
+<<<<<<< HEAD
+Instrucciones de ejecucion test case: 
+1. Instalacion de entorno vitual:
+    python -m venv venv
+2. Activacion de entorno virtual:
+    venv\Scripts\activate 
+3. Instalacion de requirements
+    pip install -r requirements.txt
+4. Crear archivo .env con el contenido:
+    PYTHONPATH=.
+5. Ejecucion de test cases general:
+    pytest tests/api_infinity_chess
+6. Ejecucion de test cases general con reporte:
+    pytest tests/api_infinity_chess --html=report.html --self-contained-html -v
+7. Ejecucion de test cases por historias de usuario:
+    pytest tests/api_infinity_chess/FM_agregar_registro_inscripcion (Falta)
+    pytest tests/api_infinity_chess/FM_obtener_lista_estudiantes (Falta)
+    pytest tests/api_infinity_chess/MA_agregar_grupo
+    pytest tests/api_infinity_chess/MA_obtener_grupo
+    pytest tests/api_infinity_chess/MO_agregar_materia
+    pytest tests/api_infinity_chess/MO_verificar_la_materia
+    pytest tests/api_infinity_chess/RP_lista_tutores_por_sede
+    pytest tests/api_infinity_chess/RP_registrar_motivo_por_tutor
+    pytest tests/api_infinity_chess/SS_cambiar_estado_de_tutor
+    pytest tests/api_infinity_chess/SS_obtener_tutores_activos
+    pytest tests/api_infinity_chess/SV_crear_trabajador
+    pytest tests/api_infinity_chess/SV_obtener_trabajadores
+8. Ejecucion de test cases por historias de usuario con reportes:
+    pytest tests/api_infinity_chess/FM_agregar_registro_inscripcion --html=report.html --self-contained-html -v (Falta)
+    pytest tests/api_infinity_chess/FM_obtener_lista_estudiantes --html=report.html --self-contained-html -v (Falta)
+    pytest tests/api_infinity_chess/MA_agregar_grupo --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/MA_obtener_grupo --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/MO_agregar_materia --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/MO_verificar_la_materia --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/RP_lista_tutores_por_sede --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/RP_registrar_motivo_por_tutor --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/SS_cambiar_estado_de_tutor --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/SS_obtener_tutores_activos --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/SV_crear_trabajador --html=report.html --self-contained-html -v
+    pytest tests/api_infinity_chess/SV_obtener_trabajadores --html=report.html --self-contained-html -v
+
 Test Plan Infinity Chess
 
 Descripción del producto
@@ -127,3 +168,5 @@ Recursos
     Miguel Angel Alcón Yujra
     Marcelo Ortuño Carreño
     PO/PM: Rina Espinoza, quien asume el rol de Product Owner y Project Manager.
+=======
+>>>>>>> 1ec57b965efc8906eb998ab6b999a7aeace59560
