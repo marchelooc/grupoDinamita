@@ -10,16 +10,16 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue RPBUG004: Crea motivos con el codigo de tutor vacio",run=True)
-def test_RPL014_registro_motivo_con_campo_CODTUTOR_vacio (get_url):
-    logger.info("Iniciando Test Case RPL014")
+@pytest.mark.xfail(reason="Knwon issue RPBUG0010: El backend no valida el tamaño maximo de caracteres",run=True)
+def test_RPL017_registro_motivo_con_campo_motivo_muy_largo (get_url):
+    logger.info("Iniciando Test Case RPL017")
     logger.info(get_url)
     lista_tutores = obtener_tutores_activos(get_url)
     cod_tutor = random.choice(lista_tutores)["CODTUTOR"]
     endpoint = "agregarMotivo" 
     lista_url = get_url + endpoint
     logger.debug(lista_url)
-    payload = { "CODTUTOR": "" , "MOTIVO": "Prueba 01/08", "FECHAMOTIVO": date.today().strftime("%d/%m/%Y"), "ESTADO": "Activo" }
+    payload = { "CODTUTOR": cod_tutor , "MOTIVO": "123456789012345678901234567890123456789012345678901", "FECHAMOTIVO": date.today().strftime("%d/%m/%Y"), "ESTADO": "Activo" }
     logger.debug(payload)
     headers = {
         'Content-Type': 'application/json',
