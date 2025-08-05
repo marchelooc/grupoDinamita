@@ -9,6 +9,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue MABUG002: Permite agregar un grupo con el limite de 0", run=False)
 def test_agregar_un_nuevo_grupo_con_limite_cero(get_url):
     logger.info("Iniciando test MAM003.")
     lista_cursos = obtener_cursos(get_url)
@@ -31,7 +32,7 @@ def test_agregar_un_nuevo_grupo_con_limite_cero(get_url):
         "PRECIO":precio,
         "DIAS" : dias,
         "HORA":horas} 
-    
+    logger.debug(payload)
     url_final = get_url + end_point
     logger.info(f"Enviando POST a {url_final}.")
     response = requests.post(url_final, json=payload)

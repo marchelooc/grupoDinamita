@@ -31,7 +31,7 @@ def test_agregar_un_nuevo_grupo_con_el_id_de_una_materia_valida(get_url):
         "PRECIO":precio,
         "DIAS" : dias,
         "HORA":horas} 
-    
+    logger.debug(payload)
     url_final = get_url + end_point
     logger.info(f"Enviando POST a {url_final}.")
     response = requests.post(url_final, json=payload)

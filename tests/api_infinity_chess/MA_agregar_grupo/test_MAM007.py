@@ -8,7 +8,7 @@ from src.utils.generador_codigo import  generar_cod, obtener_dias, obtener_horas
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
+@pytest.mark.functional
 def test_agregar_un_nuevo_grupo_con_nombre_tres_caracteres(get_url):
     logger.info("Iniciando test MAM007.")
     lista_cursos = obtener_cursos(get_url)
@@ -31,12 +31,12 @@ def test_agregar_un_nuevo_grupo_con_nombre_tres_caracteres(get_url):
         "PRECIO":precio,
         "DIAS" : dias,
         "HORA":horas} 
-    
+    logger.debug(payload)
     url_final = get_url + end_point
     logger.info(f"Enviando POST a {url_final}.")
     response = requests.post(url_final, json=payload)
     logger.info("Validando schema del payload.")
-    assert_validar_schema_input(payload,cargar_schema("schema_rupo.json"))
+    assert_validar_schema_input(payload,cargar_schema("schema_grupo.json"))
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 201
     logger.info("Validando schema del response.")

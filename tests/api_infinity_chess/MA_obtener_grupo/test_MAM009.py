@@ -20,6 +20,7 @@ def test_obtener_grupos_de_una_materia_con_id_valido_sede_modulo4(get_url):
     'Content-Type': 'application/json'
     }
     response = requests.get(lista_url, headers=headers)
+    logger.debug(response.json)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==200
     logger.info("Validando schema del response.")

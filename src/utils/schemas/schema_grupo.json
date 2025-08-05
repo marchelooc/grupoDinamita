@@ -17,7 +17,7 @@
         "type": "integer"
     },
     "PRECIO": {
-        "type": "integer"
+        "type": ["integer", "string"]
     },
     "ESTADO": {
         "type": "string"

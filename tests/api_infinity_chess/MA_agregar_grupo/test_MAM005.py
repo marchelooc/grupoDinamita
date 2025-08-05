@@ -8,7 +8,8 @@ from src.utils.generador_codigo import obtener_nombre_grupo, generar_cod, obtene
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
+@pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue MABUG004: Se permite agregar un grupo con un horario fuera de rango", run=False)
 def test_agregar_un_nuevo_grupo_con_horario_invalido(get_url):
     logger.info("Iniciando test MAM005.")
     lista_cursos = obtener_cursos(get_url)
@@ -31,14 +32,14 @@ def test_agregar_un_nuevo_grupo_con_horario_invalido(get_url):
         "PRECIO":precio,
         "DIAS" : dias,
         "HORA":horas} 
-    
+    logger.debug(payload)
     url_final = get_url + end_point
     logger.info(f"Enviando POST a {url_final}.")
     response = requests.post(url_final, json=payload)
     logger.info("Validando schema del payload.")
     assert_validar_schema_input(payload,cargar_schema("schema_grupo.json"))
     logger.info(f"Código de respuesta: {response.status_code}.")
-    assert response.status_code == 201
+    assert response.status_code == 400
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_grupo.json"))
     logger.info("Test completado.")

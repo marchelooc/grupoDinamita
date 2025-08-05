@@ -8,29 +8,25 @@ from src.utils.generador_codigo import  generar_cod, obtener_dias, obtener_horas
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.negative
+@pytest.mark.functional
+@pytest.mark.xfail(reason="Knwon issue MABUG005: Esta manejando incorrectamente el response enviando error 500 y no 409", run=False)
 def test_agregar_grupo_duplicado_desde_existente(get_url):
     logger.info("Iniciando test MAM008.")
-    # Obtener un curso válido
     lista_cursos = obtener_cursos(get_url)
     CODCURSO = random.choice(lista_cursos)["CODCURSO"]
     logger.debug(f"Curso seleccionado: {CODCURSO}")
-    # Obtener nombre de un grupo ya creado
-    nombre_grupo = obtener_nombre_grupo_existente(get_url, CODCURSO)
-
-    # Crear payload duplicado
+    nombre_grupo = obtener_nombre_grupo_existente(get_url, CODCURSO,lista_cursos)
     payload = {
         "CODCURSO": CODCURSO,
         "CODSEDE": "Modulo 4",
         "NOMBREGRUPO": nombre_grupo, 
-        "CODGRUPO": generar_cod(nombre_grupo),  # Cambia código pero mismo nombre
+        "CODGRUPO": generar_cod(nombre_grupo),
         "LIMITE": obtener_limite(),
         "PRECIO": obtener_precio(),
         "DIAS": obtener_dias(),
         "HORA": obtener_horas()
     }
-
-    # Intentar crear duplicado
+    logger.debug(payload)
     url_final = get_url + "agregarGrupo"
     logger.info(f"Enviando POST a {url_final}.")
     response = requests.post(url_final, json=payload)

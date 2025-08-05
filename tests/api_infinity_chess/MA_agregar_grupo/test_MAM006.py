@@ -8,10 +8,10 @@ from src.utils.generador_codigo import obtener_nombre_grupo, generar_cod, obtene
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
-def test_agregar_un_nuevo_grupo_con_precio_cero(getUrl):
+@pytest.mark.functional
+def test_agregar_un_nuevo_grupo_con_precio_cero(get_url):
     logger.info("Iniciando test MAM006.")
-    lista_cursos = obtener_cursos(getUrl)
+    lista_cursos = obtener_cursos(get_url)
     CODCURSO = random.choice(lista_cursos)["CODCURSO"]
     logger.debug(f"Curso seleccionado: {CODCURSO}")
     end_point = "agregarGrupo"
@@ -31,8 +31,8 @@ def test_agregar_un_nuevo_grupo_con_precio_cero(getUrl):
         "PRECIO":precio,
         "DIAS" : dias,
         "HORA":horas} 
-    
-    url_final = getUrl + end_point
+    logger.debug(payload)
+    url_final = get_url + end_point
     logger.info(f"Enviando POST a {url_final}.")
     response = requests.post(url_final, json=payload)
     logger.info("Validando schema del payload.")

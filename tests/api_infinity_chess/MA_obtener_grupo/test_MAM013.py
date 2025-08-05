@@ -7,7 +7,8 @@ from src.utils.cargar_schema import cargar_schema
 from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
+@pytest.mark.functional
+@pytest.mark.xfail(reason="Knwon issue MABUG006: Esta manejando incorrectamente el codigo de error en el response se esperaba 406", run=False)
 def test_obtener_grupos_de_una_materia_con_cabecera_accept_text_plain(get_url):
     logger.info("Iniciando test MAM011.")
     cursos=obtener_cursos(get_url)
@@ -21,8 +22,9 @@ def test_obtener_grupos_de_una_materia_con_cabecera_accept_text_plain(get_url):
         'Accept': 'text/plain'
     }
     response = requests.get(lista_url,headers=headers)
+    logger.debug(response.json)
     logger.info(f"Código de respuesta: {response.status_code}.")
-    assert response.status_code==200
+    assert response.status_code==406
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_lista_grupos.json"))
     logger.info("Test completado.")

@@ -8,7 +8,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
 
-@pytest.mark.smoke
+@pytest.mark.functional
 def test_obtener_grupos_de_una_materia_con_cabecera_content_type_text_plain(get_url):
     logger.info("Iniciando test MAM011.")
     cursos=obtener_cursos(get_url)
@@ -21,6 +21,7 @@ def test_obtener_grupos_de_una_materia_con_cabecera_content_type_text_plain(get_
         'Content-Type': 'text/plain'
     }
     response = requests.get(lista_url,headers=headers)
+    logger.debug(response.json)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==200
     logger.info("Validando schema del response.")

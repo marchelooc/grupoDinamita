@@ -15,14 +15,24 @@ def obtener_cod_materia(get_url):
 
 
 
-def obtener_nombre_grupo_existente(get_url, CODCURSO):
-    endpoint = f"obtenerGrupo/{CODCURSO}/Modulo 4"
-    response = requests.get(get_url + endpoint)
-    response.raise_for_status()
-    grupos = response.json()
+def obtener_nombre_grupo_existente(get_url, CODCURSO,lista_cursos):
+    cursos_verificados = set()
 
-    if not grupos:
-        raise ValueError("No hay grupos existentes para duplicar.")
+    while True:
+        endpoint = f"obtenerGrupo/{CODCURSO}/Modulo 4"
+        response = requests.get(get_url + endpoint)
+        response.raise_for_status()
+        grupos = response.json()
 
-    nombre_grupo = random.choice(grupos)["NOMBREGRUPO"]
-    return nombre_grupo
+        if grupos:
+            return random.choice(grupos)["NOMBREGRUPO"]
+
+        cursos_verificados.add(CODCURSO)
+
+        cursos_restantes = [curso["CODCURSO"] for curso in lista_cursos if curso["CODCURSO"] not in cursos_verificados]
+
+        if not cursos_restantes:
+
+            raise ValueError("No se encontraron grupos creados en ningún curso.")
+
+        CODCURSO = random.choice(cursos_restantes)
