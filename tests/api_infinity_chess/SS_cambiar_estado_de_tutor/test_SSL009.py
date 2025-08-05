@@ -8,12 +8,14 @@ from src.utils.logger_config import logger
 @pytest.mark.smoke
 def test_verificar_actualizacion_tutor_inexistente (get_url):
      logger.info("Iniciando test SSL009.")
+     logger.info("Generar un tutor inexistente.")
      CODTUTOR = generar_codigo()
      logger.debug(f"Tutor seleccionado: {CODTUTOR}.")
      endpoint = "actualizarEstadoTutor/" + CODTUTOR
      payload = {
           "ESTADO" : "Activo"
      }
+     logger.debug(f"Payload: {payload}")
      logger.info("Validando schema del payload.")
      assert_validar_schema_input(payload, cargar_schema("schema_estado.json"))
      url_final = get_url + endpoint

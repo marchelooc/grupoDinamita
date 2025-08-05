@@ -16,6 +16,7 @@ def test_sin_tutores_activos(get_url):
      logger.info("Validando schema del response.")
      assert_validar_response_schema(response,cargar_schema("schema_lista_tutores.json"))
      lista_tutores = response.json()
+     logger.debug(lista_tutores)
      logger.info("Validando lista vacia.")
      if len(lista_tutores) == 0:
           assert True

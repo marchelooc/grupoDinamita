@@ -9,6 +9,7 @@ from src.utils.logger_config import logger
 @pytest.mark.smoke
 def test_solicitud_con_headers_Content_Type_application_json (get_url):
      logger.info("Iniciando test SSL002.")
+     logger.info("Obtener un tutor aleatorio.")
      lista_tutores = obtener_tutores_activos(get_url)
      CODTUTOR = random.choice(lista_tutores)["CODTUTOR"]
      logger.debug(f"Tutor seleccionado: {CODTUTOR}.")
@@ -16,6 +17,7 @@ def test_solicitud_con_headers_Content_Type_application_json (get_url):
      payload = {
           "ESTADO" : "Activo"
      }
+     logger.debug(f"Payload: {payload}")
      headers = {
           "Accept": "application/json",
           "Content-Type": "application/json"
@@ -27,6 +29,7 @@ def test_solicitud_con_headers_Content_Type_application_json (get_url):
      response = requests.put(url_final, headers=headers, json=payload)
      logger.info(f"Código de respuesta: {response.status_code}.")
      assert response.status_code == 200
+     logger.debug(f"Response: {response.json()}")
      logger.info("Validando schema del response.")
      assert_validar_response_schema(response,cargar_schema("schema_tutor.json"))
      logger.info("Test completado.")
