@@ -18,4 +18,4 @@ def assert_validar_schema_input(data, schema,contexto=""):
         return True
     except jsonschema.exceptions.ValidationError as err:
         logger.debug(f"El JSON no coincide con el esquema: {err.message}")
-        pytest.fail(f"El JSON no coincide con el esquema: {err.message}")
+        pytest.fail(f"El JSON no coincide con el esquema: {err.message}")
