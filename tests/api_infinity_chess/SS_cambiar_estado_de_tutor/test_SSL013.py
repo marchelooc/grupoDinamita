@@ -6,7 +6,7 @@ from src.assertions.add import assert_validar_schema_input , assert_validar_resp
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
+@pytest.mark.functional
 def test_solicitud_con_headers_Content_Type_application_json (get_url):
      logger.info("Iniciando test SSL002.")
      logger.info("Obtener un tutor aleatorio.")

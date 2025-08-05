@@ -6,7 +6,7 @@ from src.assertions.add import assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
+@pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue SSBUG003: Payload invalido",run=True)
 def test_solicitud_sin_body (get_url):
      logger.info("Iniciando test SSL012.")

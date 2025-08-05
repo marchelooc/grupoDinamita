@@ -4,7 +4,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.functional
+@pytest.mark.smoke
 def test_obtener_lista_de_tutores_activos_correctamente(get_url):
     logger.info("Iniciando test SSL001.")
     endpoint = "obtenerTutoresActivos"

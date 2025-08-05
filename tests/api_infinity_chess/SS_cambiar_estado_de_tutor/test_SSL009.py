@@ -5,7 +5,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.generador_codigo import generar_codigo
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
+@pytest.mark.functional
 def test_verificar_actualizacion_tutor_inexistente (get_url):
      logger.info("Iniciando test SSL009.")
      logger.info("Generar un tutor inexistente.")
