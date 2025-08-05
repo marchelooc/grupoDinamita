@@ -4,7 +4,7 @@ import random
 from src.api_infinity_chess.obtener_trabajadores import obtener_trabajadores
 from src.utils.logger_config import logger
 
-@pytest.mark.exploratory
+@pytest.mark.negative
 def test_verificar_que_la_URL_incorrecta_retorne_error_404(get_url):
     lista_trabajdores = obtener_trabajadores(get_url)
     CODTRABAJADOR = random.choice(lista_trabajdores)["CODTRABAJADOR"]

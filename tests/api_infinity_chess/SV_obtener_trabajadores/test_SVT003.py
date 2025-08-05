@@ -2,7 +2,7 @@ import requests
 import pytest
 from src.utils.logger_config import logger
 
-@pytest.mark.exploratory
+@pytest.mark.negative
 def test_obtener_trabajador_sin_enviar_Id(get_url):
     endpoint = "obtenerTrabajador/"
     lista_url = get_url + endpoint

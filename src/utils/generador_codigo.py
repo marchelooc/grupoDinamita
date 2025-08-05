@@ -101,6 +101,14 @@ def generar_fecha_mayor():      # Generar una fecha de nacimiento mayor a 75 añ
     hoy = datetime.today()
     fecha_mayor = hoy - timedelta(days=78 * 365)
     return fecha_mayor.strftime('%Y-%m-%d')
+
+def generar_fecha_futura(start_year=2033, end_year=2100):
+    start = datetime(start_year, 1, 1)
+    end = datetime(end_year, 12, 31)
+    delta_days = (end - start).days
+    random_days = random.randint(0, delta_days)
+    fecha = start + timedelta(days=random_days)
+    return fecha.strftime('%Y-%m-%d')
     
 
 def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True):

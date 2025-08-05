@@ -1,14 +1,13 @@
 import requests
 import pytest
-from src.utils.generador_codigo import generar_codigo
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue SVBUG001: El estatus code mostrado es 200, cuando debe ser 404", run=False)
-def test_obtener_trabajador_con_Id_inexistente(get_url):
-    CODTRABAJADOR = generar_codigo()
+@pytest.mark.xfail(reason="Knwon issue SVBUG002: El estatus code mostrado es 200, cuando debe ser 404", run=False)
+def test_obtener_un_trabajador_con_código_de_trabajador_inválido (get_url):
+    CODTRABAJADOR = "20300105XYZ@@"
     logger.debug(f"Trabajador buscado: {CODTRABAJADOR}.")
     endpoint = "obtenerTrabajador/" + CODTRABAJADOR
     lista_url = get_url + endpoint

@@ -1,31 +1,32 @@
 import requests
 import pytest
-import json
 from src.utils.generador_codigo import generar_nombre, generar_codigo_trab, generar_fecha_nac, generar_contraseña
+from src.assertions.add import assert_validar_response_schema, assert_validar_schema_input
+from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.negative
-def test_rechazar_request_con_content_type_text_plain(get_url):
+@pytest.mark.functional
+@pytest.mark.xfail(reason="Knwon issue SVBUG010: El estatus code mostrado es 201, cuando debe ser 422", run=False)
+def test_crear_trabajador_con_campos_obligatorios_vacios (get_url):
     nombre = generar_nombre()
-    codigo = generar_codigo_trab(nombre).strip()
+    codigo = generar_codigo_trab(nombre)
     fecha = generar_fecha_nac()
-    contra = generar_contraseña()
     endpoint = "agregarTrabajador"
-    url_final = get_url + endpoint
     payload = {
         "CODTRABAJADOR": codigo,
-        "NOMBRETRABAJADOR": nombre,
+        "NOMBRETRABAJADOR": "",               # Campo obligatorio vacío
         "FECHANACIMIENTOTRABAJADOR": fecha,
         "ROLTRABAJADOR": "Maestro",
         "CODSEDE": "Modulo 4",
-        "CONTRASEÑA": contra,
+        "CONTRASEÑA": "",                     # Campo obligatorio vacío
     }
-    headers = {"Content-Type": "text/plain"} # Se envia el mismo payload con Content-Type: text/plain
-    body = json.dumps(payload)
-
-    logger.info(f"Enviando POST a {url_final} con Content-Type text/plain")
-    logger.debug(f"Body (text/plain): {body}")
-    response = requests.post(url_final, data=body, headers=headers)
-    logger.info(f"Código de respuesta: {response.status_code}")
-    assert response.status_code == 415
+    logger.info("Validando schema de entrada del payload.")
+    assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
+    url_final = get_url + endpoint
+    logger.info(f"Enviando POST a {url_final}")
+    response = requests.post(url_final, json=payload)
+    logger.info(f"Código de respuesta: {response.status_code}.")
+    assert response.status_code == 422         # Se rechaza por campos obligatorios vacíos
+    logger.info("Validando schema del response.")
+    assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
     logger.info("Test completado.")
