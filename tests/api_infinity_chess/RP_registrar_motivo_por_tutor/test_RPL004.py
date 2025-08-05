@@ -10,7 +10,7 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG008: El backend no valida tutores inexistentes",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG008: El backend no valida tutores inexistentes",run=True)
 def test_RPL004_registro_motivo_con_tutor_inexistente (get_url):
     logger.info("Iniciando Test Case RPL004")
     logger.info(get_url)

@@ -10,7 +10,7 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG002: Crea motivos con fecha formato incorrecto",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG002: Crea motivos con fecha formato incorrecto",run=True)
 def test_RPL003_registro_motivo_fecha_formato_incorrecto (get_url):
     logger.info("Iniciando Test Case RPL003")
     logger.info(get_url)

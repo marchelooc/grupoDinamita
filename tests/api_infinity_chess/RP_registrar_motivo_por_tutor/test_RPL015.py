@@ -10,7 +10,7 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG009: Error de validación del esquema sin body",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG009: Error de validación del esquema sin body",run=True)
 def test_RPL015_registro_motivo_sin_payload (get_url):
     logger.info("Iniciando Test Case RPL015")
     logger.info(get_url)

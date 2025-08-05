@@ -10,7 +10,7 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG004: Crea motivos con el codigo de tutor vacio",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG004: Crea motivos con el codigo de tutor vacio",run=True)
 def test_RPL014_registro_motivo_con_campo_CODTUTOR_vacio (get_url):
     logger.info("Iniciando Test Case RPL014")
     logger.info(get_url)

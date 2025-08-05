@@ -10,7 +10,7 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG011: Eror del schema por el campo fechamotivo",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG011: Eror del schema por el campo fechamotivo",run=True)
 def test_RPL018_registro_motivo_con_FECHAMOTIVO_vacio (get_url):
     logger.info("Iniciando Test Case RPL018")
     logger.info(get_url)

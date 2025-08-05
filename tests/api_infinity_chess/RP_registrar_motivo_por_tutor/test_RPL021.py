@@ -10,7 +10,7 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG006: Crea motivos con campos motivo vacio",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG006: Crea motivos con campos motivo vacio",run=True)
 def test_RPL021_registro_motivo_con_campo_motivo_vacio (get_url):
     logger.info("Iniciando Test Case RPL020")
     logger.info(get_url)

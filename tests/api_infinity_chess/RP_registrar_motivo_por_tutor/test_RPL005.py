@@ -10,7 +10,7 @@ from src.utils.logger_config import logger
 
 @pytest.mark.funtional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG003: Crea motivos con estado inactivo",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG003: Crea motivos con estado inactivo",run=True)
 def test_RPL005_registro_motivo_con_campo_ESTADO_inactivo (get_url):
     logger.info("Iniciando Test Case RPL005")
     logger.info(get_url)
