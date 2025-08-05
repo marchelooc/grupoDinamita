@@ -7,7 +7,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.smoke
-@pytest.mark.xfail(reason="Knwon issue SSBUG001: Aceptar valor de estado invalido",run=False)
+@pytest.mark.xfail(reason="Knwon issue SSBUG001: Aceptar valor de estado invalido",run=True)
 def test_validación_de_valor_inválido_en_campo_estado (get_url):
      logger.info("Iniciando test SSL010.")
      logger.info("Obtener un tutor aleatorio.")

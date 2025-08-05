@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.smoke
-@pytest.mark.xfail(reason="Knwon issue SSBUG004: Sistema no soporta formato application/x-www-form-urlencoded",run=False)
+@pytest.mark.xfail(reason="Knwon issue SSBUG004: Sistema no soporta formato application/x-www-form-urlencoded",run=True)
 def test_solicitud_con_headers_Content_Type_application_x_www_form_urlencoded(get_url):
      logger.info("Iniciando test SSL015.")
      logger.info("Obtener un tutor aleatorio.")
