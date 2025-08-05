@@ -4,7 +4,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.smoke
 def test_RPL008_obtener_tutor_por_sede_valida (get_url):
     logger.info("Iniciando Test Case RPL008")

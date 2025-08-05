@@ -19,10 +19,10 @@ def test_agregar_una_materia_con_headers_de_tipo_texto_plano(get_url):
                 "ESTADO": "activo",
                 }
     headers = {
-          "Accept": "application/json",
-          "Content-Type": "text/plain",
-          "User-Agent": "Thunder Client (https://www.thunderclient.com)"
-     }
+            "Accept": "application/json",
+            "Content-Type": "text/plain",
+            "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+    }
     logger.debug(f"este es el payload generado:{payload}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))

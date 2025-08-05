@@ -125,3 +125,13 @@ def generar_nom_materia():
     materias = ["Ingles", "Ruso", "Esñaol", "Quechua", "Mandarín","Polaco", "Árabe", "Birmano",
             "Chino", "Yoruba", "Japones", "Indonesio", "Portugues","Frances", "Italiano"]
     return random.choice(materias)
+
+def obtener_nombre_grupo_2_caracteres():
+    grupos = ["AA", "Ba", "CC", "De", "EE","FF", "GG", "HH", "II", "MM",
+            "NN", "12", "34", "GH", "ZZ","LL", "RR", "PP", "QQ", "JJ", "KK", "KL"]
+    return random.choice(grupos)
+
+def obtener_nombre_grupo_3_caracteres():
+    grupos = ["AAa", "Bat", "CCf", "Deh", "EEc","FFh", "GGi", "HoH", "IaI", "MeM",
+            "NN", "1f2", "3r4", "GHi", "ZcZ","LmL", "RvR", "PrP", "QuQ", "JoJ", "KaK", "KiL"]
+    return random.choice(grupos)

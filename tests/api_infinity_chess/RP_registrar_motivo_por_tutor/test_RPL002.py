@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.negative
 @pytest.mark.xfail(reason="Knwon issue RPBUG001: Crea motivos con campos vacios",run=True)
 def test_RPL002_registro_motivo_con_campos_vacios (get_url):

@@ -31,8 +31,6 @@ def test_crear_un_trabajador_con_un_nombre_que_ya_existe (get_url):
     assert response.status_code == 201
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
-
-    nombre_2 = generar_nombre()
     payload_duplicado = {
         **payload,
         "CONTRASEÑA": generar_contraseña(),    
@@ -45,7 +43,6 @@ def test_crear_un_trabajador_con_un_nombre_que_ya_existe (get_url):
     assert response2.status_code == 409         # código duplicado debe ser rechazado
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
-    
     url_delete = f"{get_url}eliminarTrabajador/{codigo}"
     logger.info(f"Enviando DELETE a {url_delete}")
     response_delete = requests.delete(url_delete)

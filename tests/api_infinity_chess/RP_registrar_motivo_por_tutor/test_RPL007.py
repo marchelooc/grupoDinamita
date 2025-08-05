@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date, timedelta
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.negative
 def test_RPL007_registro_motivo_con_campo_FECHAMOTIVO_futura (get_url):
     logger.info("Iniciando Test Case RPL007")

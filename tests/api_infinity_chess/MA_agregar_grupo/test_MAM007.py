@@ -21,7 +21,6 @@ def test_agregar_un_nuevo_grupo_con_nombre_tres_caracteres(get_url):
     precio=obtener_precio()
     limite=obtener_limite()
     codigo=generar_cod(nombre_grupo)
-
     payload = {
         "CODCURSO": CODCURSO,
         "CODSEDE": "Modulo 4",

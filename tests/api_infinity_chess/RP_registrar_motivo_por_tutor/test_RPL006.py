@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.smoke
 def test_RPL006_registro_motivo_con_campo_ESTADO_activo (get_url):
     logger.info("Iniciando Test Case RPL006")

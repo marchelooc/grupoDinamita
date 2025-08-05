@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.negative
 @pytest.mark.xfail(reason="Knwon issue RPBUG009: Error de validación del esquema sin body",run=True)
 def test_RPL015_registro_motivo_sin_payload (get_url):

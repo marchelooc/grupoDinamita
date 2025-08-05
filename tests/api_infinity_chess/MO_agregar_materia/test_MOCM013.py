@@ -28,5 +28,3 @@ def test_validar_el_limite_maximo_de_caracteres_del_campo_CODCURSO(get_url):
     assert response.status_code == 400
     logger.info(f"Código de respuesta: {response.status_code}.")
     logger.info("Test MOCM013 realizado.")
-
-    

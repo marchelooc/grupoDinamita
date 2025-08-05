@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.negative
 @pytest.mark.xfail(reason="Knwon issue RPBUG002: Crea motivos con fecha formato incorrecto",run=True)
 def test_RPL003_registro_motivo_fecha_formato_incorrecto (get_url):

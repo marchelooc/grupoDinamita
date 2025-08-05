@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date, timedelta
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.negative
 @pytest.mark.xfail(reason="Knwon issue RPBUG005: Crea motivos con fecha de motivo antigua",run=True)
 def test_RPL019_registro_motivo_con_FECHAMOTIVO_antigua (get_url):

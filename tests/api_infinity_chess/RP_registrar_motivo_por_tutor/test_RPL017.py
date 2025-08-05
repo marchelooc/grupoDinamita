@@ -8,7 +8,7 @@ from src.utils.cargar_schema import cargar_schema
 from datetime import date
 from src.utils.logger_config import logger 
 
-@pytest.mark.funtional
+@pytest.mark.functional
 @pytest.mark.negative
 @pytest.mark.xfail(reason="Knwon issue RPBUG0010: El backend no valida el tamaño maximo de caracteres",run=True)
 def test_RPL017_registro_motivo_con_campo_motivo_muy_largo (get_url):

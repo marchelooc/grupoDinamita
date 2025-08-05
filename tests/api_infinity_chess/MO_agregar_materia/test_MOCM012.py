@@ -21,7 +21,6 @@ def test_validar_comportamiento_al_agregar_curso_con_CODCURSO_duplicado(get_url)
     if not existe_materia_repetida(get_url):
         logger.info("Creando materia repetida.")    
         crear_materia_repetida(get_url, endpoint)
-
     logger.info("Validando schema del input.")    
     assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))
     url_final = get_url + endpoint

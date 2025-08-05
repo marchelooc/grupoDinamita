@@ -14,9 +14,7 @@ def test_obtener_lista_de_tutores_activos_correctamente(get_url):
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 200
     logger.info("Validando schema del response.")
-<<<<<<< HEAD:tests/api_infinity_chess/SV_obtener_trabajadores/test_SVT001.py
     assert_validar_response_schema(response,cargar_schema("schema_obtener_trabajador.json"))
-    
     trabajador = response.json()
     if isinstance(trabajador, list):
         assert trabajador, "La lista contiene los datos del trabajador"
@@ -30,9 +28,7 @@ def test_obtener_lista_de_tutores_activos_correctamente(get_url):
     logger.info(f"Codigo: {codigo}")
     logger.info(f"Fecha de nacimiento: {fecha_nac}")
     logger.info(f"Rol: {rol}")
-    
     logger.info("Test completado.")
-=======
     assert_validar_response_schema(response,cargar_schema("schema_lista_tutores.json"))
     lista_tutores = response.json()
     logger.debug(lista_tutores)
@@ -40,4 +36,3 @@ def test_obtener_lista_de_tutores_activos_correctamente(get_url):
     for tutor in lista_tutores:
         assert tutor.get("ESTADO") == "Activo", f"Tutor inactivo encontrado: {tutor}"
     logger.info("Test completado.")
->>>>>>> 818bf39e2e9685a9c75e5faa347ab9253cecefaa:tests/api_infinity_chess/SS_obtener_tutores_activos/test_SSL001.py

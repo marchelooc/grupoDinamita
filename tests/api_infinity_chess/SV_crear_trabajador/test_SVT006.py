@@ -30,7 +30,6 @@ def test_crear_un_trabajador_con_todos_los_datos_validos (get_url):
     assert response.status_code == 201
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
-    
     url_delete = f"{get_url}eliminarTrabajador/{codigo}"
     logger.info(f"Enviando DELETE a {url_delete}")
     response_delete = requests.delete(url_delete)

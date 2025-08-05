@@ -19,7 +19,6 @@ def test_obtener_grupos_de_una_materia_con_id_invalido_sede_modulo4(get_url):
     headers = {
     'Content-Type': 'application/json'
     }
-
     response = requests.get(lista_url, headers=headers)
     logger.debug(response.json)
     logger.info(f"Código de respuesta: {response.status_code}.")
