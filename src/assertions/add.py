@@ -1,5 +1,6 @@
 import jsonschema
 import pytest
+
 from src.utils.logger_config import logger 
 
 def assert_validar_response_schema(response, schema):

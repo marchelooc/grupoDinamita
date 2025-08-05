@@ -1,4 +1,3 @@
-
 import logging
 import os
 
@@ -13,5 +12,4 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-
 logger = logging.getLogger("infinity_logger")
