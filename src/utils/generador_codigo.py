@@ -62,13 +62,14 @@ def generar_nombre():
     
     
 nombres = [
-    "Carlos", "María", "Ana", "Luis", "José", "Lucía",
-    "Pedro", "Camila", "Andrés", "Valeria", "Diego", "Fernanda"
-    "Carmen", "Isabel", "Laura", "Marta", "Patricia", "Sandra", "Sofía",
-    "Antonio", "Juan", "Miguel", "Francisco", "Javier", "Fernando",
+    "Carlos", "María", "Ana", "Luis", "José", "Lucía", "Simon", "Ander", "Raquel", "Omar", "Brayan",
+    "Pedro", "Camila", "Andrés", "Valeria", "Diego", "Fernanda", "Adriana", "Micaela", "Benjamin",
+    "Carmen", "Isabel", "Laura", "Marta", "Patricia", "Sandra", "Sofía", "Karina", "Ernesto",
+    "Antonio", "Juan", "Miguel", "Francisco", "Javier", "Fernando", "Santos", "Marcelo", "Pepe",
     "David", "Manuel", "Alejandro", "Rosa", "Elena", "Julia", "Teresa", "Eva", "Beatriz", "Gloria",
-    "Raúl", "Jorge", "Sergio", "Pablo", "Alberto", "Álvaro", "Marcos", "Rubén", "Clara",
-    "Paula", "Valentina", "Andrea", "Gabriela", "Lorena", "Miriam", "Natalia", "Olga",
+    "Raúl", "Jorge", "Sergio", "Pablo", "Alberto", "Álvaro", "Marcos", "Rubén", "Clara", "Luna",
+    "Paula", "Valentina", "Andrea", "Gabriela", "Lorena", "Miriam", "Natalia", "Olga", "Aurora",
+    "Dylan", "Dominic", "Leonel", "Ronaldo", "Bladimir", "Estela", "Cristina", "Amanda", "Zenaida",
 ]
 
 apellidos = [

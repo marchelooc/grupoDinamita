@@ -23,8 +23,15 @@ def test_crear_trabajador_con_campos_vacios (get_url):
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
     url_final = get_url + endpoint
     logger.info(f"Enviando POST a {url_final}")
+    logger.debug(payload)
     response = requests.post(url_final, json=payload)
-    logger.info(f"Código de respuesta: {response.status_code}.")
+    logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 201
+    
+    url_delete = f"{get_url}eliminarTrabajador/{codigo}"
+    logger.info(f"Enviando DELETE a {url_delete}")
+    response_delete = requests.delete(url_delete)
+    logger.info(f"Codigo de respuesta DELETE: {response_delete.status_code}")
+    assert response_delete.status_code == 200, (f"Codigo de respuesta {response_delete.status_code}")
     logger.info("Test completado.")
     

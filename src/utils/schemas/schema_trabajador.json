@@ -8,10 +8,10 @@
     "type": "string"
     },
     "FECHANACIMIENTOTRABAJADOR": {
-    "type": "string"
+    "type": ["string", "null"]
     },
     "ROLTRABAJADOR": {
-    "type": "string"
+    "type": ["string","null"]
     },
     "CONTRASEÑA": {
     "type": "string"

@@ -5,7 +5,7 @@ from src.utils.generador_codigo import generar_nombre, generar_codigo_trab, gene
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue SVBUG011: El estatus code mostrado es 500, cuando debe ser 415", run=False)
+@pytest.mark.xfail(reason="Knwon issue SVBUG007: El formato no es soportado por el sistema", run=True)
 def test_crear_un_trabajador_con_content_type_text_plain (get_url):
     nombre = generar_nombre()
     codigo = generar_codigo_trab(nombre).strip()
@@ -26,7 +26,14 @@ def test_crear_un_trabajador_con_content_type_text_plain (get_url):
 
     logger.info(f"Enviando POST a {url_final} con Content-Type text/plain")
     logger.debug(f"Body (text/plain): {body}")
+    logger.debug(payload)
     response = requests.post(url_final, data=body, headers=headers)
-    logger.info(f"Código de respuesta: {response.status_code}")
+    logger.info(f"Codigo de respuesta: {response.status_code}")
     assert response.status_code == 415
+    
+    url_delete = f"{get_url}eliminarTrabajador/{codigo}"
+    logger.info(f"Enviando DELETE a {url_delete}")
+    response_delete = requests.delete(url_delete)
+    logger.info(f"Codigo de respuesta DELETE: {response_delete.status_code}")
+    assert response_delete.status_code == 200, (f"Codigo de respuesta {response_delete.status_code}")
     logger.info("Test completado.")

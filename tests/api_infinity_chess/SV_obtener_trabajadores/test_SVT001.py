@@ -30,7 +30,7 @@ def test_obtener_trabajador_existente_por_Id_valido(get_url):
     rol = trabajador.get("ROLTRABAJADOR")
     logger.info(f"Detalles del trabajador recuperado:")
     logger.info(f"Nombre: {nombre}")
-    logger.info(f"Código: {codigo}")
+    logger.info(f"Codigo: {codigo}")
     logger.info(f"Fecha de nacimiento: {fecha_nac}")
     logger.info(f"Rol: {rol}")
     

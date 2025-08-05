@@ -14,7 +14,7 @@ def test_verificar_que_la_estructura_sea_completa_en_la_respuesta (get_url):
     url = f"{get_url}obtenerTrabajador/{CODTRABAJADOR}"
     logger.info(f"Enviando GET a {url}.")
     response = requests.get(url)
-    logger.info(f"Código de respuesta: {response.status_code}.")
+    logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 200
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response, cargar_schema("schema_obtener_trabajador.json"))
@@ -35,5 +35,4 @@ def test_verificar_que_la_estructura_sea_completa_en_la_respuesta (get_url):
     for campo in campos_requeridos:
         logger.debug(f"Existe el campo: {campo}")
         assert campo in trabajador, f"Falta el campo obligatorio '{campo}' en la respuesta"
-
     logger.info("Test completado.")

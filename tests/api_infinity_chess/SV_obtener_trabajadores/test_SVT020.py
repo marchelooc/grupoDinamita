@@ -13,6 +13,6 @@ def test_obtener_trabajador_usando_POST_en_lugar_de_GET(get_url):
     url = get_url + endpoint
     logger.info(f"Enviando POST a {url}(endpoint diseñado para GET)")
     response = requests.post(url)
-    logger.info(f"Código de respuesta: {response.status_code}")
+    logger.info(f"Codigo de respuesta: {response.status_code}")
     assert response.status_code == 405, ( f"Se obtuvo el codigo {response.status_code}")
     logger.info("Test completado.")

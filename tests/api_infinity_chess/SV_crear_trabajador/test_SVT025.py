@@ -7,8 +7,8 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue SVBUG016: El estatus code mostrado es 201, cuando debe ser 422", run=False)
-def test_crear_trabajador_con_fecha_futura (get_url):
+@pytest.mark.xfail(reason="Knwon issue SVBUG003: El sistema registra fechas invalidas", run=True)
+def test_crear_trabajador_con_fecha_de_nacimiento_futura (get_url):
     nombre = generar_nombre()
     codigo = generar_codigo_trab(nombre)
     fecha = generar_fecha_futura()
@@ -26,9 +26,16 @@ def test_crear_trabajador_con_fecha_futura (get_url):
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
     url_final = get_url + endpoint
     logger.info(f"Enviando POST a {url_final}")
+    logger.debug(payload)
     response = requests.post(url_final, json=payload)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 422         # Se rechaza por fecha invalida
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
+    
+    url_delete = f"{get_url}eliminarTrabajador/{codigo}"
+    logger.info(f"Enviando DELETE a {url_delete}")
+    response_delete = requests.delete(url_delete)
+    logger.info(f"Codigo de respuesta DELETE: {response_delete.status_code}")
+    assert response_delete.status_code == 200, (f"Codigo de respuesta {response_delete.status_code}")
     logger.info("Test completado.")
