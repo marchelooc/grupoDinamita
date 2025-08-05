@@ -5,7 +5,7 @@ from src.utils.generador_codigo import generar_nom_materia, generar_cod
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.exploratorias
+@pytest.mark.functional
 def test_agregar_una_materia_con_headers_de_tipo_json(get_url):
     logger.info("Iniciando test MOCM023.")
     nombre_materia = generar_nom_materia()
@@ -13,7 +13,7 @@ def test_agregar_una_materia_con_headers_de_tipo_json(get_url):
     logger.debug(f"Curso aleatorio creado {nombre_materia}.")
     endpoint = "agregarCurso"
     payload = {
-                "CODCURSO": codigo_materia,
+                "CODCURSO": codigo_materia + "1",
                 "CURSO": nombre_materia, 
                 "ESTADO": "activo",
                 }

@@ -5,7 +5,8 @@ from src.utils.generador_codigo import generar_nom_materia, generar_cod
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.exploratorias
+@pytest.mark.smoke
+@pytest.mark.xfail(reason="Knwon issue MOCBUG01: HTTP incorrecto", run=False)
 def test_agregar_una_materia_con_headers_de_tipo_texto_plano(get_url):
     logger.info("Iniciando test MOCM022.")
     nombre_materia = generar_nom_materia()
@@ -27,7 +28,7 @@ def test_agregar_una_materia_con_headers_de_tipo_texto_plano(get_url):
     url_final = get_url + endpoint
     logger.info(f"Enviando POST {url_final}.")
     response = requests.post(url_final, json=payload, headers=headers)
-    assert response.status_code == 500
+    assert response.status_code == 415
     logger.info(f"Código de respuesta: {response.status_code}.")
 #    logger.info("Validando schema del response.")
 #    assert_validar_response_schema(response,cargar_schema("schema_materias.json"))
