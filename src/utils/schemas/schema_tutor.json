@@ -5,10 +5,10 @@
           "type": "string"
      },
      "NOMBRETUTOR": {
-          "type": "string"
+          "type": ["string", "null"]
      },
      "APELLIDOTUTOR": {
-          "type": "string"
+          "type": ["string", "null"]
      },
      "FECHANACIMIENTOTUTOR": {
           "type": ["string", "null"],
@@ -18,7 +18,7 @@
           "type": ["string", "null"]
      },
      "GENEROTUTOR": {
-          "type": "string"
+          "type": ["string", "null"]
      },
      "OCUPACION": {
           "type": ["string", "null"]

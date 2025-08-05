@@ -4,7 +4,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.smoke
+@pytest.mark.functional
 def test_solicitud_con_headers(get_url):
     logger.info("Iniciando test SSL005.")
     endpoint = "obtenerTutoresActivos"
@@ -20,6 +20,7 @@ def test_solicitud_con_headers(get_url):
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_lista_tutores.json"))
     lista_tutores = response.json()
+    logger.debug(lista_tutores)
     logger.info("Validando lista tutores activos.")
     for tutor in lista_tutores:
         assert tutor.get("ESTADO") == "Activo", f"Tutor inactivo encontrado: {tutor}"
