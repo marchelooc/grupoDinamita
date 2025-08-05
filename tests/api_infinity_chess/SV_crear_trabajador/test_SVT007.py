@@ -28,7 +28,7 @@ def test_verificar_los_datos_del_trabajador_creado (get_url):
     url_final = get_url + endpoint
     logger.info(f"Enviando POST a {url_final}")
     logger.debug(payload)
-    response = requests.post(url_final, json=payload, verify=False)
+    response = requests.post(url_final, json=payload)
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 201
     logger.info("Validando schema del response.")

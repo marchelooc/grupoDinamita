@@ -7,7 +7,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.regresion
+@pytest.mark.regression
 def test_validar_que_la_contraseña_se_muestre_cifrada(get_url: Literal['https://backend.clubinfinitychess.com/']):
     lista_trabajdores = obtener_trabajadores(get_url)
     CODTRABAJADOR = random.choice(lista_trabajdores)["CODTRABAJADOR"]
