@@ -24,6 +24,7 @@ def enviarSolicitud(get_url, headers=None):
 def verificar_tutores_activos (lista_tutores):
     for tutor in lista_tutores:
         assert tutor.get("ESTADO") == "Activo", f"Tutor inactivo encontrado: {tutor}" 
+    logger.info("Lista tutores validada correctamente.")
 
 def verificar_estructura_tutores (lista_tutores):
     estructura_tutor = {"CODTUTOR","NOMBRETUTOR","APELLIDOTUTOR","FECHANACIMIENTOTUTOR","CELULARTUTOR","GENEROTUTOR", "OCUPACION", "CORREO", "ESTADO","CELULARALTERNATIVO"}
@@ -31,3 +32,4 @@ def verificar_estructura_tutores (lista_tutores):
         campos_tutor = set(tutor.keys())
         campos_faltan = estructura_tutor - campos_tutor
         assert not campos_faltan , f"CamposFaltantes: {campos_faltan} del tutor {tutor}"
+    logger.info("Estructura validada correctamente.")
