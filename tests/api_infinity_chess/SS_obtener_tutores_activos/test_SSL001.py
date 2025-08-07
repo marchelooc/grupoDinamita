@@ -17,3 +17,4 @@ def test_obtener_lista_de_tutores_activos_correctamente(get_url):
     logger.debug(lista_tutores)
     logger.info("Validando lista tutores activos.")
     verificar_tutores_activos(lista_tutores)
+    logger.info("Test completado.")

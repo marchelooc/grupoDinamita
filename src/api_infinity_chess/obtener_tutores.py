@@ -23,9 +23,8 @@ def enviarSolicitud(get_url, headers=None):
 
 def verificar_tutores_activos (lista_tutores):
     for tutor in lista_tutores:
-        assert tutor.get("ESTADO") == "Activo", f"Tutor inactivo encontrado: {tutor}"
-    logger.info("Test completado.")
-    
+        assert tutor.get("ESTADO") == "Activo", f"Tutor inactivo encontrado: {tutor}" 
+
 def verificar_estructura_tutores (lista_tutores):
     estructura_tutor = {"CODTUTOR","NOMBRETUTOR","APELLIDOTUTOR","FECHANACIMIENTOTUTOR","CELULARTUTOR","GENEROTUTOR", "OCUPACION", "CORREO", "ESTADO","CELULARALTERNATIVO"}
     for tutor in lista_tutores:

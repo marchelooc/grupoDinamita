@@ -2,7 +2,7 @@ import pytest
 from src.assertions.add import assert_validar_schema_input, assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
-from api_infinity_chess.cambiar_estado_tutor import obtenerTutorAleatorio , enviarSolicitud
+from src.api_infinity_chess.cambiar_estado_tutor import obtenerTutorAleatorio , enviarSolicitud
 from src.utils.payload.payload_cambiar_estado import payload_activo
 
 @pytest.mark.functional
