@@ -1,28 +1,21 @@
-import requests
 import pytest
-import random
-from src.api_infinity_chess.obtener_tutores import obtener_tutores_activos
 from src.assertions.add import assert_validar_schema_input 
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
+from src.api_infinity_chess.cambiar_estado_tutor import obtenerTutorAleatorio , enviarSolicitud
+from src.utils.payload.payload_cambiar_estado import payload_sin_body
 
 @pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue SSBUG003: Payload invalido",run=True)
 def test_solicitud_sin_body (get_url):
      logger.info("Iniciando test SSL012.")
      logger.info("Obtener un tutor aleatorio.")
-     lista_tutores = obtener_tutores_activos(get_url)
-     CODTUTOR = random.choice(lista_tutores)["CODTUTOR"]
+     CODTUTOR = obtenerTutorAleatorio (get_url)
      logger.debug(f"Tutor seleccionado: {CODTUTOR}.")
-     endpoint = "actualizarEstadoTutor/" + CODTUTOR
-     url_final = get_url + endpoint
-     payload = {
-     }
-     logger.debug(f"Payload: {payload}")
+     logger.debug(f"Payload: {payload_sin_body}")
      logger.info("Validando schema del payload.")
-     assert_validar_schema_input(payload, cargar_schema("schema_estado.json"))
-     logger.info(f"Enviando PUT a {url_final}.")
-     response = requests.put(url_final)
+     assert_validar_schema_input(payload_sin_body, cargar_schema("schema_estado.json"))
+     response = enviarSolicitud (get_url, CODTUTOR,payload_sin_body)
      logger.info(f"Código de respuesta: {response.status_code}.")
      assert response.status_code == 400
      logger.debug(f"Response: {response.json()}")

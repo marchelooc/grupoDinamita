@@ -1,20 +1,17 @@
-import requests
 import pytest
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
+from src.api_infinity_chess.obtener_tutores import enviarSolicitud, verificar_tutores_activos
 
 @pytest.mark.functional
 def test_solicitud_con_headers(get_url):
     logger.info("Iniciando test SSL005.")
-    endpoint = "obtenerTutoresActivos"
-    lista_url = get_url + endpoint
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json"
     }
-    logger.info(f"Enviando GET a {lista_url}.")
-    response = requests.get(lista_url, headers=headers)
+    response = enviarSolicitud(get_url,headers)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 200
     logger.info("Validando schema del response.")
@@ -22,6 +19,5 @@ def test_solicitud_con_headers(get_url):
     lista_tutores = response.json()
     logger.debug(lista_tutores)
     logger.info("Validando lista tutores activos.")
-    for tutor in lista_tutores:
-        assert tutor.get("ESTADO") == "Activo", f"Tutor inactivo encontrado: {tutor}"
+    verificar_tutores_activos(lista_tutores)
     logger.info("Test completado.")
