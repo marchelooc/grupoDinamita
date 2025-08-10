@@ -1,5 +1,6 @@
 import requests
 import pytest
+from src.utils.response_500 import response_500
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
@@ -10,5 +11,6 @@ def test_crear_un_trabajador_sin_body_para_el_post (get_url):
     logger.info(f"Enviando POST a {url}")
     response = requests.post(url)
     logger.info(f"Código de respuesta: {response.status_code}")
+    response_500(response)
     assert response.status_code == 400, (f"Codigo de respuesta {response.status_code}")
     logger.info("Test completado.")
