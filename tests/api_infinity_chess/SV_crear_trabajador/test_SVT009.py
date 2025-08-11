@@ -1,51 +1,47 @@
-import requests
 import pytest
-from src.utils.generador_codigo import generar_nombre, generar_codigo_trab, generar_fecha_nac, generar_contraseña
+from src.api_infinity_chess.crear_trabajador import enviar_POST, tierdown_enviar_DELETE
+from src.utils.payload.payload_crear_trabajador import crear_payload_valido, payload_con_nombre_existente
+from src.utils.response_500 import response_500
 from src.assertions.add import assert_validar_response_schema, assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue SVBUG002: El sistema no puede mostrar un atributo por separado para compararlo", run=True)
+@pytest.mark.xfail(reason="Knwon issue SVBUG002: El sistema no puede validar un registro al ingresar un dato existente", run=True)
 def test_crear_un_trabajador_con_un_nombre_que_ya_existe (get_url):
-    nombre = generar_nombre()
-    codigo = generar_codigo_trab(nombre).strip()
-    fecha = generar_fecha_nac()
-    contra = generar_contraseña()
-    endpoint = "agregarTrabajador"
-    payload = {
-                "CODTRABAJADOR": codigo,
-                "NOMBRETRABAJADOR": nombre, 
-                "FECHANACIMIENTOTRABAJADOR": fecha, 
-                "ROLTRABAJADOR" : "Maestro",
-                "CODSEDE": "Modulo 4",
-                "CONTRASEÑA": contra,
-                }
+    logger.info("Iniciando test SVT009.")
+    logger.info("Obtener datos de un trabajador para registrarlo en el sistema.")
+    payload = crear_payload_valido()
+    logger.debug(payload)
+    response = enviar_POST (get_url, payload)
+    response_500(response)
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
-    url_final = get_url + endpoint
-    logger.info(f"Enviando POST a {url_final}")
-    logger.debug(payload)
-    response = requests.post(url_final, json=payload)
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 201
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
-    payload_duplicado = {
-        **payload,
-        "CONTRASEÑA": generar_contraseña(),    
-        "FECHANACIMIENTOTRABAJADOR": generar_fecha_nac()
-    }
-    logger.info("Intentando crear un trabajador con un nombre ya existente.")
-    logger.debug(f"Payload duplicado: {payload_duplicado!r}")
-    response2 = requests.post(url_final, json=payload_duplicado)
-    logger.info(f"Codigo de respuesta al intento duplicado: {response2.status_code}")
-    assert response2.status_code == 409         # código duplicado debe ser rechazado
+    logger.info("Trabajador creado correctamente.")
+    logger.info("Obtener el nombre del trabajador creado.")
+    NOMBRETRABAJADOR = payload.get("NOMBRETRABAJADOR")
+    logger.debug(f"El nombre del trabajador creado es: {NOMBRETRABAJADOR}.")
+    logger.info("Intentar crear otro trabajador con el nombre existente.")
+    payload_2 = payload_con_nombre_existente(payload)
+    logger.debug(payload_2)
+    response = enviar_POST (get_url, payload_2)
+    response_500(response)
+    logger.info("Validando schema de entrada del payload.")
+    assert_validar_schema_input(payload_2, cargar_schema("schema_trabajador.json"))
+    logger.info(f"Codigo de respuesta al intento con codigo existente: {response.status_code}.")
+    assert response.status_code == 409
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
-    url_delete = f"{get_url}eliminarTrabajador/{codigo}"
-    logger.info(f"Enviando DELETE a {url_delete}")
-    response_delete = requests.delete(url_delete)
-    logger.info(f"Codigo de respuesta DELETE: {response_delete.status_code}")
-    assert response_delete.status_code == 200, (f"Codigo de respuesta {response_delete.status_code}")
+    logger.info("El nombre del trabajador ya existe.")
+    #tierdown
+    logger.info("Obtener al trabajador creado.")
+    CODTRABAJADOR = payload.get("CODTRABAJADOR")
+    logger.debug(f"El codigo del trabajador creado es: {CODTRABAJADOR}.")
+    response = tierdown_enviar_DELETE (get_url, CODTRABAJADOR)
+    logger.info(f"Codigo de respuesta DELETE: {response.status_code}")
+    assert response.status_code == 200
     logger.info("Test completado.")
