@@ -20,3 +20,4 @@ def test_cambio_de_estado_de_tutor_inactivo (get_url):
      logger.info("Validando schema del response.")
      assert_validar_response_schema(response,cargar_schema("schema_tutor.json"))
      logger.info("Test completado.")
+     
