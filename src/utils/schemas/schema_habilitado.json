@@ -1,0 +1,11 @@
+{
+     "type": "object",
+     "properties": {
+     "HABILITADO": {
+          "type": "string"
+     }
+     },
+     "required": [
+     "HABILITADO"
+     ]
+}

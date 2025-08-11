@@ -1,0 +1,75 @@
+{
+     "type": "object",
+     "properties": {
+     "CODESTUDIANTE": {
+          "type": "string"
+     },
+     "CODSEDE": {
+          "type": "string"
+     },
+     "CODINSCRIPCION": {
+          "type": ["string","null"]
+     },
+     "NOMBREESTUDIANTE": {
+          "type": ["string","null"]
+     },
+     "APELLIDOESTUDIANTE": {
+          "type": "string"
+     },
+     "FECHANACIMIENTOESTUDIANTE": {
+          "type": ["string","null"]
+     },
+     "GENEROESTUDIANTE": {
+          "type": ["string","null"]
+     },
+     "DIRECCION": {
+          "type": ["string","null"]
+     },
+     "COLEGIO": {
+          "type": ["string","null"]
+     },
+     "TURNO": {
+          "type": ["string","null"]
+     },
+     "CURSO": {
+          "type": ["string","null"]
+     },
+     "TIPOCOLEGIO": {
+          "type": ["string","null"]
+     },
+     "PAIS": {
+          "type": ["string","null"]
+     },
+     "DEPARTAMENTO": {
+          "type": ["string","null"]
+     },
+     "CIUDAD": {
+          "type": ["string","null"]
+     },
+     "HABILITADO": {
+          "type": "string"
+     },
+     "HUELLAESTUDIANTE": {
+          "type": "null"
+     }
+     },
+     "required": [
+     "CODESTUDIANTE",
+     "CODSEDE",
+     "CODINSCRIPCION",
+     "NOMBREESTUDIANTE",
+     "APELLIDOESTUDIANTE",
+     "FECHANACIMIENTOESTUDIANTE",
+     "GENEROESTUDIANTE",
+     "DIRECCION",
+     "COLEGIO",
+     "TURNO",
+     "CURSO",
+     "TIPOCOLEGIO",
+     "PAIS",
+     "DEPARTAMENTO",
+     "CIUDAD",
+     "HABILITADO",
+     "HUELLAESTUDIANTE"
+     ]
+}
