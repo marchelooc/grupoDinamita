@@ -1,23 +1,22 @@
 import requests
 import pytest
-from src.utils.response_500 import response_500
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
+from src.utils.payload.payloads_materias import payload_materia_nombre_similar1, payload_materia_nombre_similar2
+from src.api_infinity_chess.materia import crear_materia, eliminar_materia, verificar_curso_nombre, cantidad_de_materias_mismo_nombre
 
 @pytest.mark.functional
 def test_validar_comportamiento_obetener_materias_con_nombres_repetidos(get_url):
     logger.info("Iniciando test MOCM024.")
-    endpoint = "verificarCurso/" + "MateriaRepetida"
-    lista_url = get_url + endpoint
-    logger.info(f"Enviando GET {lista_url}.")
-    response = requests.get(lista_url)
+    crear_materia(get_url, payload_materia_nombre_similar1)
+    crear_materia(get_url, payload_materia_nombre_similar2)
+    response = verificar_curso_nombre("FilosofiaREP", get_url)
     assert response.status_code == 200
     logger.info(f"Código de respuesta: {response.status_code}.")
     logger.info("Validando schema del response")
     assert_validar_response_schema(response,cargar_schema("schema_lista_materias.json")) 
-    respuestaJSON = response.json()
-    cursos_filtrados = [item for item in respuestaJSON if item.get("CURSO") == "MateriaRepetida"]
-    logger.info(f"La cantidad de cursos con nombre repetido de MateriaRepetida es de: {len(cursos_filtrados)}.")
-    assert len(cursos_filtrados) >= 2
+    cantidad_de_materias_mismo_nombre(response, "FilosofiaREP")
+    eliminar_materia(get_url, "REPE1")
+    eliminar_materia(get_url, "REPE2")
     logger.info("Test MOCM024 realizado.")

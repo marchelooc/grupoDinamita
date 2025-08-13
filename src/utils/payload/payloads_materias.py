@@ -48,6 +48,17 @@ payload_materia_a_eliminar = {
                 "CURSO": "eliminar Mecatronica", 
                 "ESTADO": "activo",
                 }
+payload_materia_nombre_similar1 = {
+                "CODCURSO":"REPE1",
+                "CURSO": "FilosofiaREP", 
+                "ESTADO": "activo",
+                }
+payload_materia_nombre_similar2 = {
+                "CODCURSO":"REPE2",
+                "CURSO": "FilosofiaREP", 
+                "ESTADO": "activo",
+                }
+
 headers_json = {
             "Accept": "application/json",
             "Content-Type": "application/json"

@@ -5,6 +5,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.response_500 import response_500
 from src.utils.logger_config import logger
 from src.utils.payload.payloads_materias import payload_materia_correcta
+from src.api_infinity_chess.materia import crear_materia, eliminar_materia
 
 @pytest.mark.smoke
 def test_agregar_una_materia_con_datos_válidos(get_url):
@@ -13,19 +14,11 @@ def test_agregar_una_materia_con_datos_válidos(get_url):
     logger.debug(f"este es el payload generado:{payload_materia_correcta}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload_materia_correcta,cargar_schema("schema_materias.json"))
-#esto en una función
-    url_final = get_url + "agregarCurso"
-    logger.info(f"Enviando POST {url_final}.")
-    response = requests.post(url_final, json=payload_materia_correcta)
+    response = crear_materia(get_url, payload_materia_correcta)
     response_500(response)
-#__________________
     assert response.status_code == 201
+    eliminar_materia(get_url, "2025Taller")
     logger.info(f"Código de respuesta: {response.status_code}.")
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_materias.json"))
-#esto en una función  
-    url_final = get_url + "eliminarCurso/2025Taller"
-    logger.info(f"Enviando DELETE {url_final}.")
-    requests.delete(url_final)
-#__________________
     logger.info("Test MOCM008 realizado.")

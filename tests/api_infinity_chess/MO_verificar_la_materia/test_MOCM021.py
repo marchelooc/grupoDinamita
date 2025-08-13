@@ -1,26 +1,16 @@
 import requests
 import pytest
 import random
-from src.utils.response_500 import response_500
-from src.api_infinity_chess.obtener_curso import obtener_cursos
-from src.assertions.add import assert_validar_response_schema
-from src.utils.cargar_schema import cargar_schema
+from src.api_infinity_chess.materia import verificar_curso_nombre
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
 def test_validar_comportamiento_ante_una_materia_con_nombre_de_curso_inexistente(get_url):
     logger.info("Iniciando test MOCM021.")
-    lista_materias = obtener_cursos(get_url)
-    CURSO = random.choice(lista_materias)["CURSO"]
-    logger.debug(f"Curso aleatorio seleccionado {CURSO}.")
-    endpoint = " "
-    lista_url = get_url + endpoint
-    logger.info(f"Enviando GET {lista_url}.")
-    response = requests.get(lista_url)
+    response = verificar_curso_nombre("", get_url)
     assert response.status_code == 404
     logger.info(f"Código de respuesta: {response.status_code}.")
-    logger.info("Validando schema del response.")
-# hacer un  "by pass" / "SOFT ACERT" 
+    logger.info("Validando schema del response.") 
 #    try:
 #        assert_validar_response_schema(response, cargar_schema("schema_lista_materias.json"))
 #    except requests.exceptions.JSONDecodeError:

@@ -1,7 +1,6 @@
 import requests
 import pytest
-import random
-from src.api_infinity_chess.obtener_curso import obtener_cursos
+from src.api_infinity_chess.materia import obtener_nombre_materia_aleatoria, verificar_curso_nombre_con_header
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
@@ -9,14 +8,9 @@ from src.utils.logger_config import logger
 @pytest.mark.functional
 def test_recuperar_una_materia_sin_headers(get_url):
     logger.info("Iniciando test MOCM026.")
-    lista_materias = obtener_cursos(get_url)
-    CURSO = random.choice(lista_materias)["CURSO"]
+    CURSO = obtener_nombre_materia_aleatoria(get_url)
     logger.debug(f"Curso aleatorio seleccionado {CURSO}.")
-    endpoint = "verificarCurso/" + CURSO
-    headers = {}
-    lista_url = get_url + endpoint
-    logger.info(f"Enviando GET {lista_url}.")
-    response = requests.get(lista_url, headers)
+    response = verificar_curso_nombre_con_header(CURSO, get_url, {})
     assert response.status_code == 200
     logger.info(f"Código de respuesta: {response.status_code}.")
     logger.info("Validando schema del response.")
