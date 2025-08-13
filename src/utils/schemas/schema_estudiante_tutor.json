@@ -1,0 +1,133 @@
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "CODESTUDIANTE": {
+                "type": "string"
+            },
+            "CODINSCRIPCION": {
+                "type": "string"
+            },
+            "NOMBREESTUDIANTE": {
+                "type":  [
+                    "null",
+                    "string"
+                ]
+            },
+            "APELLIDOESTUDIANTE": {
+                "type":  [
+                    "null",
+                    "string"
+                ]
+            },
+            "FECHANACIMIENTOESTUDIANTE": {
+                "type":  [
+                    "null",
+                    "string"
+                ]
+            },
+            "GENEROESTUDIANTE": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "DIRECCION": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "COLEGIO": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "TURNO": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "CURSO": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "TIPOCOLEGIO": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "PAIS": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "DEPARTAMENTO": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "CIUDAD": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "HABILITADO": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            "CODSEDE": {
+                "type": "string"
+            },
+            "pivot": {
+                "type": "object",
+                "properties": {
+                    "CODTUTOR": {
+                        "type": "string"
+                    },
+                    "CODESTUDIANTE": {
+                        "type": "string"
+                    },
+                    "RELACION": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "CODESTUDIANTE",
+                    "CODTUTOR",
+                    "RELACION"
+                ]
+            }
+        },
+        "required": [
+            "APELLIDOESTUDIANTE",
+            "CIUDAD",
+            "CODESTUDIANTE",
+            "CODINSCRIPCION",
+            "CODSEDE",
+            "COLEGIO",
+            "CURSO",
+            "DEPARTAMENTO",
+            "DIRECCION",
+            "FECHANACIMIENTOESTUDIANTE",
+            "GENEROESTUDIANTE",
+            "HABILITADO",
+            "NOMBREESTUDIANTE",
+            "PAIS",
+            "pivot",
+            "TIPOCOLEGIO",
+            "TURNO"
+        ]
+    }
+}
