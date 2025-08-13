@@ -146,3 +146,8 @@ def obtener_nombre_grupo_3_caracteres():
     grupos = ["AAa", "Bat", "CCf", "Deh", "EEc","FFh", "GGi", "HoH", "IaI", "MeM",
             "NN", "1f2", "3r4", "GHi", "ZcZ","LmL", "RvR", "PrP", "QuQ", "JoJ", "KaK", "KiL"]
     return random.choice(grupos)
+
+def generar_cod_caracteres():
+    caracteres_especiales = string.punctuation
+    codigo = ''.join(random.choice(caracteres_especiales) for _ in range(10))
+    return f'"{codigo}"'
