@@ -1,6 +1,7 @@
 import requests
 import random
 import json
+from src.utils.generador_codigo import generar_codigo
 from src.utils.logger_config import logger
 from typing import Dict, Any, Literal, Iterable, Optional
 
@@ -14,6 +15,24 @@ def obtener_trabajadores(get_url):      #SVT001,
 def obtener_trabajador_aleatorio (get_url):     #SVT001,
     lista_trab = obtener_trabajadores(get_url)
     return random.choice(lista_trab)["CODTRABAJADOR"]
+
+def obtener_codigo_de_trabajador(get_url):
+    logger.info("Obtener un trabajador existente aleatorio.")
+    CODTRABAJADOR = obtener_trabajador_aleatorio (get_url)
+    logger.debug(f"Trabajador elegido: {CODTRABAJADOR}.")
+    return CODTRABAJADOR
+
+def obtener_codigo_de_trabajador_inexistente():
+    logger.info("Generar codigo inexistente.")
+    CODTRABAJADOR = generar_codigo()
+    logger.debug(f"El codigo inexistente es: {CODTRABAJADOR}.")
+    return CODTRABAJADOR
+
+def obtener_codigo_de_trabajador_invalido():
+    logger.info("Usar un codigo de trabajador invalido.")
+    CODTRABAJADOR = "203$%%00105XYZ@@"
+    logger.debug(f"El codigo invalido es: {CODTRABAJADOR}.")
+    return CODTRABAJADOR
 
 def enviar_GET(get_url, CODTRABAJADOR):     #SVT001, SVT002, SVT005, SVT018, SVT019
     endpoint = "obtenerTrabajador/" + CODTRABAJADOR

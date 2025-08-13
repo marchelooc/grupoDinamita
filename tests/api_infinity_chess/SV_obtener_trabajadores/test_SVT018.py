@@ -1,5 +1,5 @@
 import pytest
-from src.api_infinity_chess.obtener_trabajadores import obtener_trabajador_aleatorio, enviar_GET, verificar_estructura
+from src.api_infinity_chess.obtener_trabajadores import obtener_codigo_de_trabajador, enviar_GET, verificar_estructura
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
@@ -7,10 +7,7 @@ from src.utils.logger_config import logger
 @pytest.mark.smoke
 def test_verificar_que_la_estructura_sea_completa_en_la_respuesta (get_url):
     logger.info("Inicio de test SVT018.")
-    logger.info("Obtener un trabajador existente aleatorio.")
-    CODTRABAJADOR = obtener_trabajador_aleatorio (get_url)
-    logger.debug(f"Trabajador elegido: {CODTRABAJADOR}.")
-    response = enviar_GET (get_url, CODTRABAJADOR)
+    response = enviar_GET (get_url, obtener_codigo_de_trabajador(get_url))
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 200
     logger.info("Validando schema del response.")
