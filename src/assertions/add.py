@@ -4,7 +4,7 @@ from src.utils.logger_config import logger
 
 def assert_validar_response_schema(response, schema):
     try:
-        jsonschema.validate(instance=response.json(), schema=schema)
+        jsonschema.validate(instance=response.json(), schema=schema , format_checker=jsonschema.FormatChecker())
         logger.debug("Response validado correctamente con el Schema.")
         return True
     except jsonschema.exceptions.ValidationError as err:

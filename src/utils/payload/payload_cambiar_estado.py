@@ -12,3 +12,18 @@ payload_vacio = {
 }
 payload_sin_body = {
 }
+
+payload_deshabilitado = {
+     "HABILITADO" : "Deshabilitado"
+}
+payload_habilitado = {
+     "HABILITADO" : "Habilitado"
+}
+payload_invalidoH = {
+     "HABILITADO" : "Pendiente"
+}
+payload_vacioH = {
+     "HABILITADO" : ""
+}
+payload_sin_body = {
+}
