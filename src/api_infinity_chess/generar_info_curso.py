@@ -50,6 +50,7 @@ def crear_grupo(get_url,CODCURSO):
     nombre_grupo=obtener_nombre_grupo()
     codigo=generar_cod(nombre_grupo)
     payload=generar_payload_eliminar(CODCURSO,nombre_grupo,codigo)
+    logger.debug(f"payload generado: {payload}")
     url_final = get_url + end_point
     requests.post(url_final, json=payload)
     return codigo
@@ -57,7 +58,7 @@ def crear_grupo(get_url,CODCURSO):
 def eliminar_grupo(get_url,codigo):
     end_point="/eliminarGrupo/"+codigo
     url_final= get_url + end_point
-    requests.delete(url_final)
+    return requests.delete(url_final)
 
 def realizar_eliminacion(get_url,codigo,):
     end_point="/eliminarGrupo/"+codigo
@@ -79,3 +80,16 @@ def crear_grupo_limite(get_url,CODMATERIA,limite):
     url_final = get_url + end_point
     requests.post(url_final, json=payload)
     return codigo
+
+#def crear_grupo(get_url):
+#    lista_cursos = obtener_cursos(get_url)
+#    CODCURSO = random.choice(lista_cursos)["CODCURSO"]
+#    logger.debug(f"Curso seleccionado: {CODCURSO}")
+#    crear_grupo(get_url,CODCURSO)
+#    return CODCURSO
+
+def obtener_grupo(get_url,cod_materia,cod_grupo):
+    lista=obtener_lista_grupos(get_url,cod_materia)
+    grupo = next(g for g in lista if g["CODGRUPO"] == cod_grupo)
+    logger.debug(f"Grupo creado y obtenido: {grupo}")
+    return grupo

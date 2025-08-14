@@ -5,13 +5,14 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-def test_verificar_que_se_elimine_un_grupo_con_id_vacio(get_url):
-    logger.info("Iniciando test MAM021.")
-    codigo=""
+def test_validar_comortamiento_de_eliminar_con_id_largo(get_url):
+    logger.info("Iniciando test MAM029.")
+    codigo="2025grupomayorde30caracteresenId" #id de grupo largo
+    logger.debug(f"codigo generado: {codigo}")
     #eliminar grupo
     response = realizar_eliminacion(get_url,codigo)
     logger.info(f"Código de respuesta: {response.status_code}.")
-    assert response.status_code==404
+    assert response.status_code==400
     try:
         data = response.json()
     except ValueError:
