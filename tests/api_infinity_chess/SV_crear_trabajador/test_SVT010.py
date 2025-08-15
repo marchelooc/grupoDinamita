@@ -1,7 +1,7 @@
 import pytest
-from src.api_infinity_chess.crear_trabajador import enviar_POST, tierdown_enviar_DELETE
+from src.api_infinity_chess.eliminar_trabajador import tierdown_eliminar_trabajador_creado
+from src.api_infinity_chess.crear_trabajador import enviar_POST
 from src.utils.payload.payload_crear_trabajador import crear_payload_fecha_menor
-from src.utils.response_500 import response_500
 from src.assertions.add import assert_validar_response_schema, assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
@@ -12,9 +12,8 @@ def test_crear_trabajador_menor_de_18_años (get_url):
     logger.info("Iniciando test SVT010.")
     logger.info("Obtener datos de un trabajador con fecha de nacimiento invalida.")
     payload = crear_payload_fecha_menor()
-    logger.debug(payload)
+    logger.debug(f"Payload:{payload}.")
     response = enviar_POST (get_url, payload)
-    response_500(response)
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
     logger.info("Validando schema del response.")
@@ -22,11 +21,5 @@ def test_crear_trabajador_menor_de_18_años (get_url):
     logger.info("La fecha de nacimiento del trabajador no es valida.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 422
-    #tierdown
-    logger.info("Obtener al trabajador creado.")
-    CODTRABAJADOR = payload.get("CODTRABAJADOR")
-    logger.debug(f"El codigo del trabajador creado es: {CODTRABAJADOR}.")
-    response = tierdown_enviar_DELETE (get_url, CODTRABAJADOR)
-    logger.info(f"Codigo de respuesta DELETE: {response.status_code}")
-    assert response.status_code == 200
+    tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     logger.info("Test completado.")
