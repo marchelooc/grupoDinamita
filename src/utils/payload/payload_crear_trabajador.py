@@ -192,9 +192,9 @@ def payload_con_campos_obligatorios_vacios():
                 }
 
 def crear_payload_para_actualizar(trabajador):
-    
+    nombre = generar_nombre()
     return {
-            "NOMBRETRABAJADOR":"Nombre Random",
+            "NOMBRETRABAJADOR":nombre,
             "FECHANACIMIENTOTRABAJADOR":generar_fecha_nac(),
             "ROLTRABAJADOR" : "Secretarie",
             "CONTRASEÑA": generar_contraseña()
@@ -265,4 +265,13 @@ def crear_payload_vacio(trabajador):
     
     return {
             
+            }
+
+def crear_payload_para_actualizar_E2E(trabajador):
+    nombre = generar_nombre()
+    return {
+            "NOMBRETRABAJADOR":nombre,
+            "FECHANACIMIENTOTRABAJADOR":generar_fecha_nac(),
+            "ROLTRABAJADOR" : "Secretarie",
+            "CONTRASEÑA": generar_contraseña()
             }

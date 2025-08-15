@@ -29,5 +29,3 @@ def test_crear_un_trabajador_con_todos_los_datos_validos (get_url):
     logger.info(f"Codigo de respuesta DELETE: {response.status_code}")
     assert response.status_code == 200
     logger.info("Test completado.")
-    
-    

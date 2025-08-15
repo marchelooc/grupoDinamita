@@ -16,6 +16,16 @@ def obtener_trabajador_aleatorio (get_url):     #SVT001,
     lista_trab = obtener_trabajadores(get_url)
     return random.choice(lista_trab)["CODTRABAJADOR"]
 
+def obtener_nombre_trabajador_aleatorio (get_url):
+    lista_trab = obtener_trabajadores(get_url)
+    return random.choice(lista_trab)["NOMBRETRABAJADOR"]
+
+def obtener_nombre_de_trabajador(get_url):
+    logger.info("Obtener nombre de trabajador existente aleatorio.")
+    NOMBRETRABAJADOR = obtener_nombre_trabajador_aleatorio (get_url)
+    logger.debug(f"Trabajador elegido: {NOMBRETRABAJADOR}.")
+    return NOMBRETRABAJADOR
+
 def obtener_codigo_de_trabajador(get_url):
     logger.info("Obtener un trabajador existente aleatorio.")
     CODTRABAJADOR = obtener_trabajador_aleatorio (get_url)
