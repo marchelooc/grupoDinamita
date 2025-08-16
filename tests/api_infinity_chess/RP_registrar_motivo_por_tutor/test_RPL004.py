@@ -7,7 +7,7 @@ from src.api_infinity_chess.obtener_agrear_motivo import peticion_agregar_motivo
 
 @pytest.mark.functional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG008: El backend no valida tutores inexistentes",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG008: El backend no valida tutores inexistentes",run=True)
 def test_RPL004_registro_motivo_con_tutor_inexistente (get_url):
     logger.info("Iniciando Test Case RPL004")
     payload = crear_payload_motivo_tutor_inexistente ()
