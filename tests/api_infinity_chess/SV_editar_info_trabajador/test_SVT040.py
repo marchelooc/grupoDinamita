@@ -15,6 +15,6 @@ def test_intentar_actualizar_datos_sin_enviar_el_body_del_JSON (get_url):
     response = enviar_PUT_sin_payload(get_url, trabajador)
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_actualizar_trabajador.json"))
-    assert response.status_code == 404
+    assert response.status_code == 422
     tierdown_eliminar_trabajador_editado(get_url, trabajador)
     logger.info("Test completado.")

@@ -16,5 +16,5 @@ def test_actualizar_el_CODTRABAJADOR_de_un_trabajador_existente (get_url):
     response = enviar_PUT(get_url, payload, trabajador)
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_actualizar_trabajador.json"))
-    assert response.status_code == 404
+    assert response.status_code == 409
     logger.info("Test completado.")
