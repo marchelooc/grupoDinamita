@@ -1,16 +1,14 @@
-import requests
 import pytest
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
-from src.api_infinity_chess.obtener_lista_tutores_sede import obtener_tutores_sede_sin_tutores_asignados
+from src.api_infinity_chess.obtener_lista_tutores_sede import enviar_solicitud_sede
 
 @pytest.mark.functional
 @pytest.mark.positive
 def test_RPL009_obtener_sede_sin_tutores_asignados (get_url):
     logger.info("Iniciando Test Case RPL009")
-    logger.info(get_url)
-    response = obtener_tutores_sede_sin_tutores_asignados (get_url)
+    response = enviar_solicitud_sede(get_url, "Modulo 5")
     assert response.status_code == 200
     lista_tutores = response.json()
     assert len (lista_tutores) == 0

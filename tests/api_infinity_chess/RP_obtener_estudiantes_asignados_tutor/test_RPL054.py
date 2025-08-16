@@ -1,4 +1,3 @@
-import requests
 import pytest
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema

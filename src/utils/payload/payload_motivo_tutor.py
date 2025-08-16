@@ -12,9 +12,7 @@ def crear_payload_motivo_exitoso (get_url):
         "ESTADO": "Activo"
     }
 
-def crear_payload_motivo_campos_vacios (get_url):
-    lista_tutores = obtener_tutores_activos(get_url)
-    cod_tutor = random.choice(lista_tutores)["CODTUTOR"]
+def crear_payload_motivo_campos_vacios ():
     return {
         "CODTUTOR": "", 
         "MOTIVO": "", 
@@ -32,9 +30,7 @@ def crear_payload_motivo_fecha_formato_incorrecto (get_url):
         "ESTADO": "Activo"
     }
 
-def crear_payload_motivo_tutor_inexistente (get_url):
-    lista_tutores = obtener_tutores_activos(get_url)
-    cod_tutor = random.choice(lista_tutores)["CODTUTOR"]
+def crear_payload_motivo_tutor_inexistente ():
     return {
         "CODTUTOR": "AASDKJEKJIWER", 
         "MOTIVO": "Prueba tutor inexistente", 
@@ -73,9 +69,7 @@ def crear_payload_motivo_fecha_futura (get_url):
         "ESTADO": "Activo"
     }
 
-def crear_payload_motivo_tutor_vacio (get_url):
-    lista_tutores = obtener_tutores_activos(get_url)
-    cod_tutor = random.choice(lista_tutores)["CODTUTOR"]
+def crear_payload_motivo_tutor_vacio ():
     return {
         "CODTUTOR": "" , 
         "MOTIVO": "Prueba crear motivo con tutor vacio", 
@@ -83,10 +77,6 @@ def crear_payload_motivo_tutor_vacio (get_url):
         "ESTADO": "Activo"
     }
 
-def crear_payload_motivo_sin_payload (get_url):
-    lista_tutores = obtener_tutores_activos(get_url)
-    cod_tutor = random.choice(lista_tutores)["CODTUTOR"]
-    return { }
 
 def crear_payload_motivo_largo (get_url):
     lista_tutores = obtener_tutores_activos(get_url)

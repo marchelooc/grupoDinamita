@@ -10,7 +10,7 @@ from src.api_infinity_chess.obtener_agrear_motivo import peticion_agregar_motivo
 @pytest.mark.xfail(reason="Knwon issue RPBUG004: Crea motivos con el codigo de tutor vacio",run=True)
 def test_RPL014_registro_motivo_con_campo_CODTUTOR_vacio (get_url):
     logger.info("Iniciando Test Case RPL014")
-    payload = crear_payload_motivo_tutor_vacio (get_url)
+    payload = crear_payload_motivo_tutor_vacio ()
     logger.debug(payload)
     logger.info("validando Schema de payload")
     assert_validar_schema_input (payload, cargar_schema("schema_motivo.json"))
