@@ -7,7 +7,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.funcional
+@pytest.mark.functional
 def test_actualizar_el_nombre_y_apellido_de_un_trabajador_con_uno_que_ya_existe_en_el_sistema (get_url):
     logger.info("Iniciando de test SVT029.")
     logger.info("Crear nuevo trabajador.")

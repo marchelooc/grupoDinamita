@@ -18,6 +18,6 @@ def test_actualizar_la_fecha_de_nacimiento_del_trabajador_a_una_fecha_menor_de_1
     response = enviar_PUT(get_url, payload, trabajador)
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_actualizar_trabajador.json"))
-    assert response.status_code == 409
+    assert response.status_code == 422
     tierdown_eliminar_trabajador_editado(get_url, trabajador)
     logger.info("Test completado.")
