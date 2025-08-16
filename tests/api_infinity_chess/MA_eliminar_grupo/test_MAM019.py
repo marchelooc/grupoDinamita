@@ -3,6 +3,7 @@ from src.api_infinity_chess.generar_info_curso import codigo_curso, realizar_eli
 from src.utils.logger_config import logger
 
 @pytest.mark.smoke
+@pytest.mark.regression
 def test_verificar_que_se_elimine_un_grupo_con_id_valido(get_url):
     logger.info("Iniciando test MAM019.")
     CODMATERIA = codigo_curso(get_url)

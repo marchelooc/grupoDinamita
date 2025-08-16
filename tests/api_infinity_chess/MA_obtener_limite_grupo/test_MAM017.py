@@ -6,6 +6,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
+@pytest.mark.regression
 def test_obtener_los_limites_grupos_con_id_vacio_de_una_materia_sede_modulo4(get_url):
     logger.info("Iniciando test MAM016.")
     CODMATERIA =""

@@ -6,6 +6,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
+@pytest.mark.regression
 def test_agregar_un_nuevo_grupo_con_precio_cero(get_url):
     logger.info("Iniciando test MAM006.")
     CODCURSO = codigo_curso(get_url)
