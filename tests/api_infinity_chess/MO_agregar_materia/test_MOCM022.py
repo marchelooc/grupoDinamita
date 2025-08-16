@@ -16,10 +16,10 @@ def test_agregar_una_materia_con_headers_de_tipo_texto_plano(get_url):
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload_materia_correcta,cargar_schema("schema_materias.json"))
     response = crear_materia(get_url, payload_materia_correcta)
-    response_500(response)
-    assert response.status_code == 201
+    logger.debug(f"ESTE ES EL RESPONSE {response}.")
     eliminar_materia_con_header(get_url, "2025Taller", headers_text)
-    logger.info(f"Código de respuesta: {response.status_code}.")
+    logger.debug(f"Código de respuesta: {response.status_code}.")
+    assert response.status_code == 400
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_materias.json"))
     logger.info("Test MOCM022 realizado.")

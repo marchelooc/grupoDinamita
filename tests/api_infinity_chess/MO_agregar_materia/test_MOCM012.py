@@ -7,6 +7,7 @@ from src.api_infinity_chess.materia import existe_materia_repetida, crear_materi
 from src.utils.logger_config import logger
 from src.utils.payload.payloads_materias import payload_materia_repetida
 
+@pytest.mark.negative
 @pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue MOCBUG01: HTTP incorrecto", run=True)
 def test_validar_comportamiento_al_agregar_curso_con_CODCURSO_duplicado(get_url):
@@ -21,7 +22,7 @@ def test_validar_comportamiento_al_agregar_curso_con_CODCURSO_duplicado(get_url)
     url_final = get_url + endpoint
     logger.info(f"Enviando POST {url_final}.")
     response = requests.post(url_final, json=payload_materia_repetida)
-    response_500(response)
+    logger.debug(f"ESTE ES EL RESPONSE {response}.")
     assert response.status_code == 409
     logger.info(f"Código de respuesta: {response.status_code}.")
     logger.info("Test MOCM012 realizado.")

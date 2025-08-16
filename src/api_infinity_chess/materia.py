@@ -3,6 +3,7 @@ import requests
 import random
 from src.utils.payload.payloads_materias import payload_materia_repetida
 from src.utils.logger_config import logger
+from src.utils.response_500 import response_500
 
 def existe_materia_repetida(nombre_materia_buscada) -> bool:
     listaMaterias = obtener_cursos("https://backend.clubinfinitychess.com/")
@@ -38,6 +39,7 @@ def crear_materia(get_url, pyload_de_materia):
     response_crear = requests.post(urlFinal, json = pyload_de_materia)
 #    assert response_crear.status_code == 201
     logger.info(f"Código de respuesta del post: {response_crear.status_code}.")
+    response_500(response_crear)
     return response_crear
 
 def eliminar_materia(get_url, cod_materia):
@@ -67,3 +69,14 @@ def recuperar_cursos_sede(get_url, nombre_sede):
     lista_url = get_url + endpoint
     logger.info(f"Enviando GET {lista_url}.")
     return requests.get(lista_url)
+
+def recuperar_cursos_sede_con_header(get_url, nombre_sede, tipo_header):
+    endpoint = "obtenerCursos/" + nombre_sede
+    lista_url = get_url + endpoint
+    logger.info(f"Enviando GET {lista_url}.")
+    return requests.get(lista_url,  headers=tipo_header)
+
+def validar_curso_dentro_de_cursos_sede_response(response, codigo_curso):
+    cursos = response.json()
+    nombres = [curso['CODCURSO'] for curso in cursos]
+    assert codigo_curso not in nombres, "El curso no fue eliminado"
