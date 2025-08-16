@@ -4,6 +4,7 @@ from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actual
 
 @pytest.mark.functional
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue RPBUG017: El sistema no valida el limite de digitos en el numero de celular",run=True)
 def test_RPL038_actualizar_tutor_con_celular_mayor_8_digitos (get_url):
     logger.info("Iniciando test RPL038.")
     logger.info("Crear nuevo tutor.")

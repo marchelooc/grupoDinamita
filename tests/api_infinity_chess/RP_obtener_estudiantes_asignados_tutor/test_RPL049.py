@@ -6,6 +6,7 @@ from src.api_infinity_chess.obtener_estudiantes_tutor import enviar_solicitud
 
 @pytest.mark.functional
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue RPBUG019: El sistema no valida los campos de entrada",run=True)
 def test_RPL049_obtener_estudiantes_con_tutor_inexistente (get_url):
     logger.info("Iniciando Test Case RPL049")
     response = enviar_solicitud(get_url, "2024111ASCDRF")
