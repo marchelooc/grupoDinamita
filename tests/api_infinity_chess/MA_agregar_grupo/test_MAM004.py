@@ -6,7 +6,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG003: Esta manejando incorrectamente el codigo de error en el response", run=True)
+@pytest.mark.xfail(reason="Knwon issue MABUG003: El endpoint /agregarGrupo devuelve 500 en vez de 400 cuando NOMBREGRUPO excede la longitud permitida", run=True)
 def test_agregar_un_nuevo_grupo_con_40_caracteres_en_nombre(get_url):
     logger.info("Iniciando test MAM004.")
     CODCURSO = codigo_curso(get_url)

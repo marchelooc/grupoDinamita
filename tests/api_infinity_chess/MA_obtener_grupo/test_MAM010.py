@@ -8,10 +8,10 @@ from src.utils.logger_config import logger
 @pytest.mark.negative
 def test_obtener_grupos_de_una_materia_con_id_invalido_sede_modulo4(get_url):
     logger.info("Iniciando test MAM010.")
-    CODMATERIA ="abcde" #ID invalido
+    CODMATERIA ="abcde"
     logger.debug(f"Codigo materia seleccionado: {CODMATERIA}.")
     response = solicitar_peticion(get_url,CODMATERIA,headers_content_json)
-    logger.debug(response.json)
+    logger.debug(f"response:{response.json()}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==200
     logger.info("Validando schema del response.")

@@ -11,7 +11,7 @@ def test_agregar_un_nuevo_grupo_con_nombre_dos_caracteres(get_url):
     logger.info("Iniciando test MAM002.")
     CODCURSO = codigo_curso(get_url)
     logger.debug(f"Curso seleccionado: {CODCURSO}")
-    payload = generar_payload_2_carac()
+    payload = generar_payload_2_carac(CODCURSO)
     logger.debug(f"payload: {payload}")
     response = realizar_peticion(get_url,payload)
     logger.info("Validando schema del payload.")

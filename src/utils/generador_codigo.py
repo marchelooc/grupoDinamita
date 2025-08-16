@@ -143,6 +143,11 @@ def generar_cod_letras():
 
 
 def generar_cod_caracteres():
-    caracteres_especiales = string.punctuation.replace("%","$",).replace("#","$")
+    caracteres_especiales = string.punctuation.replace("%","$",).replace("#","$").replace("/","@")
+    codigo = ''.join(random.choice(caracteres_especiales) for _ in range(6))
+    return f'"{codigo}"'
+
+def generar_codigo_caracteres_invalidos():
+    caracteres_especiales = string.punctuation
     codigo = ''.join(random.choice(caracteres_especiales) for _ in range(6))
     return f'"{codigo}"'
