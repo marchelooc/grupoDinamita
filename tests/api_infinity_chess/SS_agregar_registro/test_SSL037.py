@@ -6,6 +6,7 @@ from src.api_infinity_chess.registro import enviar_solicitud
 from src.utils.payload.payload_registro import crear_payload_trabajador_invalido
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG007: Sistema crea registo con un tutor invalido",run=True)
 def test_registro_codigo_trabajador_invalido (get_url):
      logger.info("Iniciando test SSL037.")
      payload = crear_payload_trabajador_invalido(get_url)

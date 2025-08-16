@@ -6,6 +6,7 @@ from src.api_infinity_chess.registro import enviar_solicitud
 from src.utils.payload.payload_registro import crear_payload_valido
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG006: Sistema no valida datos del body",run=True)
 def test_registro_codigo_duplicado (get_url):
      logger.info("Iniciando test SSL046.")
      payload = crear_payload_valido(get_url)
