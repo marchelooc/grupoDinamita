@@ -1,6 +1,5 @@
 import requests
 import pytest
-from src.utils.response_500 import response_500
 from src.assertions.add import assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
 from src.api_infinity_chess.materia import existe_materia_repetida, crear_materia_repetida

@@ -1,8 +1,5 @@
-import requests
 import pytest
-from src.utils.response_500 import response_500
 from src.assertions.add import assert_validar_schema_input, assert_validar_response_schema
-from src.utils.generador_codigo import generar_nom_materia, generar_cod
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 from src.utils.payload.payloads_materias import payload_materia_correcta, headers_json

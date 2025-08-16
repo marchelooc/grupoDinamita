@@ -1,6 +1,4 @@
-import requests
 import pytest
-from src.utils.response_500 import response_500
 from src.assertions.add import assert_validar_schema_input, assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
