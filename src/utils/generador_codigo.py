@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from src.api_infinity_chess.materia import existe_materia_repetida
 import random
 import string
 
@@ -122,9 +123,19 @@ def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True):
     return contraseña
 
 def generar_nom_materia():
-    materias = ["Ingles", "Ruso", "Esñaol", "Quechua", "Mandarín","Polaco", "Árabe", "Birmano",
-            "Chino", "Yoruba", "Japones", "Indonesio", "Portugues","Frances", "Italiano"]
-    return random.choice(materias)
+    materias = [
+            "Ingles", "Ruso", "Esñaol", "Quechua", "Mandarín","Polaco", "Árabe", "Birmano",
+            "Chino", "Yoruba", "Japones", "Indonesio", "Portugues","Frances", "Italiano"
+            "Ingles2", "Ruso2", "Español2", "Quechua2", "Mandarín2","Polaco2", "Árabe2", "Birmano2",
+            "Chino2", "Yoruba2", "Japones2", "Indones2", "Portugal2","Frances2", "Italiano2"
+            ]
+    materia = random.choice(materias)
+    existe = existe_materia_repetida(materia)
+    if (existe) : 
+        while (existe):
+            materia = random.choice(materias)
+            existe = existe_materia_repetida(materia)
+    return materia
 
 def obtener_nombre_grupo_2_caracteres():
     grupos = ["AA", "Ba", "CC", "De", "EE","FF", "GG", "HH", "II", "MM",

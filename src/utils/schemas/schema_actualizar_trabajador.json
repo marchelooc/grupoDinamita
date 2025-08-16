@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "NOMBRETRABAJADOR": {
+        "type": "string"
+        },
+        "FECHANACIMIENTOTRABAJADOR": {
+        "type": "string"
+        },
+        "ROLTRABAJADOR": {
+        "type": "string"
+        },
+        "CONTRASEÑA": {
+        "type": "string"
+        }
+    },
+    "required": [
+        "NOMBRETRABAJADOR",
+        "FECHANACIMIENTOTRABAJADOR",
+        "ROLTRABAJADOR",
+        "CONTRASEÑA"
+    ]
+}

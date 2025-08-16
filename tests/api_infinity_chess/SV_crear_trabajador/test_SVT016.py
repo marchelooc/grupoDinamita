@@ -1,6 +1,7 @@
-import requests
 import pytest
-from src.utils.generador_codigo import generar_nombre, generar_codigo_trab, generar_fecha_nac, generar_contraseña
+from src.api_infinity_chess.eliminar_trabajador import tierdown_eliminar_trabajador_creado
+from src.api_infinity_chess.crear_trabajador import enviar_POST
+from src.utils.payload.payload_crear_trabajador import payload_con_campos_obligatorios_vacios
 from src.assertions.add import assert_validar_response_schema, assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
@@ -8,32 +9,18 @@ from src.utils.logger_config import logger
 @pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue SVBUG006: El sistema no maneja correctamente los registros incompletos", run=True)
 def test_crear_trabajador_con_campos_obligatorios_vacios (get_url):
-    nombre = generar_nombre()
-    codigo = generar_codigo_trab(nombre)
-    fecha = generar_fecha_nac()
-    endpoint = "agregarTrabajador"
-    payload = {
-        "CODTRABAJADOR": codigo,
-        "NOMBRETRABAJADOR": "",               # Campo obligatorio vacío
-        "FECHANACIMIENTOTRABAJADOR": fecha,
-        "ROLTRABAJADOR": "Maestro",
-        "CODSEDE": "Modulo 4",
-        "CONTRASEÑA": "",                     # Campo obligatorio vacío
-    }
+    logger.info("Iniciando test SVT016.")
+    logger.info("Obtener datos de un trabajador con campos obligatorios vacios.")
+    payload = payload_con_campos_obligatorios_vacios()
+    logger.debug(f"Payload:{payload}.")
+    response = enviar_POST (get_url, payload)
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
-    url_final = get_url + endpoint
-    logger.info(f"Enviando POST a {url_final}")
-    logger.debug(payload)
-    response = requests.post(url_final, json=payload)
-    logger.info(f"Codigo de respuesta: {response.status_code}.")
-    assert response.status_code == 422         # Se rechaza por campos obligatorios vacíos
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
-    
-    url_delete = f"{get_url}eliminarTrabajador/{codigo}"
-    logger.info(f"Enviando DELETE a {url_delete}")
-    response_delete = requests.delete(url_delete)
-    logger.info(f"Codigo de respuesta DELETE: {response_delete.status_code}")
-    assert response_delete.status_code == 200, (f"Codigo de respuesta {response_delete.status_code}")
+    logger.info("Existen campos obligatorios vacios en el registro del trabajador.")
+    logger.debug(f"Response:{response.json()}.")
+    logger.info(f"Codigo de respuesta: {response.status_code}.")
+    assert response.status_code == 422
+    tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     logger.info("Test completado.")

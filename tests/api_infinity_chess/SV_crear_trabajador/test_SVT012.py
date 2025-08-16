@@ -1,40 +1,26 @@
-import requests
 import pytest
-from src.utils.generador_codigo import generar_nombre, generar_codigo_trab, generar_fecha_nac, generar_contraseña
+from src.api_infinity_chess.eliminar_trabajador import tierdown_eliminar_trabajador_creado
+from src.api_infinity_chess.crear_trabajador import enviar_POST
+from src.utils.payload.payload_crear_trabajador import payload_con_rol_invalido
 from src.assertions.add import assert_validar_response_schema, assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.regression
+@pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue SVBUG004: El sistema acepta diferentes roles a los establecidos", run=True)
 def test_crear_trabajador_con_rol_invalido (get_url):
-    nombre = generar_nombre()
-    codigo = generar_codigo_trab(nombre).strip()
-    fecha = generar_fecha_nac()
-    contra = generar_contraseña()
-    endpoint = "agregarTrabajador"
-    payload = {
-        "CODTRABAJADOR": codigo,
-        "NOMBRETRABAJADOR": nombre,
-        "FECHANACIMIENTOTRABAJADOR": fecha,
-        "ROLTRABAJADOR": "RolInvalido",  # Valor inválido
-        "CODSEDE": "Modulo 4",
-        "CONTRASEÑA": contra,
-    }
+    logger.info("Iniciando test SVT012.")
+    logger.info("Obtener datos de un trabajador con rol invalido.")
+    payload = payload_con_rol_invalido()
+    logger.debug(f"Payload:{payload}.")
+    response = enviar_POST (get_url, payload)
     logger.info("Validando schema de entrada del payload.")
-    assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json")) 
-    url_final = get_url + endpoint
-    logger.info(f"Enviando POST a {url_final}")
-    logger.debug(payload)
-    response = requests.post(url_final, json=payload)
-    logger.info(f"Codigo de respuesta: {response.status_code}.")
-    assert response.status_code == 422      # Se rechaza el rol inválido
+    assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
     logger.info("Validando schema del response.")
-    assert_validar_response_schema(response,cargar_schema("schema_trabajador.json")) 
-    
-    url_delete = f"{get_url}eliminarTrabajador/{codigo}"
-    logger.info(f"Enviando DELETE a {url_delete}")
-    response_delete = requests.delete(url_delete)
-    logger.info(f"Codigo de respuesta DELETE: {response_delete.status_code}")
-    assert response_delete.status_code == 200, (f"Codigo de respuesta {response_delete.status_code}")
+    assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
+    logger.info("El rol del trabajador no esta permitido.")
+    logger.debug(f"Response:{response.json()}.")
+    logger.info(f"Codigo de respuesta: {response.status_code}.")
+    assert response.status_code == 422
+    tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     logger.info("Test completado.")
