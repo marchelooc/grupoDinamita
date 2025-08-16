@@ -1,8 +1,6 @@
-import requests
-import json
 import pytest
-import random
-from src.api_infinity_chess.obtener_curso import obtener_cursos
+from src.api_infinity_chess.generar_info_curso import codigo_curso, solicitar_peticion
+from src.utils.headers.headers_grupo import headers_content_json
 from src.utils.cargar_schema import cargar_schema
 from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
@@ -10,16 +8,9 @@ from src.utils.logger_config import logger
 @pytest.mark.smoke
 def test_obtener_grupos_de_una_materia_con_id_valido_sede_modulo4(get_url):
     logger.info("Iniciando test MAM009.")
-    cursos=obtener_cursos(get_url)
-    CODMATERIA = random.choice(cursos)["CODCURSO"]
-    end_point = "obtenerGrupo/"+CODMATERIA+"/Modulo 4"
+    CODMATERIA = codigo_curso(get_url)
     logger.debug(f"Codigo materia seleccionado: {CODMATERIA}.")
-    lista_url = get_url + end_point
-    logger.info(f"Enviando GET a {lista_url}.")
-    headers = {
-    'Content-Type': 'application/json'
-    }
-    response = requests.get(lista_url, headers=headers)
+    response = solicitar_peticion(get_url,CODMATERIA,headers_content_json)
     logger.debug(response.json)
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==200
