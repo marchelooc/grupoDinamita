@@ -3,16 +3,14 @@ import pytest
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger 
+from src.api_infinity_chess.obtener_lista_tutores_sede import obtener_tutores__sede_escrita_MAYUSCULAS_minusculas
 
 @pytest.mark.functional
 @pytest.mark.positive
 def test_RPL012_obtener_tutor_por_sede_escrita_en_MAYUSCULAS_minusculas (get_url):
     logger.info("Iniciando Test Case RPL012")
     logger.info(get_url)
-    endpoint = "obtenerTutores/MoDuLo 4"
-    lista_url = get_url + endpoint
-    logger.debug(lista_url)
-    response = requests.get(lista_url)
+    response = obtener_tutores__sede_escrita_MAYUSCULAS_minusculas (get_url)
     assert response.status_code == 200
     lista_tutores = response.json()
     assert len (lista_tutores) > 0

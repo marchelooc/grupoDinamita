@@ -2,7 +2,7 @@ import pytest
 from src.utils.logger_config import logger 
 from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actualizar_tutor_nombre_40_caracteres, eliminar_tutor
 
-@pytest.mark.smoke
+@pytest.mark.functional
 def test_RPL056_actualizar_tutor_nombre_40_caracteres_limite (get_url):
     logger.info("Iniciando test RPL056.")
     logger.info("Crear nuevo tutor.")

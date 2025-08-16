@@ -2,7 +2,8 @@ import pytest
 from src.utils.logger_config import logger 
 from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actualizar_tutor_nombre_vacio, eliminar_tutor
 
-@pytest.mark.smoke
+@pytest.mark.functional
+@pytest.mark.negative
 def test_RPL029_actualizar_tutor_con_campo_nombre_vacio(get_url):
     logger.info("Iniciando test RPL029.")
     logger.info("Crear nuevo tutor.")

@@ -2,7 +2,8 @@ import pytest
 from src.utils.logger_config import logger 
 from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actualizar_tutor_celular, eliminar_tutor
 
-@pytest.mark.smoke
+@pytest.mark.functional
+@pytest.mark.negative
 def test_RPL024_actualizar_solo_num_cel_de_tutor_existente(get_url):
     logger.info("Iniciando test RPL024.")
     logger.info("Crear nuevo tutor.")

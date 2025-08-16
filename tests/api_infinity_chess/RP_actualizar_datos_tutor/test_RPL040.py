@@ -2,7 +2,9 @@ import pytest
 from src.utils.logger_config import logger 
 from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actualizar_tutor_caracteres_especiales_nombre, eliminar_tutor
 
-@pytest.mark.smoke
+@pytest.mark.functional
+@pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue RPBUG014: Actualiza los datos de un tutor cuando el nombre contiene caracteres especiales",run=True)
 def test_RPL040_actualizar_tutor_con_caracteres_especiales_nombre (get_url):
     logger.info("Iniciando test RPL040.")
     logger.info("Crear nuevo tutor.")

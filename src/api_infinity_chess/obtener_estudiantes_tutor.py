@@ -8,3 +8,7 @@ def enviar_solicitud (get_url, CODTUTOR):
     logger.debug(lista_url)
     response = requests.get(lista_url)
     return response
+
+def validar_lista_un_estudiante (lista_tutores):
+    assert len (lista_tutores) > 0
+    assert len (lista_tutores) < 2

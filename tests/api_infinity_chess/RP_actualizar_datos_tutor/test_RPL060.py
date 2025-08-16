@@ -2,7 +2,7 @@ import pytest
 from src.utils.logger_config import logger 
 from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actualizar_tutor_cod_pais, eliminar_tutor
 
-@pytest.mark.smoke
+@pytest.mark.functional
 def test_RPL060_actualizar_numero_cel_con_codigo_pais (get_url):
     logger.info("Iniciando test RPL060.")
     logger.info("Crear nuevo tutor.")
