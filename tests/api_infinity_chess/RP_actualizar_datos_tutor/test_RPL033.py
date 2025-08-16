@@ -3,6 +3,7 @@ from src.utils.logger_config import logger
 from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actualizar_tutor_nombre_caracteres, eliminar_tutor
 
 @pytest.mark.functional
+@pytest.mark.xfail(reason="Knwon issue RPBUG015: El sistema no valida el limite de caracteres en el nombre",run=True)
 def test_RPL033_actualizar_tutor_con_campo_nombre_mayor_limite_permitido(get_url):
     logger.info("Iniciando test RPL033.")
     logger.info("Crear nuevo tutor.")
