@@ -6,7 +6,7 @@ from src.assertions.add import assert_validar_response_schema, assert_validar_sc
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.regression
+@pytest.mark.functional
 def test_verificar_los_datos_del_trabajador_creado (get_url):
     logger.info("Iniciando test SVT007.")
     logger.info("Obtener datos de un trabajador para registrarlo en el sistema.")

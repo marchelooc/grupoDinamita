@@ -6,7 +6,7 @@ from src.assertions.add import assert_validar_response_schema, assert_validar_sc
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.regression
+@pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue SVBUG004: El sistema acepta diferentes roles a los establecidos", run=True)
 def test_crear_trabajador_con_rol_invalido (get_url):
     logger.info("Iniciando test SVT012.")

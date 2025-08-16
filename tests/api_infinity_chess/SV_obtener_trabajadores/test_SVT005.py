@@ -4,7 +4,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
-@pytest.mark.regression
+@pytest.mark.functional
 def test_validar_que_la_contraseña_se_muestre_cifrada(get_url):
     logger.info("Inicio de test SVT005.")
     response = enviar_GET (get_url, obtener_codigo_de_trabajador(get_url))
