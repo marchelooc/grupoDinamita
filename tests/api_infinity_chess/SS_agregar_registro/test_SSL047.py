@@ -5,6 +5,7 @@ from src.utils.logger_config import logger
 from src.api_infinity_chess.registro import enviar_solicitud
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG003: Payload invalido",run=True)
 def test_registro_sin_body (get_url):
      logger.info("Iniciando test SSL047.")
      payload = {}

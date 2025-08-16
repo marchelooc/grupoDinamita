@@ -17,6 +17,7 @@ def test_cambio_de_estado_de_tutor_inactivo (get_url):
      response = enviar_solicitud (get_url, CODTUTOR,payload_inactivo)
      logger.info(f"Código de respuesta: {response.status_code}.")
      assert response.status_code == 200
+     logger.debug(f"Response: {response.json()}")
      logger.info("Validando schema del response.")
      assert_validar_response_schema(response,cargar_schema("schema_tutor.json"))
      logger.info("Test completado.")

@@ -6,6 +6,7 @@ from src.api_infinity_chess.registro import enviar_solicitud
 from src.utils.payload.payload_registro import crear_payload_valido
 
 @pytest.mark.functional
+@pytest.mark.xfail(reason="Knwon issue SSBUG005: Sistema no soporta formato text/plain",run=True)
 def test_registro_header_Content_Type_application_x_www_form_urlencoded (get_url):
      logger.info("Iniciando test SSL048.")
      payload = crear_payload_valido(get_url)

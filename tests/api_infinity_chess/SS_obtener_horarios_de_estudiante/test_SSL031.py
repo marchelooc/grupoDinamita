@@ -4,6 +4,7 @@ from src.api_infinity_chess.obtener_estudiantes import enviar_solicitud
 from src.utils.generador_codigo import generar_codigo
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG011: Obtiene lista vacia de estudiante inexistente",run=True)
 def test_estudiante_inexistente(get_url):
      logger.info("Iniciando test SSL031.")
      logger.info("Obtener un estudiante no registrado.")

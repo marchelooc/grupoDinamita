@@ -6,6 +6,7 @@ from src.api_infinity_chess.cambiar_estado_estudiante import obtener_estudiante_
 from src.utils.payload.payload_cambiar_estado import payload_invalidoH
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG001: Aceptar valor de estado invalido",run=True)
 def test_validación_de_valor_inválido_en_campo_estado (get_url):
      logger.info("Iniciando test SSL025.")
      logger.info("Obtener un estudiante aleatorio.")
