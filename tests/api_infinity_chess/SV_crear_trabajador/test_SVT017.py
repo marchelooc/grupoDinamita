@@ -12,6 +12,7 @@ def test_crear_un_trabajador_con_content_type_text_plain (get_url):
     payload = crear_payload_valido()
     logger.debug(f"Payload:{payload}.")
     response = enviar_POST_textplain(get_url, payload, headers=None)
+    logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 415
     logger.info("Metodo incorrecto.")

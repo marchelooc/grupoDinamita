@@ -38,3 +38,15 @@ def tierdown_enviar_DELETE(get_url, CODTRABAJADOR):     #
     url_delete = get_url + endpoint
     logger.info(f"Enviando DELETE a {url_delete}")
     return requests.delete(url_delete)
+
+def tierdown_eliminar_trabajador_editado(get_url, trabajador):
+    logger.info("Obtener al trabajador creado.")
+    response = tierdown_enviar_DELETE (get_url, trabajador)
+    logger.info(f"Codigo de respuesta DELETE: {response.status_code}")
+    assert response.status_code == 200
+
+def tierdown_enviar_DELETE_edit(get_url, trabajador):
+    endpoint = "eliminarTrabajador/" + trabajador
+    url_delete = get_url + endpoint
+    logger.info(f"Enviando DELETE a {url_delete}")
+    return requests.delete(url_delete)

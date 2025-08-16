@@ -19,6 +19,7 @@ def test_crear_trabajador_con_numeros_en_el_campo_nombre (get_url):
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
     logger.info("El nombre del trabajador es invalido.")
+    logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 422
     tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown

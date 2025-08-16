@@ -16,6 +16,7 @@ def test_crear_un_trabajador_con_todos_los_datos_validos (get_url):
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
     logger.info(f"Codigo de respuesta: {response.status_code}.")
+    logger.debug(f"Response:{response.json()}.")#en todos los tc
     assert response.status_code == 201
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))

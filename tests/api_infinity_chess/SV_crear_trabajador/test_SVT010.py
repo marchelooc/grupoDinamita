@@ -19,6 +19,7 @@ def test_crear_trabajador_menor_de_18_años (get_url):
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
     logger.info("La fecha de nacimiento del trabajador no es valida.")
+    logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 422
     tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown

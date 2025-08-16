@@ -18,6 +18,7 @@ def test_crear_trabajador_con_campos_vacios (get_url):
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
     logger.info("Existen campos opcionales vacios en el registro del trabajador.")
+    logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 201
     logger.info("Trabajador creado correctamente.")

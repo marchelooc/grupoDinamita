@@ -30,7 +30,11 @@ def enviar_PUT_sin_payload (get_url, trabajador):
         response_500(response)
         return response
 
-def enviar_PUT_con_headers (get_url, payload, trabajador, headers=None):
+def enviar_PUT_con_headers (get_url, payload, trabajador):
+        headers = {
+                "Accept": "application/json",
+                "Content-Type": "text/plain",
+                }
         endpoint = "actualizarDatosTrabajador/"
         url_final = get_url + endpoint + trabajador
         logger.info(f"Enviando PUT a {url_final}")

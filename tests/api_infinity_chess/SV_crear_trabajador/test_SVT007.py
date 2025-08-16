@@ -16,6 +16,7 @@ def test_verificar_los_datos_del_trabajador_creado (get_url):
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
     logger.info(f"Codigo de respuesta: {response.status_code}.")
+    logger.debug(f"Response:{response.json()}.")
     assert response.status_code == 201
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))

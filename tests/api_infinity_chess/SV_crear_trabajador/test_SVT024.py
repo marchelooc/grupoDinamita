@@ -18,8 +18,9 @@ def test_crear_trabajador_con_contraseña_igual_que_el_nombre_del_usuario (get_u
     assert_validar_schema_input(payload, cargar_schema("schema_trabajador.json"))
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_trabajador.json"))
+    logger.info("Contraseña del trabajador invalida.")
+    logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
     assert response.status_code == 422
-    logger.info("Contraseña del trabajador invalida.")
     tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     logger.info("Test completado.")
