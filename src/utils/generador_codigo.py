@@ -49,7 +49,8 @@ def generar_cod_inscripcion(nombre_completo):
     año = ahora.year
     mes = ahora.month
     dia = ahora.day
-    codigo = f"{año}{mes:02}{dia:02}{sub_nombre}{sub_apellido}"
+    letras_aleatorias = ''.join(random.choices(string.ascii_uppercase, k=2))
+    codigo = f"{año}{mes:02}{dia:02}{sub_nombre}{sub_apellido}{letras_aleatorias}"
     return codigo.upper()
 
 def generar_codigo_trab(nombre: str) -> str:
