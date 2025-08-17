@@ -6,6 +6,7 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
+@pytest.mark.xfail(reason="Knwon issue SVBUG017: El sistema actualiza los datos en formato text plain", run=True)
 def test_intentar_actualizar_datos_con_el_content_type_en_formato_TEXT_PLAIN (get_url):
     logger.info("Iniciando de test SVT041.")
     logger.info("Crear nuevo trabajador.")
