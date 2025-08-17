@@ -2,7 +2,7 @@ import pytest
 from src.api_infinity_chess.eliminar_trabajador import tierdown_eliminar_trabajador_creado
 from src.api_infinity_chess.crear_trabajador import enviar_POST,crear_un_trabajador
 from src.utils.payload.payload_crear_trabajador import crear_payload_valido, payload_con_codigo_existente
-from src.assertions.add import assert_validar_response_schema, assert_validar_schema_input
+from src.assertions.add import assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 

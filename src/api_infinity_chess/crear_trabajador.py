@@ -1,5 +1,6 @@
 import requests
 import json
+from src.api_infinity_chess.eliminar_trabajador import tierdown_eliminar_trabajador_creado
 from src.utils.payload.payload_crear_trabajador import crear_payload_valido
 from src.assertions.add import assert_validar_response_schema, assert_validar_schema_input
 from src.utils.cargar_schema import cargar_schema
@@ -11,6 +12,9 @@ def enviar_POST(get_url, payload):     #
     url_final = get_url + endpoint
     logger.info(f"Enviando POST a {url_final}")
     response = requests.post(url_final, json=payload)
+    if (response.status_code==500):
+        tierdown_eliminar_trabajador_creado(get_url, payload)
+        logger.info("se elimino la materia")
     response_500(response)
     return response
 
