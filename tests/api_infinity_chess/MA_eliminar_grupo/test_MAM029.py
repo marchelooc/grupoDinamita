@@ -3,7 +3,7 @@ from src.api_infinity_chess.generar_info_curso import realizar_eliminacion, vali
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG001: EL endpoint no responde correctamente cuando se elimina un grupo con id con caracteres mayores a 30", run=True)
+@pytest.mark.xfail(reason="Knwon issue MABUG011: EL endpoint no responde correctamente cuando se elimina un grupo con id con caracteres mayores a 30", run=True)
 def test_validar_comortamiento_de_eliminar_con_id_largo(get_url):
     logger.info("Iniciando test MAM029.")
     codigo="2025grupomayorde30caracteresenId"

@@ -6,7 +6,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG001: El endpoint no responde con un mensaje de error al ingresar un id con formato invalido", run=True)
+@pytest.mark.xfail(reason="Knwon issue MABUG012: El endpoint no responde con un mensaje de error al ingresar un id con formato invalido", run=True)
 def test_obtener_los_limites_grupos_con_id_invalido_de_una_materia_sede_modulo4(get_url):
     logger.info("Iniciando test MAM015.")
     CODMATERIA ="135164825asdasda" 

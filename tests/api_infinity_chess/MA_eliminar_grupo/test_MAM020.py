@@ -4,7 +4,7 @@ from src.utils.generador_codigo import generar_codigo_caracteres_invalidos
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Knwon issue MABUG001: El endpoint permite enviar un ID con formato y que contiene caracteres especiales", run=True)
+@pytest.mark.xfail(reason="Knwon issue MABUG007: El endpoint permite enviar un ID con formato y que contiene caracteres especiales", run=True)
 def test_verificar_que_se_elimine_un_grupo_con_id_formato_caracteres_no_permitidos(get_url):
     logger.info("Iniciando test MAM020.")
     logger.info("Creando grupo")

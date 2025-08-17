@@ -6,7 +6,7 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue MABUG001: El endpoint ignora Accept: text/plain y responde JSON en lugar de texto plano o 406", run=True)
+@pytest.mark.xfail(reason="Knwon issue MABUG013: El endpoint ignora Accept: text/plain y responde JSON en lugar de texto plano o 406", run=True)
 def test_validar_comportamiento_con_accept_text_plain_header(get_url):
     logger.info("Iniciando test MAM018.")
     CODMATERIA = codigo_curso(get_url)

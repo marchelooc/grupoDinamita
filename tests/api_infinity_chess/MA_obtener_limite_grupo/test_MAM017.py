@@ -1,8 +1,6 @@
 import pytest
 from src.api_infinity_chess.generar_info_curso import solicitar_peticion_limite, validar_respuesta
 from src.utils.headers.headers_grupo import headers_content_json
-from src.utils.cargar_schema import cargar_schema
-from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.negative

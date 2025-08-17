@@ -3,7 +3,7 @@ from src.api_infinity_chess.generar_info_curso import codigo_curso, realizar_eli
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue MABUG001: El endpoint no responde correctamente cuando se elimina un grupo con id que ya no existe", run=True)
+@pytest.mark.xfail(reason="Knwon issue MABUG008: El endpoint no responde correctamente cuando se elimina un grupo con id que ya no existe", run=True)
 def test_verificar_que_se_elimine_un_grupo_por_segunda_vez(get_url):
     logger.info("Iniciando test MAM022.")
     CODMATERIA = codigo_curso(get_url)
