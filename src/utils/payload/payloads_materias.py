@@ -8,8 +8,8 @@ payload_materia_correcta = {
     }
 
 def generar_materia_aleatoria():
-    codigo_curso = generar_nom_materia()
-    nombre_curso = generar_cod (codigo_curso)
+    nombre_curso = generar_nom_materia()
+    codigo_curso = generar_cod (nombre_curso)
     payload_materia_aleatoria = {
                     "CODCURSO": codigo_curso,
                     "CURSO": nombre_curso,
