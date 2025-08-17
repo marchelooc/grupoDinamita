@@ -8,7 +8,7 @@ from src.api_infinity_chess.materia import eliminar_materia
 @pytest.mark.xfail(reason="Knwon issue MOCBUG01: HTTP incorrecto", run=True)
 def test_validar_comportamiento_al_eliminar_materia_inexistente(get_url):
     logger.info("Iniciando test MOCM031.")
-    logger.debug("eliminando materia inexistente con cod 2030NOEXIST")
+    logger.info("eliminando materia inexistente con cod 2030NOEXIST")
     response = eliminar_materia(get_url, "2030NOEXIST")
     logger.debug(f"ESTE ES EL RESPONSE {response}.")
     assert response.status_code == 404

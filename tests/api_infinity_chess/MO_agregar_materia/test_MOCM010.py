@@ -3,7 +3,7 @@ from src.assertions.add import assert_validar_schema_input, assert_validar_respo
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 from src.utils.payload.payloads_materias import payload_materia_sin_CODCURSO
-from src.api_infinity_chess.materia import crear_materia, eliminar_materia
+from src.api_infinity_chess.materia import crear_materia
 
 @pytest.mark.negative
 @pytest.mark.functional
