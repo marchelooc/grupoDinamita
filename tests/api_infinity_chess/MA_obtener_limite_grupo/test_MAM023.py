@@ -7,13 +7,15 @@ def test_verificar_comportamiento_del_limite_hay(get_url):
     logger.info("Iniciando test MAM023.")
     CODMATERIA = codigo_curso(get_url)
     logger.debug(f"Curso seleccionado: {CODMATERIA}")
-    limite_diponible=7
+    limite_diponible=10
     logger.info("creando grupo limite disponible")
     codigo=crear_grupo_limite(get_url,CODMATERIA,limite_diponible)
+    logger.debug(f"{codigo}")
     lista_grupos = obtener_lista_grupos_con_limite(get_url,CODMATERIA)
     verificar_limite_hay(lista_grupos,codigo)
     logger.debug(f"Eliminando grupo con codigo: {codigo}")
     response=eliminar_grupo(get_url,codigo)
+    logger.debug(f"Este es el response: {response.json()}")
     assert response.status_code == 200
     lista_grupos = obtener_lista_grupos(get_url,CODMATERIA)
     verificar_eliminacion(lista_grupos,codigo)

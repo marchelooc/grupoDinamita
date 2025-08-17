@@ -12,7 +12,6 @@ def test_validar_comportamiento_con_accept_text_plain_header(get_url):
     CODMATERIA = codigo_curso(get_url)
     logger.debug(f"Codigo materia seleccionado: {CODMATERIA}.")
     response = solicitar_peticion_limite(get_url,CODMATERIA,headers_accept_text_plain)
-    logger.debug(f"Este es el response: {response.json}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==406
     logger.info("Validando schema del response.")

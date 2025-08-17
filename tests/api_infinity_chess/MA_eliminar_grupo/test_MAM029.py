@@ -10,7 +10,6 @@ def test_validar_comortamiento_de_eliminar_con_id_largo(get_url):
     logger.debug(f"codigo generado: {codigo}")
     logger.debug(f"Eliminando grupo con codigo: {codigo}")
     response = realizar_eliminacion(get_url,codigo)
-    logger.debug(f"response:{response.json()}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==400
     validar_respuesta(response)

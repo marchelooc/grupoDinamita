@@ -11,7 +11,6 @@ def test_verificar_que_se_elimine_un_grupo_con_id_formato_caracteres_no_permitid
     codigo=generar_codigo_caracteres_invalidos()
     logger.info("Eliminando grupo")
     response = realizar_eliminacion(get_url,codigo)
-    logger.debug(f"response:{response.json()}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     logger.debug(f"response:{response}")
     assert response.status_code==400

@@ -8,11 +8,10 @@ from src.utils.logger_config import logger
 @pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue MABUG013: El endpoint ignora Accept: text/plain y responde JSON en lugar de texto plano o 406", run=True)
 def test_validar_comportamiento_con_accept_text_html_header(get_url):
-    logger.info("Iniciando test MAM018.")
+    logger.info("Iniciando test MAM030.")
     CODMATERIA = codigo_curso(get_url)
     logger.debug(f"Codigo materia seleccionado: {CODMATERIA}.")
     response = solicitar_peticion_limite(get_url,CODMATERIA,headers_accept_html)
-    logger.debug(f"Este es el response: {response.json}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==406 
     logger.info("Validando schema del response.")

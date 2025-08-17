@@ -12,7 +12,6 @@ def test_obtener_los_limites_grupos_con_id_invalido_de_una_materia_sede_modulo4(
     CODMATERIA ="135164825asdasda" 
     logger.debug(f"Codigo materia seleccionado: {CODMATERIA}.")
     response = solicitar_peticion_limite(get_url,CODMATERIA,headers_content_json)
-    logger.debug(f"Este es el response: {response.json}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==400
     logger.info("Validando schema del response.")
