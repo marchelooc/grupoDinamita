@@ -1,4 +1,5 @@
 import pytest
+from src.api_infinity_chess.eliminar_trabajador import tierdown_eliminar_trabajador_editado
 from src.utils.payload.payload_crear_trabajador import crear_payload_para_actualizar
 from src.api_infinity_chess.actualizar_trabajador import crear_trabajador, enviar_PUT_con_endpoint_mal_escrito
 from src.assertions.add import assert_validar_schema_input
@@ -16,5 +17,6 @@ def test_verificar_que_el_endpoint_mal_escrito_retorne_un_error_404 (get_url):
     assert_validar_schema_input(payload, cargar_schema("schema_actualizar_trabajador.json"))
     logger.info ("Actualizar datos del trabajador creado")
     response = enviar_PUT_con_endpoint_mal_escrito(get_url, payload, trabajador)
+    tierdown_eliminar_trabajador_editado(get_url, trabajador)
     assert response.status_code == 404
     logger.info("Test completado.")

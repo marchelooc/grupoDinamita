@@ -1,5 +1,5 @@
 import pytest
-from src.api_infinity_chess.obtener_trabajadores import obtener_codigo_de_trabajador
+from src.api_infinity_chess.actualizar_trabajador import crear_trabajador
 from src.api_infinity_chess.eliminar_trabajador import enviar_DELETE
 from src.assertions.add import assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
@@ -8,7 +8,9 @@ from src.utils.logger_config import logger
 @pytest.mark.smoke
 def test_eliminar_un_trabajador_existente_con_CODTRABAJADOR_valido (get_url):
     logger.info("Iniciando test SVT044.")
-    response = enviar_DELETE (get_url, obtener_codigo_de_trabajador(get_url))
+    logger.info("Crear nuevo trabajador.")
+    trabajador = crear_trabajador(get_url)#precondicion
+    response = enviar_DELETE (get_url, trabajador)
     logger.info(f"Codigo de respuesta DELETE: {response.status_code}")
     logger.debug(f"Response:{response.json()}.")
     assert response.status_code == 200

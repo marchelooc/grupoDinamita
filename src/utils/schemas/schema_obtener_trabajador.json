@@ -28,16 +28,16 @@
             "type": "object",
             "properties": {
             "CODSEDE": {
-                "type": "string"
+                "type": ["string", "null"]
             },
             "UBICACION": {
-                "type": "string"
+                "type": ["string", "null"]
             },
             "NOMBRESEDE": {
-                "type": "string"
+                "type": ["string", "null"]
             },
             "DEPARTAMENTO": {
-                "type": "null"
+                "type": ["string", "null"]
             },
             "pivot": {
                 "type": "object",
