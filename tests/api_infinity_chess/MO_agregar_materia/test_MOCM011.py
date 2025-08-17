@@ -10,13 +10,13 @@ from src.api_infinity_chess.materia import crear_materia, eliminar_materia
 @pytest.mark.xfail(reason="Knwon issue MOCBUG02: Materia agregada sin nombre", run=True)
 def test_validar_comportamiento_al_agregar_curso_sin_campo_CURSO(get_url):
     logger.info("Iniciando test MOCM011.")
-    eliminar_materia(get_url, "2025BIOLOGIA")
     logger.debug("El curso a crear es: Taller")
     logger.debug(f"este es el payload generado:{payload_materia_sin_Nombre}")
     logger.info("Validando schema del input.")
     assert_validar_schema_input(payload_materia_sin_Nombre,cargar_schema("schema_materias.json"))
     response = crear_materia(get_url, payload_materia_sin_Nombre)
     logger.debug(f"ESTE ES EL RESPONSE {response}.")
+    eliminar_materia(get_url, "2025BIOLOGIA")
     assert response.status_code == 422
     logger.debug(f"Código de respuesta: {response.status_code}.")
     logger.info("Validando schema del response.")

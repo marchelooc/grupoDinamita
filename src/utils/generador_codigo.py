@@ -7,7 +7,7 @@ def generar_codigo():
     numero = str(random.randint(100000, 999999))
     letras = ''.join(random.choices(string.ascii_uppercase, k=6))
     return numero + letras
-
+ 
 def obtener_nombre_grupo():
     grupos = ["Grupo1", "Grupo2", "Grupo3", "Grupo4", "Grupo5","Grupo6", "Grupo7", "Grupo8", "Grupo9", "Grupo10",
             "Grupo11", "Grupo12", "Grupo13", "Grupo14", "Grupo15","Grupo16", "Grupo17", "Grupo18", "Grupo19", "Grupo20"]
@@ -124,9 +124,9 @@ def generar_contraseña(longitud=10, usar_mayusculas=True, usar_numeros=True):
 
 def generar_nom_materia():
     materias = [
-            "Ingles", "Ruso", "Esñaol", "Quechua", "Mandarín","Polaco", "Árabe", "Birmano",
-            "Chino", "Yoruba", "Japones", "Indonesio", "Portugues","Frances", "Italiano"
-            "Ingles2", "Ruso2", "Español2", "Quechua2", "Mandarín2","Polaco2", "Árabe2", "Birmano2",
+            "Ruso", "Esñaol", "Quechua", "Mandarín","Polaco", "Árabe", "Birmano",
+            "Chino", "Yoruba", "Japones", "Indonesio", "Portugues","Frances", "Italiano",
+            "Ruso2", "Español2", "Quechua2", "Mandarín2","Polaco2", "Árabe2", "Birmano2",
             "Chino2", "Yoruba2", "Japones2", "Indones2", "Portugal2","Frances2", "Italiano2"
             ]
     materia = random.choice(materias)
