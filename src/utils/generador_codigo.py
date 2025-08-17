@@ -10,7 +10,8 @@ def generar_codigo():
 
 def obtener_nombre_grupo():
     grupos = ["Grupo1", "Grupo2", "Grupo3", "Grupo4", "Grupo5","Grupo6", "Grupo7", "Grupo8", "Grupo9", "Grupo10",
-            "Grupo11", "Grupo12", "Grupo13", "Grupo14", "Grupo15","Grupo16", "Grupo17", "Grupo18", "Grupo19", "Grupo20"]
+            "Grupo11", "Grupo12", "Grupo13", "Grupo14", "Grupo15","Grupo16", "Grupo17", "Grupo18", "Grupo19", "Grupo20",
+            "Grupo21", "Grupo22", "Grupo23", "Grupo24", "Grupo25","Grupo26", "Grupo27", "Grupo28", "Grupo29", "Grupo30"]
     return random.choice(grupos)
 
 def obtener_dias():
@@ -147,7 +148,17 @@ def obtener_nombre_grupo_3_caracteres():
             "NN", "1f2", "3r4", "GHi", "ZcZ","LmL", "RvR", "PrP", "QuQ", "JoJ", "KaK", "KiL"]
     return random.choice(grupos)
 
+def generar_cod_letras():
+    cadena = ''.join(random.choices(string.ascii_uppercase, k=8))
+    return f'"{cadena}"'
+
+
 def generar_cod_caracteres():
+    caracteres_especiales = string.punctuation.replace("%","$",).replace("#","$").replace("/","@")
+    codigo = ''.join(random.choice(caracteres_especiales) for _ in range(6))
+    return f'"{codigo}"'
+
+def generar_codigo_caracteres_invalidos():
     caracteres_especiales = string.punctuation
-    codigo = ''.join(random.choice(caracteres_especiales) for _ in range(10))
+    codigo = ''.join(random.choice(caracteres_especiales) for _ in range(6))
     return f'"{codigo}"'

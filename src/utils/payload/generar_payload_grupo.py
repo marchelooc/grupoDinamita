@@ -84,7 +84,16 @@ def generar_payload_eliminar(CODCURSO,nombre_grupo,codigo):
     payload=cargar_payload_grupo(CODCURSO,nombre_grupo,dias,horas,precio,limite,codigo)    
     return payload
 
-def generar_payload_limite(CODMATERIA,nombre_grupo,codigo,limite):
+def generar_payload_limite(CODMATERIA,limite):
+    nombre_grupo=obtener_nombre_grupo()
+    dias=obtener_dias()
+    horas=obtener_horas()
+    precio=obtener_precio()
+    codigo=generar_cod(nombre_grupo)
+    payload=cargar_payload_grupo(CODMATERIA,nombre_grupo,dias,horas,precio,limite,codigo)
+    return payload
+
+def generar_payload_limite_disp(CODMATERIA,nombre_grupo,codigo,limite):
     dias=obtener_dias()
     horas=obtener_horas()
     precio=obtener_precio()

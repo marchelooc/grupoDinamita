@@ -11,11 +11,12 @@ def test_agregar_un_nuevo_grupo_con_el_id_de_una_materia_valida(get_url):
     CODCURSO = codigo_curso(get_url)
     logger.debug(f"Curso seleccionado: {CODCURSO}")
     payload = generar_payload_completo(CODCURSO)
-    logger.debug(payload)
+    logger.debug(f"payload: {payload}")
     response = realizar_peticion(get_url,payload)
     logger.info("Validando schema del payload.")
     assert_validar_schema_input(payload,cargar_schema("schema_grupo.json"))
     logger.info(f"Código de respuesta: {response.status_code}.")
+    logger.debug(f"response:{response}")
     assert response.status_code == 201
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_grupo.json"))

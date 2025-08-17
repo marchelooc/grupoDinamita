@@ -11,7 +11,7 @@ def test_agregar_un_nuevo_grupo_con_nombre_tres_caracteres(get_url):
     CODCURSO = codigo_curso(get_url)
     logger.debug(f"Curso seleccionado: {CODCURSO}")
     payload = generar_payload_3_carac(CODCURSO)
-    logger.debug(payload)
+    logger.debug(f"payload: {payload}")
     response = realizar_peticion(get_url,payload)
     logger.info("Validando schema del payload.")
     assert_validar_schema_input(payload,cargar_schema("schema_grupo.json"))

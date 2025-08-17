@@ -13,7 +13,7 @@ def test_agregar_grupo_duplicado_desde_existente(get_url):
     logger.debug(f"Curso seleccionado: {CODCURSO}")
     nombre_grupo=crear_grupo_duplicado(get_url,CODCURSO)
     payload=generar_payload_duplicado(CODCURSO,nombre_grupo)
-    logger.debug(payload)
+    logger.debug(f"payload: {payload}")
     response = realizar_peticion(get_url,payload)
     logger.info("Validando schema del payload.")
     assert_validar_schema_input(payload,cargar_schema("schema_grupo.json"))
