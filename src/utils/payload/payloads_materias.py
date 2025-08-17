@@ -1,8 +1,22 @@
+from src.utils.generador_codigo import generar_nom_materia, generar_cod
+
+
 payload_materia_correcta = {
     "CODCURSO": "2025Taller",
     "CURSO": "Taller" ,
     "ESTADO": "activo",
     }
+
+def generar_materia_aleatoria():
+    codigo_curso = generar_nom_materia()
+    nombre_curso = generar_cod (codigo_curso)
+    payload_materia_aleatoria = {
+                    "CODCURSO": codigo_curso,
+                    "CURSO": nombre_curso,
+                    "ESTADO": "activo",
+                    }
+    return payload_materia_aleatoria
+
 payload_materia_vacia = {
                 "CODCURSO": "",
                 "CURSO": "",
