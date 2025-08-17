@@ -4,12 +4,13 @@ from src.utils.logger_config import logger
 
 @pytest.mark.functional
 def test_verificar_comportamiento_del_limite_lleno(get_url):
-    logger.info("Iniciando test MAM023.")
+    logger.info("Iniciando test MAM025.")
     CODMATERIA = codigo_curso(get_url)
     logger.debug(f"Curso seleccionado: {CODMATERIA}")
     limite_diponible=4 
     logger.info("creando grupo limite disponible")
     codigo=crear_grupo_limite(get_url,CODMATERIA,limite_diponible)
+    logger.debug(f"{codigo}")
     lista_grupos = obtener_lista_grupos_con_limite(get_url,CODMATERIA)
     verificar_limite_lleno(lista_grupos,codigo)
     logger.debug(f"Eliminando grupo con codigo: {codigo}")

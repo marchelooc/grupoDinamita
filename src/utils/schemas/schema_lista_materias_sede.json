@@ -1,0 +1,25 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "CODCURSO": {
+        "type": "string"
+      },
+      "CURSO": {
+        "type": ["string", "null"]
+      },
+      "ESTADO": {
+        "type": "string"
+      },
+      "Cantidad": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "CODCURSO",
+      "ESTADO",
+      "Cantidad"
+    ]
+  }
+}

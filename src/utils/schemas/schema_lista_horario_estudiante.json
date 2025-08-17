@@ -1,0 +1,34 @@
+{
+     "type": "array",
+     "items": {
+     "type": "object",
+     "required": [
+          "CODESTUDIANTE",
+          "CODCURSOINSCRITO",
+          "CODGRUPOINSCRITO",
+          "NOMBREGRUPO",
+          "DIA",
+          "HORA"
+     ],
+     "properties": {
+          "CODESTUDIANTE": {
+          "type": "string"
+          },
+          "CODCURSOINSCRITO": {
+          "type": "string"
+          },
+          "CODGRUPOINSCRITO": {
+          "type": "string"
+          },
+          "NOMBREGRUPO": {
+          "type": "string"
+          },
+          "DIA": {
+          "type": "string"
+          },
+          "HORA": {
+          "type": "string"
+          }
+     }
+     }
+}

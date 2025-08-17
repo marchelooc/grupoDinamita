@@ -1,30 +1,25 @@
-import requests
 import pytest
-from src.assertions.add import assert_validar_schema_input
-from src.utils.generador_codigo import generar_nom_materia, generar_cod
+from src.assertions.add import assert_validar_schema_input, assert_validar_response_schema
 from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
+from src.utils.payload.payloads_materias import payload_materia_nombre_invalido
+from src.api_infinity_chess.materia import crear_materia, eliminar_materia
 
+@pytest.mark.negative
 @pytest.mark.functional
 @pytest.mark.xfail(reason="Knwon issue MOCBUG04: Materia agregada con nombre de materia inválida", run=True)
 def test_validar_comportamiento_CURSO_con_caracteres_especiales(get_url):
     logger.info("Iniciando test MOCM016.")
-    nombre_materia = generar_nom_materia()
-    codigo_materia = generar_cod(nombre_materia)
-    logger.debug(f"Curso aleatorio creado {nombre_materia}.")
-    endpoint = "agregarCurso"
-    payload = {
-                "CODCURSO":codigo_materia,
-                "CURSO": nombre_materia + "@%&$", 
-                "ESTADO": "activo",
-                }
-    logger.debug(f"este es el payload generado:{payload}")
+    logger.debug("El curso a crear es: Taller")
+    logger.debug(f"este es el payload generado:{payload_materia_nombre_invalido}")
     logger.info("Validando schema del input.")
-    assert_validar_schema_input(payload,cargar_schema("schema_materias.json"))
-    url_final = get_url + endpoint
-    logger.info(f"Enviando POST {url_final}.")
-    response = requests.post(url_final, json=payload)
+    assert_validar_schema_input(payload_materia_nombre_invalido,cargar_schema("schema_materias.json"))
+    response = crear_materia(get_url, payload_materia_nombre_invalido)
+    logger.debug(f"ESTE ES EL RESPONSE {response}.")
+    eliminar_materia(get_url, "2025Taller")
     assert response.status_code == 400
-    logger.info(f"Código de respuesta: {response.status_code}.")
-    logger.info("Test MOCM015 realizado.")
+    logger.debug(f"Código de respuesta: {response.status_code}.")
+    logger.info("Validando schema del response.")
+    assert_validar_response_schema(response,cargar_schema("schema_materias.json"))
+    logger.info("Test MOCM016 realizado.")
     

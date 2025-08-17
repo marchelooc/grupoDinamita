@@ -15,7 +15,7 @@ def obtener_tutores_inactivos(get_url):
     lista_tutores = response.json()
     return lista_tutores
 
-def enviarSolicitud(get_url, headers=None):
+def enviar_solicitud(get_url, headers=None):
     endpoint = "obtenerTutoresActivos"
     lista_url = get_url + endpoint
     logger.info(f"Enviando PUT a {lista_url}.")
