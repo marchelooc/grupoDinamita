@@ -6,6 +6,7 @@ from src.api_infinity_chess.registro import enviar_solicitud
 from src.utils.payload.payload_registro import crear_payload_fecha_futura
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG010: Sistema no valida fecha futura",run=True)
 def test_registro_fecha_futura (get_url):
      logger.info("Iniciando test SSL040.")
      payload = crear_payload_fecha_futura(get_url)

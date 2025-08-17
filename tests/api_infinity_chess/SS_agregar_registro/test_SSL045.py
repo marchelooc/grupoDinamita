@@ -6,6 +6,7 @@ from src.api_infinity_chess.registro import enviar_solicitud
 from src.utils.payload.payload_registro import crear_payload_sin_codigo_estudiante
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG006: Sistema no valida datos del body",run=True)
 def test_registro_sin_codigo_estudiante (get_url):
      logger.info("Iniciando test SSL045.")
      payload = crear_payload_sin_codigo_estudiante(get_url)

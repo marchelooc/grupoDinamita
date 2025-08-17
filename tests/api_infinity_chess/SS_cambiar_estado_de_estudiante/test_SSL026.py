@@ -6,6 +6,7 @@ from src.api_infinity_chess.cambiar_estado_estudiante import obtener_estudiante_
 from src.utils.payload.payload_cambiar_estado import payload_vacioH
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG002: Aceptar valor de estado vacio",run=True)
 def test_validación_de_valor_vacio_en_campo_estado (get_url):
      logger.info("Iniciando test SSL026.")
      logger.info("Obtener un estudiante aleatorio.")

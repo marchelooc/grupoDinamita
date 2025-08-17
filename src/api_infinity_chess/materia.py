@@ -1,17 +1,12 @@
 from src.api_infinity_chess.obtener_curso import obtener_cursos
 import requests
 import random
-from src.utils.payload.payloads_materias import payload_materia_repetida
 from src.utils.logger_config import logger
+from src.utils.response_500 import response_500
 
 def existe_materia_repetida(nombre_materia_buscada) -> bool:
     listaMaterias = obtener_cursos("https://backend.clubinfinitychess.com/")
     return any(m["CURSO"] == nombre_materia_buscada for m in listaMaterias)
-
-def crear_materia_repetida(get_Url, endpoint):
-    urlFinal = get_Url + endpoint
-    response_crear = requests.post(urlFinal, json=payload_materia_repetida)
-    assert response_crear.status_code == 201
 
 def obtener_nombre_materia_aleatoria(get_url):
     endpoint = "obtenerCursos/Modulo 4"
@@ -36,15 +31,17 @@ def crear_materia(get_url, pyload_de_materia):
     endpoint = "agregarCurso"
     urlFinal = get_url + endpoint
     response_crear = requests.post(urlFinal, json = pyload_de_materia)
-#    assert response_crear.status_code == 201
     logger.info(f"Código de respuesta del post: {response_crear.status_code}.")
+    if (response_crear.status_code==500):
+          eliminar_materia(get_url, pyload_de_materia["CODCURSO"])
+          logger.info("se elimino la materia")
+    response_500(response_crear)
     return response_crear
 
 def eliminar_materia(get_url, cod_materia):
     endpoint = "eliminarCurso/" + cod_materia
     urlFinal = get_url + endpoint
     response_eliminar = requests.delete(urlFinal)
-#    assert response_eliminar.status_code == 200
     logger.info(f"Código de respuesta del delete: {response_eliminar.status_code}.")
     return response_eliminar
 
@@ -52,7 +49,6 @@ def eliminar_materia_con_header(get_url, cod_materia, tipo_header):
     endpoint = "eliminarCurso/" + cod_materia
     urlFinal = get_url + endpoint
     response_eliminar = requests.delete(urlFinal, headers=tipo_header)
-#    assert response_eliminar.status_code == 200
     logger.info(f"Código de respuesta del delete: {response_eliminar.status_code}.")
     return response_eliminar
 
@@ -67,3 +63,14 @@ def recuperar_cursos_sede(get_url, nombre_sede):
     lista_url = get_url + endpoint
     logger.info(f"Enviando GET {lista_url}.")
     return requests.get(lista_url)
+
+def recuperar_cursos_sede_con_header(get_url, nombre_sede, tipo_header):
+    endpoint = "obtenerCursos/" + nombre_sede
+    lista_url = get_url + endpoint
+    logger.info(f"Enviando GET {lista_url}.")
+    return requests.get(lista_url,  headers=tipo_header)
+
+def validar_curso_dentro_de_cursos_sede_response(response, codigo_curso):
+    cursos = response.json()
+    nombres = [curso['CODCURSO'] for curso in cursos]
+    assert codigo_curso not in nombres, "El curso no fue eliminado"

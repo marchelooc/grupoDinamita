@@ -6,6 +6,7 @@ from src.api_infinity_chess.cambiar_estado_estudiante import obtener_estudiante_
 from src.utils.payload.payload_cambiar_estado import payload_habilitado
 
 @pytest.mark.functional
+@pytest.mark.xfail(reason="Knwon issue SSBUG005: Sistema no soporta formato application/x-www-form-urlencoded",run=True)
 def test_solicitud_con_headers_Content_Type_application_x_www_form_urlencoded(get_url):
      logger.info("Iniciando test SSL030.")
      logger.info("Obtener un tutor aleatorio.")

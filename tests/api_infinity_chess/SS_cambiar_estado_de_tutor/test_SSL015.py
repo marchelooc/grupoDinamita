@@ -6,7 +6,7 @@ from src.api_infinity_chess.cambiar_estado_tutor import obtener_tutor_aleatorio 
 from src.utils.payload.payload_cambiar_estado import payload_activo
 
 @pytest.mark.functional
-@pytest.mark.xfail(reason="Knwon issue SSBUG004: Sistema no soporta formato application/x-www-form-urlencoded",run=True)
+@pytest.mark.xfail(reason="Knwon issue SSBUG005: Sistema no soporta formato application/x-www-form-urlencoded",run=True)
 def test_solicitud_con_headers_Content_Type_application_x_www_form_urlencoded(get_url):
      logger.info("Iniciando test SSL015.")
      logger.info("Obtener un tutor aleatorio.")

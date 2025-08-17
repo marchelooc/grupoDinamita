@@ -6,6 +6,7 @@ from src.api_infinity_chess.registro import enviar_solicitud
 from src.utils.payload.payload_registro import crear_payload_fecha_invalida
 
 @pytest.mark.negative
+@pytest.mark.xfail(reason="Knwon issue SSBUG008: Sistema no valida formato de fecha",run=True)
 def test_registro_fecha_invalida (get_url):
      logger.info("Iniciando test SSL038.")
      payload = crear_payload_fecha_invalida(get_url)
