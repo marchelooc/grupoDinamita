@@ -1,4 +1,5 @@
 import pytest
+from src.api_infinity_chess.eliminar_trabajador import tierdown_eliminar_trabajador_editado
 from src.utils.payload.payload_crear_trabajador import crear_payload_para_actualizar_CODTRABAJADOR
 from src.api_infinity_chess.actualizar_trabajador import crear_trabajador, enviar_PUT
 from src.assertions.add import assert_validar_response_schema
@@ -16,5 +17,6 @@ def test_actualizar_el_CODTRABAJADOR_de_un_trabajador_existente (get_url):
     response = enviar_PUT(get_url, payload, trabajador)
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_actualizar_trabajador.json"))
+    tierdown_eliminar_trabajador_editado(get_url, trabajador)
     assert response.status_code == 409
     logger.info("Test completado.")

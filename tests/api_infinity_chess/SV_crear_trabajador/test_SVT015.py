@@ -20,7 +20,7 @@ def test_crear_trabajador_con_campos_vacios (get_url):
     logger.info("Existen campos opcionales vacios en el registro del trabajador.")
     logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
+    tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     assert response.status_code == 201
     logger.info("Trabajador creado correctamente.")
-    tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     logger.info("Test completado.")

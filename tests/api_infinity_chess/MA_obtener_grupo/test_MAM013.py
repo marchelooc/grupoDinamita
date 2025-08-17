@@ -12,7 +12,7 @@ def test_obtener_grupos_de_una_materia_con_cabecera_accept_text_plain(get_url):
     CODMATERIA = codigo_curso(get_url)
     logger.debug(f"Codigo materia seleccionado: {CODMATERIA}.")
     response = solicitar_peticion(get_url,CODMATERIA,headers_accept_text_plain)
-    logger.debug(response.json)
+    logger.debug(f"response:{response.json()}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==406
     logger.info("Validando schema del response.")

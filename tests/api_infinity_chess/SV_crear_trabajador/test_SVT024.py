@@ -21,6 +21,6 @@ def test_crear_trabajador_con_contraseña_igual_que_el_nombre_del_usuario (get_u
     logger.info("Contraseña del trabajador invalida.")
     logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
-    assert response.status_code == 422
     tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
+    assert response.status_code == 422
     logger.info("Test completado.")

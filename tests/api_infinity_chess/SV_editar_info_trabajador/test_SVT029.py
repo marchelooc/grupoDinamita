@@ -19,6 +19,6 @@ def test_actualizar_el_nombre_y_apellido_de_un_trabajador_con_uno_que_ya_existe_
     response = enviar_PUT(get_url, payload, trabajador)
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_actualizar_trabajador.json"))
-    assert response.status_code == 200
     tierdown_eliminar_trabajador_editado(get_url, trabajador)
+    assert response.status_code == 200
     logger.info("Test completado.")

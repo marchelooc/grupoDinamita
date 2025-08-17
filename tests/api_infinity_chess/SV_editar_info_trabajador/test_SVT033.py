@@ -18,6 +18,6 @@ def test_actualizar_el_rol_a_uno_diferente_de_secretaria_o_maestro (get_url):
     response = enviar_PUT(get_url, payload, trabajador)
     logger.info("Validando schema del response.")
     assert_validar_response_schema(response,cargar_schema("schema_actualizar_trabajador.json"))
-    assert response.status_code == 422
     tierdown_eliminar_trabajador_editado(get_url, trabajador)
+    assert response.status_code == 422
     logger.info("Test completado.")
