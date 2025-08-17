@@ -6,7 +6,6 @@ from src.assertions.add import assert_validar_response_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.regression
 def test_obtener_grupos_de_una_materia_con_cabecera_content_type_text_plain(get_url):
     logger.info("Iniciando test MAM011.")
     CODMATERIA = codigo_curso(get_url)

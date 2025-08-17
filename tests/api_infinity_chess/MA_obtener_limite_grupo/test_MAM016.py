@@ -5,7 +5,6 @@ from src.utils.generador_codigo import generar_cod_caracteres
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.regression
 def test_obtener_los_limites_grupos_con_id_con_caracteres_especiales_sede_modulo4(get_url):
     logger.info("Iniciando test MAM016.")
     CODMATERIA =generar_cod_caracteres()

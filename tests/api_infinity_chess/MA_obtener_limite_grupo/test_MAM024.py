@@ -3,7 +3,6 @@ from src.api_infinity_chess.generar_info_curso import codigo_curso, crear_grupo_
 from src.utils.logger_config import logger
 
 @pytest.mark.functional
-@pytest.mark.regression
 def test_verificar_comportamiento_del_limite_casi(get_url):
     logger.info("Iniciando test MAM023.")
     CODMATERIA = codigo_curso(get_url)

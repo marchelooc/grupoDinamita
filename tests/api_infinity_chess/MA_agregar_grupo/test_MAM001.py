@@ -6,7 +6,6 @@ from src.utils.cargar_schema import cargar_schema
 from src.utils.logger_config import logger
 
 @pytest.mark.smoke
-@pytest.mark.regression
 def test_agregar_un_nuevo_grupo_con_el_id_de_una_materia_valida(get_url):
     logger.info("Iniciando test MAM001.")
     CODCURSO = codigo_curso(get_url)

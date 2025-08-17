@@ -3,7 +3,6 @@ from src.api_infinity_chess.generar_info_curso import realizar_eliminacion, vali
 from src.utils.logger_config import logger
 
 @pytest.mark.negative
-@pytest.mark.regression
 def test_verificar_que_se_elimine_un_grupo_con_id_vacio(get_url):
     logger.info("Iniciando test MAM021.")
     codigo=""
