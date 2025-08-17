@@ -21,6 +21,6 @@ def test_crear_trabajador_mayor_de_75_años (get_url):
     logger.info("La fecha de nacimiento del trabajador no es valida.")
     logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
-    assert response.status_code == 422
     tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
+    assert response.status_code == 422
     logger.info("Test completado.")
