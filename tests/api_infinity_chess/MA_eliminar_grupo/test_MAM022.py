@@ -16,7 +16,6 @@ def test_verificar_que_se_elimine_un_grupo_por_segunda_vez(get_url):
     verificar_eliminacion(lista_grupos,codigo)
     logger.debug(f"Eliminando grupo nuevamente con el codigo: {codigo}")
     response = realizar_eliminacion(get_url,codigo)
-    logger.debug(f"response:{response.json()}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==404
     validar_respuesta(response)

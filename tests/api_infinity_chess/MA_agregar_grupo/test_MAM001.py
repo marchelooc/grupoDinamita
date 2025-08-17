@@ -13,6 +13,7 @@ def test_agregar_un_nuevo_grupo_con_el_id_de_una_materia_valida(get_url):
     payload = generar_payload_completo(CODCURSO)
     logger.debug(f"payload: {payload}")
     response = realizar_peticion(get_url,payload)
+    logger.debug(f"Este es el response: {response.json()}")
     logger.info("Validando schema del payload.")
     assert_validar_schema_input(payload,cargar_schema("schema_grupo.json"))
     logger.info(f"Código de respuesta: {response.status_code}.")

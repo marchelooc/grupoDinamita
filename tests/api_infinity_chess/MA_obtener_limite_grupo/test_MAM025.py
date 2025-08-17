@@ -14,6 +14,7 @@ def test_verificar_comportamiento_del_limite_lleno(get_url):
     verificar_limite_lleno(lista_grupos,codigo)
     logger.debug(f"Eliminando grupo con codigo: {codigo}")
     response=eliminar_grupo(get_url,codigo)
+    logger.debug(f"Este es el response: {response.json()}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code == 200
     lista_grupos = obtener_lista_grupos(get_url,CODMATERIA)

@@ -11,7 +11,6 @@ def test_verificar_que_se_elimine_un_grupo_con_id_solo_letras(get_url):
     logger.debug(f"codigo generado: {codigo}")
     logger.debug(f"Eliminando grupo con codigo: {codigo}")
     response = realizar_eliminacion(get_url,codigo)
-    logger.debug(f"response:{response.json()}")
     logger.info(f"Código de respuesta: {response.status_code}.")
     assert response.status_code==404
     validar_respuesta(response)
