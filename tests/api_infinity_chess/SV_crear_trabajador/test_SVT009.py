@@ -23,7 +23,7 @@ def test_crear_un_trabajador_con_un_nombre_que_ya_existe (get_url):
     logger.info("Validando schema de entrada del payload.")
     assert_validar_schema_input(payload_2, cargar_schema("schema_trabajador.json"))
     logger.info(f"Codigo de respuesta al intento con codigo existente: {response.status_code}.")
+    tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     assert response.status_code == 409
     logger.info("El nombre del trabajador ya existe.")
-    tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
     logger.info("Test completado.")

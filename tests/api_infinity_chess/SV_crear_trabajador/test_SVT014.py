@@ -21,6 +21,6 @@ def test_crear_trabajador_con_contraseña_sin_alfanumericos (get_url):
     logger.info("La contraseña del trabajador es invalida.")
     logger.debug(f"Response:{response.json()}.")
     logger.info(f"Codigo de respuesta: {response.status_code}.")
-    assert response.status_code == 422
     tierdown_eliminar_trabajador_creado(get_url, payload) #tierdown
+    assert response.status_code == 422
     logger.info("Test completado.")
