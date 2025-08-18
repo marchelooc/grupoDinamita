@@ -35,16 +35,24 @@ jobs:
         run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_agregar_grupo -n 1
 
       - name: Ejecutar test para obtener los grupos de una materia.
-        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_obtener_grupo -n 1
+        run: |
+          PYTHONPATH=. pytest tests/api_infinity_chess/MA_obtener_grupo -n 1 
+          sleep 0.2 
 
       - name: Ejecutar test para eliminar un grupo.
-        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_eliminar_grupo -n 1
+        run: |
+          PYTHONPATH=. pytest tests/api_infinity_chess/MA_eliminar_grupo -n 1
+          sleep 0.2 
 
       - name: Ejecutar test para verificar el limite de los grupos.
-        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_obtener_limite_grupo -n 1
+        run: |
+          PYTHONPATH=. pytest tests/api_infinity_chess/MA_obtener_limite_grupo -n 1
+          sleep 0.2 
 
       - name: Ejecutar test E2E grupos.
-        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_E2E_grupo -n 1    
+        run: |
+          PYTHONPATH=. pytest tests/api_infinity_chess/MA_E2E_grupo -n 1    
+          sleep 0.2 
         
       - name: Ejecutar test para actualizar datos de tutor.
         run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_actualizar_datos_tutor -n 1
