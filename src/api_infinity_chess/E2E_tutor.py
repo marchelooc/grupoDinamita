@@ -141,6 +141,7 @@ def actualizar_tutor_celular_menor_caracteres (get_url,tutor):
     tutor = enviar_solicitud_put(get_url,payload,tutor.get("CODTUTOR"))
     logger.info(f"Estatus code {tutor.status_code}.")
     logger.debug(f"Response: {tutor.json()}.")
+    assert tutor.status_code == 400
     return tutor.json()
 
 def actualizar_tutor_celular_mayor_caracteres (get_url,tutor):
@@ -159,6 +160,7 @@ def actualizar_tutor_celular_caracteres_no_numericos (get_url,tutor):
     tutor = enviar_solicitud_put(get_url,payload,tutor.get("CODTUTOR"))
     logger.info(f"Estatus code {tutor.status_code}.")
     logger.debug(f"Response: {tutor.json()}.")
+    assert tutor.status_code == 400
     return tutor.json()
 
 def actualizar_tutor_caracteres_especiales_apellido (get_url,tutor):
@@ -168,6 +170,7 @@ def actualizar_tutor_caracteres_especiales_apellido (get_url,tutor):
     tutor = enviar_solicitud_put(get_url,payload,tutor.get("CODTUTOR"))
     logger.info(f"Estatus code {tutor.status_code}.")
     logger.debug(f"Response: {tutor.json()}.")
+    assert tutor.status_code == 400
     return tutor.json()
 
 def actualizar_tutor_caracteres_especiales_nombre (get_url,tutor):
@@ -177,6 +180,7 @@ def actualizar_tutor_caracteres_especiales_nombre (get_url,tutor):
     tutor = enviar_solicitud_put(get_url,payload,tutor.get("CODTUTOR"))
     logger.info(f"Estatus code {tutor.status_code}.")
     logger.debug(f"Response: {tutor.json()}.")
+    assert tutor.status_code == 400
     return tutor.json()
 
 def actualizar_tutor_numero_cel_repetido (get_url,tutor):
