@@ -33,9 +33,11 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-html pytest-xdist  # <--- aquí añadimos pytest-xdist
 
-      - name: Corriendo Test
-        run: |
-          PYTHONPATH=. pytest -n 1 
+      - name: Ejecutar agregar_grupo
+        run: PYTHONPATH=. pytest tests/api_infinitychess/MA_agregar_grupo -n 1
+    
+      - name: Ejecutar tests batch 2
+        run: PYTHONPATH=. pytest tests/api_infinitychess/batch2 -n 1
 
       - name: Descargar HTML Report
         if: always()                 
