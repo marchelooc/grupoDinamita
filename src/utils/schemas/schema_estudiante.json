@@ -14,7 +14,7 @@
           "type": ["string","null"]
      },
      "APELLIDOESTUDIANTE": {
-          "type": "string"
+          "type": ["string","null"]
      },
      "FECHANACIMIENTOESTUDIANTE": {
           "type": ["string","null"]
