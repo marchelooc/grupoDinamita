@@ -29,13 +29,71 @@ jobs:
 
       - name: Instalando requirements
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest pytest-html pytest-xdist  # <--- aquí añadimos pytest-xdist
+          
+      - name: Ejecutar test para agregar un grupo.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_agregar_grupo -n 1
 
-      - name: Ejecutar Test
-        run: PYTHONPATH=. pytest tests/api_infinity_chess -n 1
-    
+      - name: Ejecutar test para obtener los grupos de una materia.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_obtener_grupo -n 1
+
+      - name: Ejecutar test para eliminar un grupo.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_eliminar_grupo -n 1
+
+      - name: Ejecutar test para verificar el limite de los grupos.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_obtener_limite_grupo -n 1
+
+      - name: Ejecutar test E2E grupos.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_E2E_grupo -n 1    
+        
+      - name: Ejecutar test para actualizar datos de tutor.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_actualizar_datos_tutor -n 1
+      
+      - name: Ejecutar test E2E tutor.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_E2E_tutor -n 1
+      
+      - name: Ejecutar test para obtener lista de tutores por sede.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_lista_tutores_por_sede -n 1
+      
+      - name: Ejecutar test para obtener estudiantes asignados a un tutor.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_obtener_estudiantes_asignados_tutor -n 1
+      
+      - name: Ejecutar test para registrar motivos por tutor.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_registrar_motivo_por_tutor -n 1
+        
+      - name: Ejecutar test para aregar registro.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/SS_agregar_registro -n 1
+        
+      - name: Ejecutar test para cambiar estado de estudiante.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_agregar_motivo -n 1
+        
+      - name: Ejecutar test para cambiar estado de tutor.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_agregar_motivo -n 1
+        
+      - name: Ejecutar test para E2E estudiante.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_agregar_motivo -n 1
+        
+      - name: Ejecutar test para obtener horarios de estudiante.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_agregar_motivo -n 1
+        
+      - name: Ejecutar test para cambiar obtener tutores activos.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/RP_agregar_motivo -n 1
+        
+      - name: Ejecutar Tests para crear un trabajador.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/SV_crear_trabajador -n 1
+
+      - name: Ejecutar Test para E2E trabajador.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/SV_E2E_trabajador -n 1
+      
+      - name: Ejecutar Tests para editar la informacion de un trabajador.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/SV_editar_info_trabajador -n 1
+      
+      - name: Ejecutar Tests para eliminar un trabajador.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/SV_eliminar_trabajador -n 1
+      
+      - name: Ejecutar Tests para obtener la informacion de un trabajador.
+        run: PYTHONPATH=. pytest tests/api_infinity_chess/SV_obtener_trabajadores -n 1
+        
       - name: Descargar HTML Report
         if: always()                 
         uses: actions/upload-artifact@v4
