@@ -4,7 +4,7 @@ from src.api_infinity_chess.E2E_tutor import  crear_tutor, obtener_tutor, actual
 
 @pytest.mark.functional
 @pytest.mark.negative
-#@pytest.mark.xfail(reason="Knwon issue RPBUG013: Actualiza los datos de un tutor cuando el apellido contiene caracteres especiales",run=True)
+@pytest.mark.xfail(reason="Knwon issue RPBUG013: Actualiza los datos de un tutor cuando el apellido contiene caracteres especiales",run=True)
 def test_RPL041_actualizar_tutor_con_caracteres_especiales_apellido (get_url):
     logger.info("Iniciando test RPL041.")
     logger.info("Crear nuevo tutor.")
