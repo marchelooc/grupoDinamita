@@ -33,12 +33,9 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-html pytest-xdist  # <--- aquí añadimos pytest-xdist
 
-      - name: Ejecutar agregar_grupo
-        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_agregar_grupo -n 1
+      - name: Ejecutar Test
+        run: PYTHONPATH=. pytest tests/api_infinity_chess -n 1
     
-      - name: Ejecutar tests batch 2
-        run: PYTHONPATH=. pytest tests/api_infinity_chess/MA_E2E_grupo -n 1
-
       - name: Descargar HTML Report
         if: always()                 
         uses: actions/upload-artifact@v4
