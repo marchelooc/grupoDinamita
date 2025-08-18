@@ -6,7 +6,7 @@ from src.utils.logger_config import logger
 from typing import Dict, Any, Literal, Iterable, Optional
 
 def obtener_trabajadores(get_url):      #SVT001,
-    endpoint = "obtenerTrabajadores/Modulo 4"
+    endpoint = "obtenerTrabajadores/NACIONAL"
     lista_url = get_url + endpoint
     response = requests.get(lista_url)
     lista_trabajadores = response.json()
